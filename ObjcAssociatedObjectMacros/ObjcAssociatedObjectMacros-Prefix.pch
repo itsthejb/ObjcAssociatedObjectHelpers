@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'ObjcAssociatedObjectMacros' target in the 'ObjcAssociatedObjectMacros' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
