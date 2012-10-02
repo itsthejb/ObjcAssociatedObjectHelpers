@@ -10,7 +10,7 @@
 #import "ObjcAssociatedObjectHelpers.h"
 
 @interface TestClass ()
-@property (strong, readwrite) id readWriteObject;
+@property (readwrite) id readWriteObject;
 @end
 
 @implementation TestClass

@@ -10,9 +10,9 @@
 
 @interface TestClass : NSObject
 
-@property (strong) id object;
+@property () id object;
 @property (readonly) id lazyObject;
-@property (strong, readonly) id readWriteObject;
+@property (readonly) id readWriteObject;
 @property (assign) NSUInteger primitive;
 @property (assign) NSRect structure;
 
