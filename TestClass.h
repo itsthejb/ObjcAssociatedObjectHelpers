@@ -12,5 +12,6 @@
 
 @property (assign) NSUInteger primitive;
 @property (strong) id object;
+@property (assign) NSRect structure;
 
 @end

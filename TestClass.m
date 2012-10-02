@@ -9,41 +9,29 @@
 #import <objc/runtime.h>
 #import "TestClass.h"
 
-#define Q(x) #x
-#define QUOTE(x) Q(x)
+#define SYNTHESIZE_ASC_OBJC(getterName, setterName) \
+static void* getterName##key = NULL; \
+- (void)setterName:(id)object { \
+    objc_AssociationPolicy policy = [object conformsToProtocol:@protocol(NSCopying)] ? OBJC_ASSOCIATION_COPY : OBJC_ASSOCIATION_RETAIN; \
+    objc_setAssociatedObject(self, getterName##key, object, policy); \
+} \
+- (id) getterName { return objc_getAssociatedObject(self, getterName##key); }
 
-#define SYNTHESIZE_ASCOBJ_PRIMITIVE(getterName, setterName, type, wrapBlock, unwrapBlock) \
-static char getterName##Key[] = QUOTE( getterName##key ); \
-- (void) setterName:(NSUInteger)getterName { \
-    id (^wrap)() = wrapBlock; \
-    id wrapped = wrap(); \
-    objc_setAssociatedObject(self, QUOTE(getterName), wrapped, OBJC_ASSOCIATION_RETAIN); } \
+#define SYNTHESIZE_ASC_PRIMITIVE(getterName, setterName, type) \
+static void* getterName##key = NULL; \
+- (void)setterName:(type)structure { \
+    objc_setAssociatedObject(self, getterName##key, [NSValue value:&structure withObjCType:@encode(type)], OBJC_ASSOCIATION_RETAIN); \
+} \
 - (type) getterName { \
-    __block id unwrapped = objc_getAssociatedObject(self, QUOTE(getterName)); \
-    type (^unwrap)() = unwrapBlock; \
-    return unwrap(); }
+    type ret; \
+    [objc_getAssociatedObject(self, getterName##key) getValue:&ret]; \
+    return ret; \
+}
 
 @implementation TestClass
 
-SYNTHESIZE_ASCOBJ_PRIMITIVE(primitive,
-                            setPrimitive,
-                            NSUInteger,
-                            ^ id { return [NSNumber numberWithUnsignedInteger:primitive]; },
-                            ^ NSUInteger { return [unwrapped unsignedIntegerValue]; };)
-
-/*
-- (void)setPrimitive:(NSUInteger)primitive
-{
-    id (^wrap)() = ^ id { return [NSNumber numberWithUnsignedInteger:primitive]; };
-    id wrapped = wrap();
-    objc_setAssociatedObject(self, "primitive", wrapped, OBJC_ASSOCIATION_RETAIN);
-}
-
-- (NSUInteger)primitive
-{
-    __block id unwrapped = objc_getAssociatedObject(self, "primitive");
-    NSUInteger (^unwrap)() = ^ NSUInteger { return [unwrapped unsignedIntegerValue]; };
-    return unwrap();
-}*/
+SYNTHESIZE_ASC_PRIMITIVE(primitive, setPrimitive, NSUInteger);
+SYNTHESIZE_ASC_PRIMITIVE(structure, setStructure, NSRect);
+SYNTHESIZE_ASC_OBJC(object, setObject);
 
 @end
