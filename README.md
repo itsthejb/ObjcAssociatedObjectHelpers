@@ -31,6 +31,14 @@ Notes
 		@property (retain) id myProperty;
 		@property (assign) id myProperty;
 
+Usage
+-----
+No need to link any sources if just using the header file. Could create a static library for the `NSObject` category, but not really worthwhile.
+
+Testing
+-------
+Test cases provided.
+
 		
 Macros
 ------

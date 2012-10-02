@@ -2,8 +2,8 @@
 //  NSObject+AssociatedDictionary.h
 //  ObjcAssociatedObjectHelpers
 //
-//  Created by jc on 02/10/2012.
-//  Copyright (c) 2012 jbsoft. All rights reserved.
+//  Created by Jon Crooke on 02/10/2012.
+//  Copyright (c) 2012 jcrooke. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

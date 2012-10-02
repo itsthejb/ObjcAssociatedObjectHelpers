@@ -2,8 +2,8 @@
 //  UnitTests.m
 //  UnitTests
 //
-//  Created by jc on 01/10/2012.
-//  Copyright (c) 2012 jbsoft. All rights reserved.
+//  Created by Jon Crooke on 01/10/2012.
+//  Copyright (c) 2012 jcrooke. All rights reserved.
 //
 
 #import <SenTestingKit/SenTestingKit.h>

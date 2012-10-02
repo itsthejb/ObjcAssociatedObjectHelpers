@@ -2,7 +2,7 @@
 //  MyClass.m
 //  ascMacro
 //
-//  Created by jc on 01/10/2012.
+//  Created by Jon Crooke on 01/10/2012.
 //  Copyright (c) 2012 soundcloud. All rights reserved.
 //
 
