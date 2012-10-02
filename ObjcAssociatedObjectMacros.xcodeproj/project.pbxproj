@@ -8,30 +8,48 @@
 
 /* Begin PBXBuildFile section */
 		499C34AF161AF64F00BA2AC9 /* TestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 499C34AE161AF64F00BA2AC9 /* TestClass.m */; };
-		499C34C4161AFD5500BA2AC9 /* NSObject+AssociatedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */; };
 		499C34C7161AFD7200BA2AC9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF0F61619F565009D9F9B /* Foundation.framework */; };
-		499C34C8161AFD7500BA2AC9 /* libObjcAssociatedObjectHelpers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 499C34B9161AFD3A00BA2AC9 /* libObjcAssociatedObjectHelpers.a */; };
+		499C356C161B018300BA2AC9 /* NSObject+AssociatedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */; };
+		499C356D161B018800BA2AC9 /* NSObject+AssociatedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */; };
+		499C3578161B01D400BA2AC9 /* libObjcAssociatedObjectHelpersiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 499C3560161B015A00BA2AC9 /* libObjcAssociatedObjectHelpersiOS.a */; };
 		49AEF15B1619FB2C009D9F9B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF15A1619FB2C009D9F9B /* SenTestingKit.framework */; };
 		49AEF1671619FB2C009D9F9B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49AEF1651619FB2C009D9F9B /* InfoPlist.strings */; };
 		49AEF16A1619FB2C009D9F9B /* UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AEF1691619FB2C009D9F9B /* UnitTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		499C34C5161AFD6500BA2AC9 /* PBXContainerItemProxy */ = {
+		499C3576161B01D100BA2AC9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 49AEF0E91619F565009D9F9B /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 499C34B8161AFD3A00BA2AC9;
-			remoteInfo = ObjcAssociatedObjectHelpers;
+			remoteGlobalIDString = 499C355F161B015A00BA2AC9;
+			remoteInfo = ObjcAssociatedObjectHelpersiOS;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		499C355E161B015A00BA2AC9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		499C34AD161AF64F00BA2AC9 /* TestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestClass.h; sourceTree = "<group>"; };
 		499C34AE161AF64F00BA2AC9 /* TestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestClass.m; sourceTree = "<group>"; };
 		499C34B0161AF68000BA2AC9 /* NSObject+AssociatedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AssociatedDictionary.h"; sourceTree = "<group>"; };
 		499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AssociatedDictionary.m"; sourceTree = "<group>"; };
-		499C34B9161AFD3A00BA2AC9 /* libObjcAssociatedObjectHelpers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libObjcAssociatedObjectHelpers.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		499C3548161B013C00BA2AC9 /* ObjAssociatedObjectHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ObjAssociatedObjectHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		499C3549161B013C00BA2AC9 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		499C354C161B013C00BA2AC9 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		499C354D161B013C00BA2AC9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		499C354E161B013C00BA2AC9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		499C3560161B015A00BA2AC9 /* libObjcAssociatedObjectHelpersiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libObjcAssociatedObjectHelpersiOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AEF0F61619F565009D9F9B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		49AEF0FC1619F565009D9F9B /* ObjcAssociatedObjectMacros-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ObjcAssociatedObjectMacros-Prefix.pch"; sourceTree = "<group>"; };
 		49AEF0FD1619F565009D9F9B /* ObjcAssociatedObjectMacros.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = ObjcAssociatedObjectMacros.1; sourceTree = "<group>"; };
@@ -45,7 +63,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		499C34B6161AFD3A00BA2AC9 /* Frameworks */ = {
+		499C3544161B013C00BA2AC9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		499C355D161B015A00BA2AC9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -56,7 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				499C34C8161AFD7500BA2AC9 /* libObjcAssociatedObjectHelpers.a in Frameworks */,
+				499C3578161B01D400BA2AC9 /* libObjcAssociatedObjectHelpersiOS.a in Frameworks */,
 				499C34C7161AFD7200BA2AC9 /* Foundation.framework in Frameworks */,
 				49AEF15B1619FB2C009D9F9B /* SenTestingKit.framework in Frameworks */,
 			);
@@ -65,6 +90,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		499C354B161B013C00BA2AC9 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				499C354C161B013C00BA2AC9 /* AppKit.framework */,
+				499C354D161B013C00BA2AC9 /* CoreData.framework */,
+				499C354E161B013C00BA2AC9 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
 		49AEF0E71619F565009D9F9B = {
 			isa = PBXGroup;
 			children = (
@@ -79,7 +114,8 @@
 			isa = PBXGroup;
 			children = (
 				49AEF1591619FB2C009D9F9B /* UnitTests.octest */,
-				499C34B9161AFD3A00BA2AC9 /* libObjcAssociatedObjectHelpers.a */,
+				499C3548161B013C00BA2AC9 /* ObjAssociatedObjectHelper.framework */,
+				499C3560161B015A00BA2AC9 /* libObjcAssociatedObjectHelpersiOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -89,6 +125,8 @@
 			children = (
 				49AEF0F61619F565009D9F9B /* Foundation.framework */,
 				49AEF15A1619FB2C009D9F9B /* SenTestingKit.framework */,
+				499C3549161B013C00BA2AC9 /* Cocoa.framework */,
+				499C354B161B013C00BA2AC9 /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -101,7 +139,8 @@
 				499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */,
 				49AEF0FB1619F565009D9F9B /* Supporting Files */,
 			);
-			path = ObjcAssociatedObjectMacros;
+			name = ObjcAssociatedObjectMacros;
+			path = ObjcAssociatedObjectHelpers;
 			sourceTree = "<group>";
 		};
 		49AEF0FB1619F565009D9F9B /* Supporting Files */ = {
@@ -137,7 +176,7 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		499C34B7161AFD3A00BA2AC9 /* Headers */ = {
+		499C3545161B013C00BA2AC9 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -147,21 +186,39 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		499C34B8161AFD3A00BA2AC9 /* ObjcAssociatedObjectHelpers */ = {
+		499C3547161B013C00BA2AC9 /* ObjcAssociatedObjectHelpers */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 499C34C1161AFD3B00BA2AC9 /* Build configuration list for PBXNativeTarget "ObjcAssociatedObjectHelpers" */;
+			buildConfigurationList = 499C3559161B013C00BA2AC9 /* Build configuration list for PBXNativeTarget "ObjcAssociatedObjectHelpers" */;
 			buildPhases = (
-				499C34B5161AFD3A00BA2AC9 /* Sources */,
-				499C34B6161AFD3A00BA2AC9 /* Frameworks */,
-				499C34B7161AFD3A00BA2AC9 /* Headers */,
+				499C3543161B013C00BA2AC9 /* Sources */,
+				499C3544161B013C00BA2AC9 /* Frameworks */,
+				499C3545161B013C00BA2AC9 /* Headers */,
+				499C3546161B013C00BA2AC9 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = ObjcAssociatedObjectHelpers;
-			productName = ObjcAssociatedObjectHelpers;
-			productReference = 499C34B9161AFD3A00BA2AC9 /* libObjcAssociatedObjectHelpers.a */;
+			productName = ObjAssociatedObjectHelper;
+			productReference = 499C3548161B013C00BA2AC9 /* ObjAssociatedObjectHelper.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		499C355F161B015A00BA2AC9 /* ObjcAssociatedObjectHelpersiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 499C3569161B015A00BA2AC9 /* Build configuration list for PBXNativeTarget "ObjcAssociatedObjectHelpersiOS" */;
+			buildPhases = (
+				499C355C161B015A00BA2AC9 /* Sources */,
+				499C355D161B015A00BA2AC9 /* Frameworks */,
+				499C355E161B015A00BA2AC9 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ObjcAssociatedObjectHelpersiOS;
+			productName = ObjcAssociatedObjectHelpersiOS;
+			productReference = 499C3560161B015A00BA2AC9 /* libObjcAssociatedObjectHelpersiOS.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		49AEF1581619FB2C009D9F9B /* UnitTests */ = {
@@ -176,7 +233,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				499C34C6161AFD6500BA2AC9 /* PBXTargetDependency */,
+				499C3577161B01D100BA2AC9 /* PBXTargetDependency */,
 			);
 			name = UnitTests;
 			productName = UnitTests;
@@ -204,13 +261,21 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				499C34B8161AFD3A00BA2AC9 /* ObjcAssociatedObjectHelpers */,
+				499C3547161B013C00BA2AC9 /* ObjcAssociatedObjectHelpers */,
+				499C355F161B015A00BA2AC9 /* ObjcAssociatedObjectHelpersiOS */,
 				49AEF1581619FB2C009D9F9B /* UnitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		499C3546161B013C00BA2AC9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		49AEF1561619FB2C009D9F9B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -238,11 +303,19 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		499C34B5161AFD3A00BA2AC9 /* Sources */ = {
+		499C3543161B013C00BA2AC9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				499C34C4161AFD5500BA2AC9 /* NSObject+AssociatedDictionary.m in Sources */,
+				499C356C161B018300BA2AC9 /* NSObject+AssociatedDictionary.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		499C355C161B015A00BA2AC9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				499C356D161B018800BA2AC9 /* NSObject+AssociatedDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,10 +331,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		499C34C6161AFD6500BA2AC9 /* PBXTargetDependency */ = {
+		499C3577161B01D100BA2AC9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 499C34B8161AFD3A00BA2AC9 /* ObjcAssociatedObjectHelpers */;
-			targetProxy = 499C34C5161AFD6500BA2AC9 /* PBXContainerItemProxy */;
+			target = 499C355F161B015A00BA2AC9 /* ObjcAssociatedObjectHelpersiOS */;
+			targetProxy = 499C3576161B01D100BA2AC9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -277,31 +350,66 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		499C34C2161AFD3B00BA2AC9 /* Debug */ = {
+		499C355A161B013C00BA2AC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
-				);
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ObjcAssociatedObjectMacros/ObjcAssociatedObjectMacros-Prefix.pch";
+				GCC_PREFIX_HEADER = "ObjAssociatedObjectHelper/ObjAssociatedObjectHelper-Prefix.pch";
+				INFOPLIST_FILE = "ObjAssociatedObjectHelper/ObjAssociatedObjectHelper-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "i386 x86_64 armv7 armv6";
+				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
 		};
-		499C34C3161AFD3B00BA2AC9 /* Release */ = {
+		499C355B161B013C00BA2AC9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
-				);
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ObjcAssociatedObjectMacros/ObjcAssociatedObjectMacros-Prefix.pch";
+				GCC_PREFIX_HEADER = "ObjAssociatedObjectHelper/ObjAssociatedObjectHelper-Prefix.pch";
+				INFOPLIST_FILE = "ObjAssociatedObjectHelper/ObjAssociatedObjectHelper-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "i386 x86_64 armv7 armv6";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		499C356A161B015A00BA2AC9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/ObjcAssociatedObjectHelpersiOS.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ObjcAssociatedObjectHelpersiOS/ObjcAssociatedObjectHelpersiOS-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		499C356B161B015A00BA2AC9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/ObjcAssociatedObjectHelpersiOS.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ObjcAssociatedObjectHelpersiOS/ObjcAssociatedObjectHelpersiOS-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -309,7 +417,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -341,7 +449,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -393,11 +501,19 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		499C34C1161AFD3B00BA2AC9 /* Build configuration list for PBXNativeTarget "ObjcAssociatedObjectHelpers" */ = {
+		499C3559161B013C00BA2AC9 /* Build configuration list for PBXNativeTarget "ObjcAssociatedObjectHelpers" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				499C34C2161AFD3B00BA2AC9 /* Debug */,
-				499C34C3161AFD3B00BA2AC9 /* Release */,
+				499C355A161B013C00BA2AC9 /* Debug */,
+				499C355B161B013C00BA2AC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		499C3569161B015A00BA2AC9 /* Build configuration list for PBXNativeTarget "ObjcAssociatedObjectHelpersiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				499C356A161B015A00BA2AC9 /* Debug */,
+				499C356B161B015A00BA2AC9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
