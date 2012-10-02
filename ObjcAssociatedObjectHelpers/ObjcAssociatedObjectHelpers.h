@@ -11,25 +11,15 @@
 #import <Availability.h>
 
 /** Need Clang ARC */
-#if __has_feature(objc_arc) == 0
+#if !__has_feature(objc_arc)
 #error Associated object macros require Clang ARC to be enabled
 #endif
 
-/** Min OS X target 10.6 */
-#if TARGET_OS_MAC 
-#if __MAC_OS_X_VERSION_MIN_REQUIRED < __MAC_10_6
-#error Minimum Mac OS version is 10.6
-#endif
-
-/** Min iOS target 4.0 */
-#elif TARGET_OS_IPHONE
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_4_0
-#error Minimum iOS version is 4.0
-#endif
-
-/** Something else? */
-#elif
-#error Unsupported target OS
+/** Platform minimum requirements (associated object availability) */
+#if ( TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR ) && __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_4_0
+#error Associated references available from iOS 4.0
+#elif TARGET_OS_MAC && __MAC_OS_X_VERSION_MIN_REQUIRED < __MAC_10_6
+#error Associated references available from OS X 10.6
 #endif
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

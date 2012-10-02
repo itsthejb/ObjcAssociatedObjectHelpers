@@ -7,7 +7,7 @@
 //
 
 #import "TestClass.h"
-#import "ObjcAssociatedObjectMacros.h"
+#import "ObjcAssociatedObjectHelpers.h"
 
 @interface TestClass ()
 @property (strong, readwrite) id readWriteObject;

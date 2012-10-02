@@ -7,7 +7,7 @@
 //
 
 #import "NSObject+AssociatedDictionary.h"
-#import "ObjcAssociatedObjectMacros.h"
+#import "ObjcAssociatedObjectHelpers.h"
 
 @implementation NSObject (AssociatedDictionary)
 
