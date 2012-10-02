@@ -18,7 +18,7 @@
 /** Platform minimum requirements (associated object availability) */
 #if ( TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR ) && __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_4_0
 #error Associated references available from iOS 4.0
-#elif TARGET_OS_MAC && __MAC_OS_X_VERSION_MIN_REQUIRED < __MAC_10_6
+#elif TARGET_OS_MAC && !( TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR ) && __MAC_OS_X_VERSION_MIN_REQUIRED < __MAC_10_6
 #error Associated references available from OS X 10.6
 #endif
 
