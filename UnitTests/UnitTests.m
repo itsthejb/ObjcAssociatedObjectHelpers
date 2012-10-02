@@ -35,9 +35,10 @@
 
 - (void) testStructure
 {
-    NSRect rect = NSMakeRect(11, 22, 33, 44);
-    self.testClass.structure = rect;
-    STAssertTrue(NSEqualRects(self.testClass.structure, rect), @"Returned wrong value");
+    TestStruct struct1 = { 1, 2.0 };
+    self.testClass.structure = struct1;
+    TestStruct struct2 = self.testClass.structure;
+    STAssertTrue(memcmp(&struct1, &struct2, sizeof(TestStruct)) == 0, @"Returned wrong value");
 }
 
 #pragma mark Edge cases

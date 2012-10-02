@@ -19,7 +19,7 @@ SYNTHESIZE_ASC_OBJ(object, setObject);
 SYNTHESIZE_ASC_OBJ(lazyObject, setLazyObject);
 SYNTHESIZE_ASC_OBJ(readWriteObject, setReadWriteObject);
 SYNTHESIZE_ASC_PRIMITIVE(primitive, setPrimitive, NSUInteger);
-SYNTHESIZE_ASC_PRIMITIVE(structure, setStructure, NSRect);
+SYNTHESIZE_ASC_PRIMITIVE(structure, setStructure, TestStruct);
 
 - (id)init {
     if ((self = [super init])) {

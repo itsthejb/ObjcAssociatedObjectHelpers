@@ -28,7 +28,7 @@
 		49AEF0FC1619F565009D9F9B /* ObjcAssociatedObjectHelpers-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ObjcAssociatedObjectHelpers-Prefix.pch"; sourceTree = "<group>"; };
 		49AEF0FD1619F565009D9F9B /* ObjcAssociatedObjectHelpers.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = ObjcAssociatedObjectHelpers.1; sourceTree = "<group>"; };
 		49AEF10C1619F5E8009D9F9B /* ObjcAssociatedObjectHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjcAssociatedObjectHelpers.h; sourceTree = "<group>"; };
-		49AEF1591619FB2C009D9F9B /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		49AEF1591619FB2C009D9F9B /* ObjcAssociatedObjectHelpersTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObjcAssociatedObjectHelpersTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AEF15A1619FB2C009D9F9B /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		49AEF1641619FB2C009D9F9B /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
 		49AEF1661619FB2C009D9F9B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 		49AEF0F31619F565009D9F9B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				49AEF1591619FB2C009D9F9B /* UnitTests.octest */,
+				49AEF1591619FB2C009D9F9B /* ObjcAssociatedObjectHelpersTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -98,7 +98,6 @@
 				499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */,
 				49AEF0FB1619F565009D9F9B /* Supporting Files */,
 			);
-			name = ObjcAssociatedObjectHelpers;
 			path = ObjcAssociatedObjectHelpers;
 			sourceTree = "<group>";
 		};
@@ -136,9 +135,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		49AEF1581619FB2C009D9F9B /* UnitTests */ = {
+		49AEF1581619FB2C009D9F9B /* ObjcAssociatedObjectHelpersTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 49AEF16E1619FB2C009D9F9B /* Build configuration list for PBXNativeTarget "UnitTests" */;
+			buildConfigurationList = 49AEF16E1619FB2C009D9F9B /* Build configuration list for PBXNativeTarget "ObjcAssociatedObjectHelpersTests" */;
 			buildPhases = (
 				49AEF1541619FB2C009D9F9B /* Sources */,
 				49AEF1551619FB2C009D9F9B /* Frameworks */,
@@ -149,9 +148,9 @@
 			);
 			dependencies = (
 			);
-			name = UnitTests;
+			name = ObjcAssociatedObjectHelpersTests;
 			productName = UnitTests;
-			productReference = 49AEF1591619FB2C009D9F9B /* UnitTests.octest */;
+			productReference = 49AEF1591619FB2C009D9F9B /* ObjcAssociatedObjectHelpersTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -175,7 +174,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				49AEF1581619FB2C009D9F9B /* UnitTests */,
+				49AEF1581619FB2C009D9F9B /* ObjcAssociatedObjectHelpersTests */,
 			);
 		};
 /* End PBXProject section */
@@ -260,8 +259,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -287,20 +284,20 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				SDKROOT = macosx;
 			};
 			name = Release;
 		};
 		49AEF16C1619FB2C009D9F9B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
-				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -308,13 +305,14 @@
 		49AEF16D1619FB2C009D9F9B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
-				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
@@ -331,7 +329,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		49AEF16E1619FB2C009D9F9B /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
+		49AEF16E1619FB2C009D9F9B /* Build configuration list for PBXNativeTarget "ObjcAssociatedObjectHelpersTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				49AEF16C1619FB2C009D9F9B /* Debug */,

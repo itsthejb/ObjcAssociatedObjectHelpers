@@ -8,12 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+typedef struct _testStruct {
+    int member1;
+    float member2;
+} TestStruct;
+
 @interface TestClass : NSObject
 
 @property () id object;
 @property (readonly) id lazyObject;
 @property (readonly) id readWriteObject;
 @property (assign) NSUInteger primitive;
-@property (assign) NSRect structure;
+@property (assign) TestStruct structure;
 
 @end
