@@ -8,9 +8,11 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import "TestClass.h"
+#import "NSObject+AssociatedDictionary.h"
 
 @interface UnitTests : SenTestCase
 @property (strong) TestClass *testClass;
+@property (strong) NSObject *dictionaryObject;
 @end
 
 @implementation UnitTests
@@ -47,17 +49,43 @@
     STAssertFalse(self.testClass.object == mutable, @"Should have made a copy");
 }
 
+- (void) testReadWriteObjectWithCategory
+{
+    STAssertNotNil(self.testClass.readWriteObject, @"Readwrite object should be created in -init");
+}
+
+#pragma mark Associated dictionary
+
+- (void) testInitialize
+{
+    id dictionary = self.dictionaryObject.associatedDictionary;
+    STAssertNotNil(dictionary, @"Dictionary is nil");
+    STAssertTrue([dictionary isKindOfClass:[NSMutableDictionary class]], @"Not mutable dictionary");
+}
+
+- (void) testSetGet
+{
+    NSString *key = @"bar";
+    NSString *value = @"foo";
+    [self.dictionaryObject.associatedDictionary setValue:value forKey:key];
+    STAssertEqualObjects([self.dictionaryObject.associatedDictionary valueForKey:key],
+                         value,
+                         @"Not correct value");
+}
+
 #pragma mark -
 
 - (void)setUp
 {
     [super setUp];
     self.testClass = [[TestClass alloc] init];
+    self.dictionaryObject = [[NSObject alloc] init];
 }
 
 - (void)tearDown
 {
     self.testClass = nil;
+    self.dictionaryObject = nil;
     [super tearDown];
 }
 
