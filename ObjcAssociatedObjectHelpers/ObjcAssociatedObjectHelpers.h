@@ -23,10 +23,16 @@
 #endif
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#pragma mark Quotation helper
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#define __QUOTE(x) #x
+#define QUOTE(x) __QUOTE(x)
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #pragma mark Readwrite Object
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #define SYNTHESIZE_ASC_OBJ(getterName, setterName) \
-static void* getterName##Key = NULL; \
+static void* getterName##Key = QUOTE(getterName); \
 - (void)setterName:(id)object { \
     objc_AssociationPolicy policy = \
     [object conformsToProtocol:@protocol(NSCopying)] ? OBJC_ASSOCIATION_COPY : OBJC_ASSOCIATION_RETAIN; \
@@ -46,7 +52,7 @@ static void* getterName##Key = NULL; \
 #pragma mark Lazy readonly object
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #define SYNTHESIZE_ASC_OBJ_LAZY(getterName, class) \
-static void* getterName##Key = NULL; \
+static void* getterName##Key = QUOTE(getterName); \
 - (id) associatedDictionary { \
     id object = nil; \
     @synchronized(self) { \
@@ -63,7 +69,7 @@ static void* getterName##Key = NULL; \
 #pragma mark Primitive
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #define SYNTHESIZE_ASC_PRIMITIVE(getterName, setterName, type) \
-static void* getterName##Key = NULL; \
+static void* getterName##Key = QUOTE(getterName); \
 - (void)setterName:(type)structure { \
     @synchronized(self) { \
         NSValue *value = [NSValue value:&structure withObjCType:@encode(type)]; \
