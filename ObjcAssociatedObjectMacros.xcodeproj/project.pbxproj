@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		499C34AB161AF2B900BA2AC9 /* TestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AEF1091619F5C9009D9F9B /* TestClass.m */; };
+		499C34AF161AF64F00BA2AC9 /* TestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 499C34AE161AF64F00BA2AC9 /* TestClass.m */; };
 		49AEF0F71619F565009D9F9B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF0F61619F565009D9F9B /* Foundation.framework */; };
 		49AEF0FA1619F565009D9F9B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AEF0F91619F565009D9F9B /* main.m */; };
 		49AEF0FE1619F565009D9F9B /* ObjcAssociatedObjectMacros.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 49AEF0FD1619F565009D9F9B /* ObjcAssociatedObjectMacros.1 */; };
-		49AEF10A1619F5C9009D9F9B /* TestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AEF1091619F5C9009D9F9B /* TestClass.m */; };
 		49AEF15B1619FB2C009D9F9B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF15A1619FB2C009D9F9B /* SenTestingKit.framework */; };
 		49AEF15D1619FB2C009D9F9B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF15C1619FB2C009D9F9B /* Cocoa.framework */; };
 		49AEF1671619FB2C009D9F9B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49AEF1651619FB2C009D9F9B /* InfoPlist.strings */; };
@@ -32,13 +31,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		499C34AD161AF64F00BA2AC9 /* TestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestClass.h; sourceTree = "<group>"; };
+		499C34AE161AF64F00BA2AC9 /* TestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestClass.m; sourceTree = "<group>"; };
 		49AEF0F21619F565009D9F9B /* ObjcAssociatedObjectMacros */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ObjcAssociatedObjectMacros; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AEF0F61619F565009D9F9B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		49AEF0F91619F565009D9F9B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		49AEF0FC1619F565009D9F9B /* ObjcAssociatedObjectMacros-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ObjcAssociatedObjectMacros-Prefix.pch"; sourceTree = "<group>"; };
 		49AEF0FD1619F565009D9F9B /* ObjcAssociatedObjectMacros.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = ObjcAssociatedObjectMacros.1; sourceTree = "<group>"; };
-		49AEF1081619F5C9009D9F9B /* TestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestClass.h; sourceTree = SOURCE_ROOT; };
-		49AEF1091619F5C9009D9F9B /* TestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestClass.m; sourceTree = SOURCE_ROOT; };
 		49AEF10C1619F5E8009D9F9B /* ObjcAssociatedObjectMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjcAssociatedObjectMacros.h; sourceTree = "<group>"; };
 		49AEF1591619FB2C009D9F9B /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AEF15A1619FB2C009D9F9B /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -106,8 +105,6 @@
 		49AEF0F81619F565009D9F9B /* ObjcAssociatedObjectMacros */ = {
 			isa = PBXGroup;
 			children = (
-				49AEF1081619F5C9009D9F9B /* TestClass.h */,
-				49AEF1091619F5C9009D9F9B /* TestClass.m */,
 				49AEF0F91619F565009D9F9B /* main.m */,
 				49AEF0FD1619F565009D9F9B /* ObjcAssociatedObjectMacros.1 */,
 				49AEF0FB1619F565009D9F9B /* Supporting Files */,
@@ -137,6 +134,8 @@
 		49AEF1621619FB2C009D9F9B /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				499C34AD161AF64F00BA2AC9 /* TestClass.h */,
+				499C34AE161AF64F00BA2AC9 /* TestClass.m */,
 				49AEF1691619FB2C009D9F9B /* UnitTests.m */,
 				49AEF1631619FB2C009D9F9B /* Supporting Files */,
 			);
@@ -251,7 +250,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				49AEF0FA1619F565009D9F9B /* main.m in Sources */,
-				49AEF10A1619F5C9009D9F9B /* TestClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,7 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49AEF16A1619FB2C009D9F9B /* UnitTests.m in Sources */,
-				499C34AB161AF2B900BA2AC9 /* TestClass.m in Sources */,
+				499C34AF161AF64F00BA2AC9 /* TestClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,7 +296,9 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -322,7 +322,9 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;

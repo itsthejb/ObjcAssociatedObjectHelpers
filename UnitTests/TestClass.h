@@ -11,6 +11,7 @@
 @interface TestClass : NSObject
 
 @property (assign) NSUInteger primitive;
+@property (readonly) id lazyObject;
 @property (strong) id object;
 @property (assign) NSRect structure;
 
