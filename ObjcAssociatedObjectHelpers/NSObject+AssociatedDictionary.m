@@ -1,6 +1,6 @@
 //
 //  NSObject+AssociatedDictionary.m
-//  ObjcAssociatedObjectMacros
+//  ObjcAssociatedObjectHelpers
 //
 //  Created by jc on 02/10/2012.
 //  Copyright (c) 2012 jbsoft. All rights reserved.

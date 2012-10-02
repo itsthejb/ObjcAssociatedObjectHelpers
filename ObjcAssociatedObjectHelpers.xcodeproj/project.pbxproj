@@ -34,6 +34,7 @@
 		49AEF1661619FB2C009D9F9B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		49AEF1691619FB2C009D9F9B /* UnitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnitTests.m; sourceTree = "<group>"; };
 		49AEF16B1619FB2C009D9F9B /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
+		49BF24AA161B0903000B1590 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,10 +63,11 @@
 		49AEF0E71619F565009D9F9B = {
 			isa = PBXGroup;
 			children = (
-				49AEF0F81619F565009D9F9B /* ObjcAssociatedObjectMacros */,
+				49AEF0F81619F565009D9F9B /* ObjcAssociatedObjectHelpers */,
 				49AEF1621619FB2C009D9F9B /* UnitTests */,
 				49AEF0F51619F565009D9F9B /* Frameworks */,
 				49AEF0F31619F565009D9F9B /* Products */,
+				49BF24AA161B0903000B1590 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,7 +90,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		49AEF0F81619F565009D9F9B /* ObjcAssociatedObjectMacros */ = {
+		49AEF0F81619F565009D9F9B /* ObjcAssociatedObjectHelpers */ = {
 			isa = PBXGroup;
 			children = (
 				49AEF10C1619F5E8009D9F9B /* ObjcAssociatedObjectHelpers.h */,
@@ -96,7 +98,7 @@
 				499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */,
 				49AEF0FB1619F565009D9F9B /* Supporting Files */,
 			);
-			name = ObjcAssociatedObjectMacros;
+			name = ObjcAssociatedObjectHelpers;
 			path = ObjcAssociatedObjectHelpers;
 			sourceTree = "<group>";
 		};
@@ -161,7 +163,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = jbsoft;
 			};
-			buildConfigurationList = 49AEF0EC1619F565009D9F9B /* Build configuration list for PBXProject "ObjcAssociatedObjectMacros" */;
+			buildConfigurationList = 49AEF0EC1619F565009D9F9B /* Build configuration list for PBXProject "ObjcAssociatedObjectHelpers" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -320,7 +322,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		49AEF0EC1619F565009D9F9B /* Build configuration list for PBXProject "ObjcAssociatedObjectMacros" */ = {
+		49AEF0EC1619F565009D9F9B /* Build configuration list for PBXProject "ObjcAssociatedObjectHelpers" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				49AEF0FF1619F565009D9F9B /* Debug */,

@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'ObjcAssociatedObjectMacros' target in the 'ObjcAssociatedObjectMacros' project
+// Prefix header for all source files of the 'ObjcAssociatedObjectHelpers' target in the 'ObjcAssociatedObjectHelpers' project
 //
 
 #ifdef __OBJC__
