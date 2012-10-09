@@ -78,6 +78,7 @@ static void* getterName##Key = QUOTE(getterName); \
 } \
 - (type) getterName { \
     type ret; \
+    memset(&ret, 0, sizeof(type)); \
     @synchronized(self) { \
         [objc_getAssociatedObject(self, getterName##Key) getValue:&ret]; \
     } \

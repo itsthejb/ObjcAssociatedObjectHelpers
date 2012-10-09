@@ -55,6 +55,13 @@
     STAssertNotNil(self.testClass.readWriteObject, @"Readwrite object should be created in -init");
 }
 
+#pragma mark -
+
+- (void) testNonInitialisedPrimitive
+{
+    STAssertTrue(self.testClass.primitive == 0, @"Non-initialised primitive should be zero");
+}
+
 #pragma mark Associated dictionary
 
 - (void) testInitialize
