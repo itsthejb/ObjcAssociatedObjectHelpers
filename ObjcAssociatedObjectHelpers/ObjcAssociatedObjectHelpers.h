@@ -29,6 +29,25 @@
 #define QUOTE(x) __QUOTE(x)
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#pragma mark Assign readwrite
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#define SYNTHESIZE_ASC_OBJ_ASSIGN(getterName, setterName) \
+static void* getterName##Key = QUOTE(getterName); \
+- (void)setterName:(id)object { \
+    objc_AssociationPolicy policy = OBJC_ASSOCIATION_ASSIGN; \
+    @synchronized(self) { \
+        objc_setAssociatedObject(self, getterName##Key, object, policy); \
+    } \
+} \
+- (id) getterName { \
+    id ret = nil; \
+    @synchronized(self) { \
+        ret = objc_getAssociatedObject(self, getterName##Key); \
+    }; \
+    return ret; \
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #pragma mark Readwrite Object
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #define SYNTHESIZE_ASC_OBJ(getterName, setterName) \
