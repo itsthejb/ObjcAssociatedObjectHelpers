@@ -72,7 +72,7 @@ static void* getterName##Key = QUOTE(getterName); \
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #define SYNTHESIZE_ASC_OBJ_LAZY(getterName, class) \
 static void* getterName##Key = QUOTE(getterName); \
-- (id) associatedDictionary { \
+- (id)getterName { \
     id object = nil; \
     @synchronized(self) { \
         object = objc_getAssociatedObject(self, getterName##Key); \
