@@ -17,6 +17,7 @@ typedef struct _testStruct {
 
 @property () id object;
 @property (readonly) id lazyObject;
+@property (readonly) id nonDefaultLazyObject;
 @property (readonly) id readWriteObject;
 @property (assign) NSUInteger primitive;
 @property (assign) TestStruct structure;

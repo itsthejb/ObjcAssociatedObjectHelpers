@@ -63,6 +63,12 @@
     STAssertTrue([lazy isKindOfClass:[NSString class]], @"Should be lazy init NSString");
 }
 
+- (void) testNonDefaultLazyObject
+{
+    id lazy = self.testClass.nonDefaultLazyObject;
+    STAssertEqualObjects(lazy, @"foo", @"Didn't use non-default initialiser");
+}
+
 #pragma mark -
 
 - (void) testNonInitialisedPrimitive

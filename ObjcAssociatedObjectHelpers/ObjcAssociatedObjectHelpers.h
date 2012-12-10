@@ -70,19 +70,23 @@ static void* getterName##Key = QUOTE(getterName); \
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #pragma mark Lazy readonly object
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#define SYNTHESIZE_ASC_OBJ_LAZY(getterName, class) \
+#define SYNTHESIZE_ASC_OBJ_LAZY_EXP(getterName, initExpression) \
 static void* getterName##Key = QUOTE(getterName); \
 - (id)getterName { \
     id object = nil; \
     @synchronized(self) { \
         object = objc_getAssociatedObject(self, getterName##Key); \
         if (!object) { \
-            object = [[class alloc] init]; \
+            object = initExpression; \
             objc_setAssociatedObject(self, getterName##Key, object, OBJC_ASSOCIATION_RETAIN); \
         } \
     } \
     return object; \
 }
+
+// Use default initialiser
+#define SYNTHESIZE_ASC_OBJ_LAZY(getterName, class) \
+    SYNTHESIZE_ASC_OBJ_LAZY_EXP(getterName, [[class alloc] init])
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #pragma mark Primitive
