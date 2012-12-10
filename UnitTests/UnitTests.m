@@ -55,6 +55,14 @@
     STAssertNotNil(self.testClass.readWriteObject, @"Readwrite object should be created in -init");
 }
 
+#pragma mark Lazy Object
+
+- (void) testLazyObject
+{
+    id lazy = self.testClass.lazyObject;
+    STAssertTrue([lazy isKindOfClass:[NSString class]], @"Should be lazy init NSString");
+}
+
 #pragma mark -
 
 - (void) testNonInitialisedPrimitive
