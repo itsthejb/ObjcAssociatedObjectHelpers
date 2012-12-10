@@ -24,12 +24,15 @@ Notes
 -----
 1. **getter / setter names** - There is no way to manipulate strings in the preprocessor so that standard getter and setter names can easily be generated. As such, the read/write macros require both names to be provided manually.
 2. **ARC** - Clang ARC is currently required, although it wouldn't be hard to also support manual reference counting.
-3. **Property memory managements annotations** - Since properties use associated objects for storage, any property setter attribute `assign` can used:
+3. **Property memory management semantics** - Since properties use associated objects for storage, any property setter semantics can be used:
 
 		@property () id myProperty;		
 		@property (strong) id myProperty;
 		@property (retain) id myProperty;
 		@property (assign) id myProperty;
+		@property (copy) id myProperty;
+
+    Currently, the macros use `OBJC_ASSOCIATION_COPY` to check at runtime if the object conforms to `NSCopying` and `OBJC_ASSOCIATION_RETAIN` otherwise. The test `-[UnitTests testMutableObject]` confirms that a copy is made. I think this is The Right Way. It's probably best to use normal semantics with these setters, however.
 
 Usage
 -----
