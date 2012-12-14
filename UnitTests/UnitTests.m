@@ -45,9 +45,19 @@
 
 - (void) testMutableObject
 {
-    NSMutableString *mutable = [NSMutableString stringWithString:@"mutableString"];
+    id string = @"mutableString";
+    
+    NSMutableString *mutable = [NSMutableString stringWithString:string];
     self.testClass.object = mutable;
+    
+    // should copy the object
     STAssertFalse(self.testClass.object == mutable, @"Should have made a copy");
+    STAssertEqualObjects(self.testClass.object, string, @"Should have same value");
+    
+    // change the original
+    [mutable appendString:@"Foo"];
+    STAssertEqualObjects(mutable, @"mutableStringFoo", @"Should have appended");
+    STAssertEqualObjects(self.testClass.object, string, @"Should not have changed");
 }
 
 - (void) testReadWriteObjectWithCategory
