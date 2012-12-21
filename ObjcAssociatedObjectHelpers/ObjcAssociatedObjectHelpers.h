@@ -93,10 +93,10 @@ static void* getterName##Key = QUOTE(getterName); \
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #define SYNTHESIZE_ASC_PRIMITIVE(getterName, setterName, type) \
 static void* getterName##Key = QUOTE(getterName); \
-- (void)setterName:(type)value { \
+- (void)setterName:(type)newValue { \
     @synchronized(self) { \
-        NSValue *value = [NSValue value:&value withObjCType:@encode(type)]; \
-        objc_setAssociatedObject(self, getterName##Key, value, OBJC_ASSOCIATION_RETAIN); \
+        objc_setAssociatedObject(self, getterName##Key, \
+            [NSValue value:&newValue withObjCType:@encode(type)], OBJC_ASSOCIATION_RETAIN); \
     } \
 } \
 - (type) getterName { \
