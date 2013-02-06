@@ -3,7 +3,8 @@ ObjcAssociatedObjectHelpers
 
 What's New
 ----------
-1. Static library target for iOS, and framework target for OS X.
+* Static library target for iOS, and framework target for OS X.
+* [MIT Licensed](http://jc.mit-license.org/)
 
 Introduction
 ------------
@@ -80,7 +81,9 @@ Todo
 1. Provide the ability to override the macros, or at least add additional code as a parameter.
 2. Create a PodSpec.
 
+
 Have fun!
 ---------
-joncrooke@gmail.com
+
+[MIT Licensed](http://jc.mit-license.org/) >> joncrooke@gmail.com 
 		
