@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
     that adds an NSMutableDictionary to NSObject to make adding abitrary key/values
     a breeze."
   s.homepage     = "https://github.com/itsthejb/ObjcAssociatedObjectHelpers"
-  s.license      = 'MIT'
+  s.license      = { :type => 'MIT', :file => 'LICENSE.txt' }
   s.author       = { "Jonathan Crooke" => "joncrooke@gmail.com" }
   s.source       = { :git => "https://github.com/itsthejb/ObjcAssociatedObjectHelpers.git", :tag => "1.0" }
   s.ios.deployment_target = '4.0'
