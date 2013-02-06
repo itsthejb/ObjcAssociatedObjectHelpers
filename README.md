@@ -78,9 +78,7 @@ Macros
 
 Todo
 ----
-1. Provide the ability to override the macros, or at least add additional code as a parameter.
-2. Create a PodSpec.
-
+* Provide the ability to override the macros, or at least add additional code as a parameter.
 
 Have fun!
 ---------
