@@ -18,8 +18,8 @@ Pod::Spec.new do |s|
 
   # Specify the license type. CocoaPods detects automatically the license file if it is named
   # `LICEN{C,S}E*.*', however if the name is different, specify it.
-  # s.license      = 'MIT
-    s.license      = { :type => 'MIT', :file => 'LICENSE.txt' }
+  s.license      = 'MIT
+#    s.license      = { :type => 'MIT', :file => 'LICENSE.txt' }
   # s.license      = { :type => 'MIT', :file => 'LICENSE' }
   #
   # Only if no dedicated file is available include the full text of the license.
