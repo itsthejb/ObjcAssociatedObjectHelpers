@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/itsthejb/ObjcAssociatedObjectHelpers"
   s.license      = { :type => 'MIT', :file => 'LICENSE.txt' }
   s.author       = { "Jonathan Crooke" => "joncrooke@gmail.com" }
-  s.source       = { :git => "https://github.com/itsthejb/ObjcAssociatedObjectHelpers.git", :tag => "1.0" }
+  s.source       = { :git => "https://github.com/itsthejb/ObjcAssociatedObjectHelpers.git", :tag => "v1.0" }
   s.ios.deployment_target = '4.0'
   s.osx.deployment_target = '10.6'
   s.source_files = 'ObjcAssociatedObjectHelpers/**/*.{h,m}'
