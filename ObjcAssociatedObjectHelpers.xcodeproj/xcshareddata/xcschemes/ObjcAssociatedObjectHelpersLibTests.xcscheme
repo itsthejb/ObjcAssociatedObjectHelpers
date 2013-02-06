@@ -16,9 +16,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "49AEF1581619FB2C009D9F9B"
-               BuildableName = "ObjcAssociatedObjectHelpersTests.octest"
-               BlueprintName = "ObjcAssociatedObjectHelpersTests"
+               BlueprintIdentifier = "4918B9AD168498F000D4EAC4"
+               BuildableName = "ObjcAssociatedObjectHelpersLibTests.octest"
+               BlueprintName = "ObjcAssociatedObjectHelpersLibTests"
                ReferencedContainer = "container:ObjcAssociatedObjectHelpers.xcodeproj">
             </BuildableReference>
          </TestableReference>

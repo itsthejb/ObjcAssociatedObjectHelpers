@@ -1,6 +1,10 @@
 ObjcAssociatedObjectHelpers
 ==========================
 
+What's New
+----------
+1. Static library target for iOS, and framework target for OS X.
+
 Introduction
 ------------
 
