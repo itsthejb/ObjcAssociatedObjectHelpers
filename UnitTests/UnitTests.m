@@ -3,12 +3,72 @@
 //  UnitTests
 //
 //  Created by Jon Crooke on 01/10/2012.
-//  Copyright (c) 2012 jcrooke. All rights reserved.
+//  Copyright (c) 2012 Jonathan Crooke. All rights reserved.
 //
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "TestClass.h"
 #import "NSObject+AssociatedDictionary.h"
+#import "ObjcAssociatedObjectHelpers.h"
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#pragma mark Test Class
+
+typedef struct _testStruct {
+  int member1;
+  float member2;
+} TestStruct;
+
+@interface TestClass : NSObject
+@property () id object;
+@property (readonly) id lazyObject;
+@property (readonly) id nonDefaultLazyObject;
+@property (readonly) id readWriteObject;
+@property (assign) NSUInteger primitive;
+@property (assign) TestStruct structure;
+@end
+
+@interface TestClass ()
+@property (readwrite) id readWriteObject;
+@end
+
+@implementation TestClass
+
+SYNTHESIZE_ASC_OBJ(object, setObject);
+SYNTHESIZE_ASC_OBJ_LAZY(lazyObject, [NSString class])
+SYNTHESIZE_ASC_OBJ_LAZY_EXP(nonDefaultLazyObject, [NSString stringWithFormat:@"foo"])
+SYNTHESIZE_ASC_OBJ(readWriteObject, setReadWriteObject);
+SYNTHESIZE_ASC_PRIMITIVE(primitive, setPrimitive, NSUInteger);
+SYNTHESIZE_ASC_PRIMITIVE(structure, setStructure, TestStruct);
+
+- (id)init {
+  if ((self = [super init])) {
+    self.readWriteObject = [[NSObject alloc] init];
+  }
+  return self;
+}
+
+@end
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#pragma mark -
+#pragma mark Tests
 
 @interface UnitTests : SenTestCase
 @property (strong) TestClass *testClass;

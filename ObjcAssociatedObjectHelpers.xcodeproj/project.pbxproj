@@ -10,9 +10,7 @@
 		4918B9AF168498F000D4EAC4 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF15A1619FB2C009D9F9B /* SenTestingKit.framework */; };
 		4918B9B2168498F000D4EAC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF0F61619F565009D9F9B /* Foundation.framework */; };
 		4918B9C11684991B00D4EAC4 /* NSObject+AssociatedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */; };
-		4918B9C21684991B00D4EAC4 /* TestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 499C34AE161AF64F00BA2AC9 /* TestClass.m */; };
 		4918B9C31684991B00D4EAC4 /* UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AEF1691619FB2C009D9F9B /* UnitTests.m */; };
-		499C34AF161AF64F00BA2AC9 /* TestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 499C34AE161AF64F00BA2AC9 /* TestClass.m */; };
 		499C34C7161AFD7200BA2AC9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF0F61619F565009D9F9B /* Foundation.framework */; };
 		49AD1B5716C282A10061BDC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF0F61619F565009D9F9B /* Foundation.framework */; };
 		49AEF15B1619FB2C009D9F9B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF15A1619FB2C009D9F9B /* SenTestingKit.framework */; };
@@ -35,8 +33,6 @@
 
 /* Begin PBXFileReference section */
 		4918B9AE168498F000D4EAC4 /* ObjcAssociatedObjectHelpersTestsiOS.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObjcAssociatedObjectHelpersTestsiOS.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		499C34AD161AF64F00BA2AC9 /* TestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestClass.h; sourceTree = "<group>"; };
-		499C34AE161AF64F00BA2AC9 /* TestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestClass.m; sourceTree = "<group>"; };
 		499C34B0161AF68000BA2AC9 /* NSObject+AssociatedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AssociatedDictionary.h"; sourceTree = "<group>"; };
 		499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AssociatedDictionary.m"; sourceTree = "<group>"; };
 		49AD1B5616C282A10061BDC1 /* libObjcAssociatedObjectHelpers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libObjcAssociatedObjectHelpers.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,8 +142,6 @@
 		49AEF1621619FB2C009D9F9B /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				499C34AD161AF64F00BA2AC9 /* TestClass.h */,
-				499C34AE161AF64F00BA2AC9 /* TestClass.m */,
 				49AEF1691619FB2C009D9F9B /* UnitTests.m */,
 				49AEF1631619FB2C009D9F9B /* Supporting Files */,
 			);
@@ -337,7 +331,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4918B9C11684991B00D4EAC4 /* NSObject+AssociatedDictionary.m in Sources */,
-				4918B9C21684991B00D4EAC4 /* TestClass.m in Sources */,
 				4918B9C31684991B00D4EAC4 /* UnitTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,7 +355,6 @@
 			files = (
 				49BF24A8161B0805000B1590 /* NSObject+AssociatedDictionary.m in Sources */,
 				49AEF16A1619FB2C009D9F9B /* UnitTests.m in Sources */,
-				499C34AF161AF64F00BA2AC9 /* TestClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
