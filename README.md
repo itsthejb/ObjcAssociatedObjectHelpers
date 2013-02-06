@@ -70,7 +70,11 @@ Macros
 
 		SYNTHESIZE_ASC_OBJ_LAZY_EXP(nonDefaultLazyObject, [NSString stringWithFormat:@"foo"])	 
 	Uses the expression `[NSString stringWithFormat:@"foo"]` to initialise the object. Note that `SYNTHESIZE_ASC_OBJ_LAZY` uses this macro with `[[class alloc] init]`.
-	
+
+Todo
+----
+1. Provide the ability to override the macros, or at least add additional code as a parameter.
+2. Create a PodSpec.
 
 Have fun!
 ---------
