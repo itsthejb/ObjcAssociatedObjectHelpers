@@ -42,13 +42,17 @@ typedef struct _testStruct {
 @property (assign) id assignObj;
 @property (readonly) id lazyObject;
 @property (readonly) id nonDefaultLazyObject;
-@property (readonly) id readWriteObject;
+@property (readwrite) id readWriteObject;
 @property (assign) NSUInteger primitive;
 @property (assign) TestStruct structure;
-@end
+// overrides
+@property (strong) id overrideObj;
+@property (readonly) id overrideObjLazy;
+@property (assign) NSUInteger overridePrimitive;
 
-@interface TestClass ()
-@property (readwrite) id readWriteObject;
++ (NSException*)testException1;
++ (NSException*)testException2;
+
 @end
 
 @implementation TestClass
@@ -60,6 +64,17 @@ SYNTHESIZE_ASC_OBJ_LAZY_EXP(nonDefaultLazyObject, [NSString stringWithFormat:@"f
 SYNTHESIZE_ASC_OBJ(readWriteObject, setReadWriteObject);
 SYNTHESIZE_ASC_PRIMITIVE(primitive, setPrimitive, NSUInteger);
 SYNTHESIZE_ASC_PRIMITIVE(structure, setStructure, TestStruct);
+// overrides
+//SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(<#getterName#>, <#setterName#>, <#getterBlock#>, <#setterBlock#>)
+//SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(<#getterName#>, <#setterName#>, <#getterBlock#>, <#setterBlock#>)
+
++ (NSException*)testException1 {
+  return [NSException exceptionWithName:@"TestException1" reason:@"foo" userInfo:@{@"foo": @"bar"}];
+}
+
++ (NSException*)testException2 {
+  return [NSException exceptionWithName:@"TestException2" reason:@"foo" userInfo:@{@"foo": @"bar"}];
+}
 
 - (id)init {
   if ((self = [super init])) {
@@ -173,6 +188,13 @@ SYNTHESIZE_ASC_PRIMITIVE(structure, setStructure, TestStruct);
     STAssertEqualObjects([self.dictionaryObject.associatedDictionary valueForKey:key],
                          value,
                          @"Not correct value");
+}
+
+#pragma mark Blocks
+
+- (void) testAssignWithBlocks
+{
+  
 }
 
 #pragma mark -
