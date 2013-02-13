@@ -54,6 +54,7 @@ typedef struct _testStruct {
 @property (assign) id overrideAssignObj;
 @property (strong) id overrideObj;
 @property (readonly) id overrideObjLazy;
+@property (readonly) id overrideObjLazyWithExpression;
 @property (assign) NSUInteger overridePrimitive;
 @end
 
@@ -78,6 +79,9 @@ SYNTHESIZE_ASC_OBJ_BLOCK(overrideObj,
 SYNTHESIZE_ASC_OBJ_LAZY_BLOCK(overrideObjLazy,
                               [NSString class],
                               ^{ TEST_EXCEPTION; })
+SYNTHESIZE_ASC_OBJ_LAZY_EXP_BLOCK(overrideObjLazyWithExpression,
+                                  [NSDate date],
+                                  ^{ TEST_EXCEPTION; })
 SYNTHESIZE_ASC_PRIMITIVE_BLOCK(overridePrimitive,
                                setOverridePrimitive,
                                NSUInteger,
@@ -240,6 +244,15 @@ SYNTHESIZE_ASC_PRIMITIVE_BLOCK(overridePrimitive,
   STAssertThrowsSpecificNamed(foo = self.testClass.overrideObjLazy,
                               NSException,
                               @"overrideObjLazy",
+                              @"Expected to raise an exception with the getter's name");
+}
+
+- (void) testObjectWithBlocksLazyGetterWithInitExpression
+{
+  id foo = nil;
+  STAssertThrowsSpecificNamed(foo = self.testClass.overrideObjLazyWithExpression,
+                              NSException,
+                              @"overrideObjLazyWithExpression",
                               @"Expected to raise an exception with the getter's name");
 }
 
