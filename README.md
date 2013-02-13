@@ -52,7 +52,7 @@ Static library provided for the `NSObject` category, or just use the header file
 
 Testing
 -------
-Thorough test cases provided.
+Thorough test cases provided with near 100% coverage.
 
 		
 Macros
@@ -86,7 +86,7 @@ Macros
 
 Todo
 ----
-* Provide the ability to override the macros, or at least add additional code as a parameter.
+* No ideas here right now…! Do you have any?
 
 Have fun!
 ---------
