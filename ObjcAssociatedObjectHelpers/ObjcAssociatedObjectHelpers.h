@@ -134,6 +134,7 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
         objc_setAssociatedObject(self, getterName##Key, \
             [NSValue value:&newValue withObjCType:@encode(type)], OBJC_ASSOCIATION_RETAIN); \
     } \
+    getterBlock(); \
 } \
 - (type) getterName { \
     type ret; \
@@ -141,5 +142,6 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
     @synchronized(self) { \
         [objc_getAssociatedObject(self, getterName##Key) getValue:&ret]; \
     } \
+    setterBlock(); \
     return ret; \
 }

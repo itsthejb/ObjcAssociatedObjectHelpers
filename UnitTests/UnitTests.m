@@ -29,6 +29,11 @@
 
 static NSString *const kConstString = @"ConstString";
 
+#define TEST_EXCEPTION \
+  [[NSException exceptionWithName:NSStringFromSelector(_cmd) \
+                           reason:NSStringFromSelector(_cmd) \
+                         userInfo:nil] raise]
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #pragma mark Test Class
 
@@ -46,13 +51,10 @@ typedef struct _testStruct {
 @property (assign) NSUInteger primitive;
 @property (assign) TestStruct structure;
 // overrides
+@property (assign) id overrideAssignObj;
 @property (strong) id overrideObj;
 @property (readonly) id overrideObjLazy;
 @property (assign) NSUInteger overridePrimitive;
-
-+ (NSException*)testException1;
-+ (NSException*)testException2;
-
 @end
 
 @implementation TestClass
@@ -65,16 +67,22 @@ SYNTHESIZE_ASC_OBJ(readWriteObject, setReadWriteObject);
 SYNTHESIZE_ASC_PRIMITIVE(primitive, setPrimitive, NSUInteger);
 SYNTHESIZE_ASC_PRIMITIVE(structure, setStructure, TestStruct);
 // overrides
-//SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(<#getterName#>, <#setterName#>, <#getterBlock#>, <#setterBlock#>)
-//SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(<#getterName#>, <#setterName#>, <#getterBlock#>, <#setterBlock#>)
-
-+ (NSException*)testException1 {
-  return [NSException exceptionWithName:@"TestException1" reason:@"foo" userInfo:@{@"foo": @"bar"}];
-}
-
-+ (NSException*)testException2 {
-  return [NSException exceptionWithName:@"TestException2" reason:@"foo" userInfo:@{@"foo": @"bar"}];
-}
+SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(overrideAssignObj,
+                                setOverrideAssignObj,
+                                ^{ TEST_EXCEPTION; },
+                                ^{ TEST_EXCEPTION; });
+SYNTHESIZE_ASC_OBJ_BLOCK(overrideObj,
+                         setOverrideObj,
+                         ^{ TEST_EXCEPTION; },
+                         ^{ TEST_EXCEPTION; })
+SYNTHESIZE_ASC_OBJ_LAZY_BLOCK(overrideObjLazy,
+                              [NSString class],
+                              ^{ TEST_EXCEPTION; })
+SYNTHESIZE_ASC_PRIMITIVE_BLOCK(overridePrimitive,
+                               setOverridePrimitive,
+                               NSUInteger,
+                               ^{ TEST_EXCEPTION; },
+                               ^{ TEST_EXCEPTION; })
 
 - (id)init {
   if ((self = [super init])) {
@@ -192,9 +200,64 @@ SYNTHESIZE_ASC_PRIMITIVE(structure, setStructure, TestStruct);
 
 #pragma mark Blocks
 
-- (void) testAssignWithBlocks
+- (void) testAssignWithBlocksSetter
 {
-  
+  STAssertThrowsSpecificNamed(self.testClass.overrideAssignObj = kConstString,
+                              NSException,
+                              @"setOverrideAssignObj:",
+                              @"Expected to raise an exception with the setter's name");
+}
+
+- (void) testAssignWithBlocksGetter
+{
+  id foo = nil;
+  STAssertThrowsSpecificNamed(foo = self.testClass.overrideAssignObj,
+                              NSException,
+                              @"overrideAssignObj",
+                              @"Expected to raise an exception with the getter's name");
+}
+
+- (void) testObjectWithBlocksSetter
+{
+  STAssertThrowsSpecificNamed(self.testClass.overrideObj = kConstString,
+                              NSException,
+                              @"setOverrideObj:",
+                              @"Expected to raise an exception with the setter's name");
+}
+
+- (void) testObjectWithBlocksGetter
+{
+  id foo = nil;
+  STAssertThrowsSpecificNamed(foo = self.testClass.overrideObj,
+                              NSException,
+                              @"overrideObj",
+                              @"Expected to raise an exception with the getter's name");
+}
+
+- (void) testObjectWithBlocksLazyGetter
+{
+  id foo = nil;
+  STAssertThrowsSpecificNamed(foo = self.testClass.overrideObjLazy,
+                              NSException,
+                              @"overrideObjLazy",
+                              @"Expected to raise an exception with the getter's name");
+}
+
+- (void) testPrimitiveWithBlocksSetter
+{
+  STAssertThrowsSpecificNamed(self.testClass.overridePrimitive = 100,
+                              NSException,
+                              @"setOverridePrimitive:",
+                              @"Expected to raise an exception with the setter's name");
+}
+
+- (void) testPrimitiveWithBlocksGetter
+{
+  NSUInteger primitive = 0;
+  STAssertThrowsSpecificNamed(primitive = self.testClass.overridePrimitive,
+                              NSException,
+                              @"overridePrimitive",
+                              @"Expected to raise an exception with the getter's name");
 }
 
 #pragma mark -
