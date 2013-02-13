@@ -27,6 +27,8 @@
 #import "NSObject+AssociatedDictionary.h"
 #import "ObjcAssociatedObjectHelpers.h"
 
+static NSString *const kConstString = @"ConstString";
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #pragma mark Test Class
 
@@ -37,6 +39,7 @@ typedef struct _testStruct {
 
 @interface TestClass : NSObject
 @property () id object;
+@property (assign) id assignObj;
 @property (readonly) id lazyObject;
 @property (readonly) id nonDefaultLazyObject;
 @property (readonly) id readWriteObject;
@@ -52,6 +55,7 @@ typedef struct _testStruct {
 
 SYNTHESIZE_ASC_OBJ(object, setObject);
 SYNTHESIZE_ASC_OBJ_LAZY(lazyObject, [NSString class])
+SYNTHESIZE_ASC_OBJ_ASSIGN(assignObj, setAssignObj);
 SYNTHESIZE_ASC_OBJ_LAZY_EXP(nonDefaultLazyObject, [NSString stringWithFormat:@"foo"])
 SYNTHESIZE_ASC_OBJ(readWriteObject, setReadWriteObject);
 SYNTHESIZE_ASC_PRIMITIVE(primitive, setPrimitive, NSUInteger);
@@ -99,6 +103,12 @@ SYNTHESIZE_ASC_PRIMITIVE(structure, setStructure, TestStruct);
     self.testClass.structure = struct1;
     TestStruct struct2 = self.testClass.structure;
     STAssertTrue(memcmp(&struct1, &struct2, sizeof(TestStruct)) == 0, @"Returned wrong value");
+}
+
+- (void) testAssignObject
+{
+    self.testClass.assignObj = kConstString;
+    STAssertEqualObjects(self.testClass.assignObj, kConstString, @"Didn't do assing");
 }
 
 #pragma mark Edge cases
