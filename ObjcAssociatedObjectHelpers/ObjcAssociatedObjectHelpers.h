@@ -49,14 +49,10 @@
 #pragma mark Assign readwrite
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #define SYNTHESIZE_ASC_OBJ_ASSIGN(getterName, setterName) \
-<<<<<<< HEAD
-static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
-=======
   SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(getterName, setterName, ^{}, ^{})
 
 #define SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(getterName, setterName, getterBlock, setterBlock) \
-static void* getterName##Key = QUOTE(getterName); \
->>>>>>> Override feature
+static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
 - (void)setterName:(id)object { \
     objc_AssociationPolicy policy = OBJC_ASSOCIATION_ASSIGN; \
     @synchronized(self) { \
@@ -77,14 +73,10 @@ static void* getterName##Key = QUOTE(getterName); \
 #pragma mark Readwrite Object
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #define SYNTHESIZE_ASC_OBJ(getterName, setterName) \
-<<<<<<< HEAD
-static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
-=======
     SYNTHESIZE_ASC_OBJ_BLOCK(getterName, setterName, ^{}, ^{})
 
 #define SYNTHESIZE_ASC_OBJ_BLOCK(getterName, setterName, getterBlock, setterBlock) \
-static void* getterName##Key = QUOTE(getterName); \
->>>>>>> Override feature
+static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
 - (void)setterName:(id)object { \
     objc_AssociationPolicy policy = \
     [object conformsToProtocol:@protocol(NSCopying)] ? OBJC_ASSOCIATION_COPY : OBJC_ASSOCIATION_RETAIN; \
@@ -106,14 +98,10 @@ static void* getterName##Key = QUOTE(getterName); \
 #pragma mark Lazy readonly object
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #define SYNTHESIZE_ASC_OBJ_LAZY_EXP(getterName, initExpression) \
-<<<<<<< HEAD
-static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
-=======
     SYNTHESIZE_ASC_OBJ_LAZY_EXP_BLOCK(getterName, initExpression, ^{})
 
 #define SYNTHESIZE_ASC_OBJ_LAZY_EXP_BLOCK(getterName, initExpression, block) \
-static void* getterName##Key = QUOTE(getterName); \
->>>>>>> Override feature
+static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
 - (id)getterName { \
     id object = nil; \
     @synchronized(self) { \
@@ -137,14 +125,10 @@ static void* getterName##Key = QUOTE(getterName); \
 #pragma mark Primitive
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #define SYNTHESIZE_ASC_PRIMITIVE(getterName, setterName, type) \
-<<<<<<< HEAD
-static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
-=======
     SYNTHESIZE_ASC_PRIMITIVE_BLOCK(getterName, setterName, type, ^{}, ^{})
 
 #define SYNTHESIZE_ASC_PRIMITIVE_BLOCK(getterName, setterName, type, getterBlock, setterBlock) \
-static void* getterName##Key = QUOTE(getterName); \
->>>>>>> Override feature
+static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
 - (void)setterName:(type)newValue { \
     @synchronized(self) { \
         objc_setAssociatedObject(self, getterName##Key, \
