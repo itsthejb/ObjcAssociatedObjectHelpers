@@ -32,10 +32,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4918B9AE168498F000D4EAC4 /* ObjcAssociatedObjectHelpersTestsiOS.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObjcAssociatedObjectHelpersTestsiOS.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4918B9AE168498F000D4EAC4 /* ObjcAssociatedObjectHelpersLibTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObjcAssociatedObjectHelpersLibTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		499C34B0161AF68000BA2AC9 /* NSObject+AssociatedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AssociatedDictionary.h"; sourceTree = "<group>"; };
 		499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AssociatedDictionary.m"; sourceTree = "<group>"; };
-		49AD1B5616C282A10061BDC1 /* libObjcAssociatedObjectHelpers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libObjcAssociatedObjectHelpers.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		49AD1B5616C282A10061BDC1 /* libObjcAssociatedObjectHelpersLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libObjcAssociatedObjectHelpersLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AD1B6716C2838C0061BDC1 /* ObjcAssociatedObjectHelpers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ObjcAssociatedObjectHelpers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AD1B7716C293960061BDC1 /* ObjcAssociatedObjectHelpers.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = ObjcAssociatedObjectHelpers.podspec; sourceTree = "<group>"; };
 		49AD1B7816C294A60061BDC1 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
@@ -106,8 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				49AEF1591619FB2C009D9F9B /* ObjcAssociatedObjectHelpersTests.octest */,
-				4918B9AE168498F000D4EAC4 /* ObjcAssociatedObjectHelpersTestsiOS.octest */,
-				49AD1B5616C282A10061BDC1 /* libObjcAssociatedObjectHelpers.a */,
+				4918B9AE168498F000D4EAC4 /* ObjcAssociatedObjectHelpersLibTests.octest */,
+				49AD1B5616C282A10061BDC1 /* libObjcAssociatedObjectHelpersLib.a */,
 				49AD1B6716C2838C0061BDC1 /* ObjcAssociatedObjectHelpers.framework */,
 			);
 			name = Products;
@@ -190,7 +190,7 @@
 			);
 			name = ObjcAssociatedObjectHelpersLibTests;
 			productName = ObjcAssociatedObjectHelpersTestsiOS;
-			productReference = 4918B9AE168498F000D4EAC4 /* ObjcAssociatedObjectHelpersTestsiOS.octest */;
+			productReference = 4918B9AE168498F000D4EAC4 /* ObjcAssociatedObjectHelpersLibTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 		49AD1B5516C282A10061BDC1 /* ObjcAssociatedObjectHelpersLib */ = {
@@ -207,7 +207,7 @@
 			);
 			name = ObjcAssociatedObjectHelpersLib;
 			productName = ObjcAssociatedObjectHelpers;
-			productReference = 49AD1B5616C282A10061BDC1 /* libObjcAssociatedObjectHelpers.a */;
+			productReference = 49AD1B5616C282A10061BDC1 /* libObjcAssociatedObjectHelpersLib.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		49AD1B6616C2838C0061BDC1 /* ObjcAssociatedObjectHelpers */ = {
@@ -385,7 +385,6 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = "ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -402,7 +401,6 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = "ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -419,7 +417,6 @@
 				DSTROOT = /tmp/ObjcAssociatedObjectHelpers.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -437,7 +434,6 @@
 				DSTROOT = /tmp/ObjcAssociatedObjectHelpers.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -460,7 +456,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers-Prefix.pch";
 				INFOPLIST_FILE = "ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -482,7 +477,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers-Prefix.pch";
 				INFOPLIST_FILE = "ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = framework;
@@ -501,8 +495,9 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -516,6 +511,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PROFILING_CODE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 			};
 			name = Debug;
@@ -541,6 +538,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 			};
 			name = Release;
@@ -594,6 +592,7 @@
 				49AD1B6016C282A10061BDC1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		49AD1B7316C2838C0061BDC1 /* Build configuration list for PBXNativeTarget "ObjcAssociatedObjectHelpers" */ = {
 			isa = XCConfigurationList;
@@ -602,6 +601,7 @@
 				49AD1B7516C2838C0061BDC1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		49AEF0EC1619F565009D9F9B /* Build configuration list for PBXProject "ObjcAssociatedObjectHelpers" */ = {
 			isa = XCConfigurationList;
