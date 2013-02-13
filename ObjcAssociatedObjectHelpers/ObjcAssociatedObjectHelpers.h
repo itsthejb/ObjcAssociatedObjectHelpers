@@ -42,14 +42,14 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #pragma mark Quotation helper
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#define __QUOTE(x) #x
-#define QUOTE(x) __QUOTE(x)
+#define __OBJC_ASC_QUOTE(x) #x
+#define OBJC_ASC_QUOTE(x) __OBJC_ASC_QUOTE(x)
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #pragma mark Assign readwrite
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #define SYNTHESIZE_ASC_OBJ_ASSIGN(getterName, setterName) \
-static void* getterName##Key = QUOTE(getterName); \
+static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
 - (void)setterName:(id)object { \
     objc_AssociationPolicy policy = OBJC_ASSOCIATION_ASSIGN; \
     @synchronized(self) { \
@@ -68,7 +68,7 @@ static void* getterName##Key = QUOTE(getterName); \
 #pragma mark Readwrite Object
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #define SYNTHESIZE_ASC_OBJ(getterName, setterName) \
-static void* getterName##Key = QUOTE(getterName); \
+static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
 - (void)setterName:(id)object { \
     objc_AssociationPolicy policy = \
     [object conformsToProtocol:@protocol(NSCopying)] ? OBJC_ASSOCIATION_COPY : OBJC_ASSOCIATION_RETAIN; \
@@ -88,7 +88,7 @@ static void* getterName##Key = QUOTE(getterName); \
 #pragma mark Lazy readonly object
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #define SYNTHESIZE_ASC_OBJ_LAZY_EXP(getterName, initExpression) \
-static void* getterName##Key = QUOTE(getterName); \
+static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
 - (id)getterName { \
     id object = nil; \
     @synchronized(self) { \
@@ -109,7 +109,7 @@ static void* getterName##Key = QUOTE(getterName); \
 #pragma mark Primitive
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #define SYNTHESIZE_ASC_PRIMITIVE(getterName, setterName, type) \
-static void* getterName##Key = QUOTE(getterName); \
+static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
 - (void)setterName:(type)newValue { \
     @synchronized(self) { \
         objc_setAssociatedObject(self, getterName##Key, \
