@@ -3,15 +3,22 @@ ObjcAssociatedObjectHelpers
 
 What's New
 ----------
+
+**v1.1**
+
+* Pass a block to the macros in order to *override* their default behaviour.
+
+**v1.0**
+
 * Static library target for iOS, and framework target for OS X.
 * [MIT Licensed](http://jc.mit-license.org/)
 
 Introduction
 ------------
 
-[Associated Objects, or Associated References](http://developer.apple.com/library/ios/#documentation/cocoa/conceptual/objectivec/Chapters/ocAssociativeReferences.html) were introduced in OS X 10.6 and iOS 10.4. This feature gives class instances a "dictionary" of sorts within which to store arbitrary objects using the runtime functions `objc_setAssociatedObject()` and `objc_getAssociatedObject()`. This project aims to make their use more convenient.
+[Associated Objects, or Associated References](http://developer.apple.com/library/ios/#documentation/cocoa/conceptual/objectivec/Chapters/ocAssociativeReferences.html) were introduced in OS X 10.6 and iOS 10.4. This feature gives class instances a dictionary of sorts within which to store arbitrary objects using the runtime functions `objc_setAssociatedObject()` and `objc_getAssociatedObject()`. This project aims to make their use more convenient in a light-weight and thoroughly tested fashion.
 
-1. **Adding ivars to categories** - An unforunate drawback to ObjC categories in the inability to add or synthesize ivars, even though properties can be added. Associated objects can be used to provide storage and overcome this limitation:
+1. **Adding ivars to categories** - An unforunate drawback of Obj-C categories in the inability to add or synthesize ivars, even though properties can be added. Associated objects can be used to provide storage and overcome this limitation:
 		
 		@interface NSObject (MyCategory)
 		@property (strong) id myCategoryObject;
@@ -37,15 +44,15 @@ Notes
 		@property (assign) id myProperty;
 		@property (copy) id myProperty;
 
-    Currently, the macros use `OBJC_ASSOCIATION_COPY` to check at runtime if the object conforms to `NSCopying` and `OBJC_ASSOCIATION_RETAIN` otherwise. The test `-[UnitTests testMutableObject]` confirms that a copy is made. I think this is The Right Way. It's probably best to use normal semantics with these setters, however.
+    Currently, the macros check at runtime for `NSCopying` protocol compliance and use `OBJC_ASSOCIATION_COPY` if found and `OBJC_ASSOCIATION_RETAIN` otherwise. The test `-[UnitTests testMutableObject]` confirms that a copy is made. I think this is The Right Way™. It's probably best to use normal semantics with these setters, however.
 
 Usage
 -----
-No need to link any sources if just using the header file. Could create a static library for the `NSObject` category, but not really worthwhile.
+Static library provided for the `NSObject` category, or just use the header file for basic usage. Prefered installation by using [CocoaPods](http://cocoapods.org/).
 
 Testing
 -------
-Test cases provided.
+Thorough test cases provided.
 
 		
 Macros
@@ -75,6 +82,7 @@ Macros
 
 		SYNTHESIZE_ASC_OBJ_LAZY_EXP(nonDefaultLazyObject, [NSString stringWithFormat:@"foo"])	 
 	Uses the expression `[NSString stringWithFormat:@"foo"]` to initialise the object. Note that `SYNTHESIZE_ASC_OBJ_LAZY` uses this macro with `[[class alloc] init]`.
+5. All the macros have a `_BLOCK` suffix companion which takes a `void` block in the format `void(^block)()` for the getter, and setter (if available). This allows additional code to be run in the accessors, similar to overriding an accessor.
 
 Todo
 ----
