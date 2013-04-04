@@ -58,14 +58,14 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
   @synchronized(self) { \
     objc_setAssociatedObject(self, getterName##Key, object, policy); \
   } \
-  setterBlock(); \
+  if(setterBlock) setterBlock(); \
 } \
 - (id) getterName { \
   id ret = nil; \
   @synchronized(self) { \
     ret = objc_getAssociatedObject(self, getterName##Key); \
   }; \
-  getterBlock(); \
+  if(getterBlock) getterBlock(); \
   return ret; \
 }
 
@@ -83,14 +83,14 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
   @synchronized(self) { \
     objc_setAssociatedObject(self, getterName##Key, object, policy); \
   } \
-  setterBlock(); \
+  if(setterBlock) setterBlock(); \
 } \
 - (id) getterName { \
   id ret = nil; \
   @synchronized(self) { \
     ret = objc_getAssociatedObject(self, getterName##Key); \
   }; \
-  getterBlock(); \
+  if(getterBlock) getterBlock(); \
   return ret; \
 }
 
@@ -111,7 +111,7 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
       objc_setAssociatedObject(self, getterName##Key, object, OBJC_ASSOCIATION_RETAIN); \
     } \
   } \
-  block(); \
+  if(block) block(); \
   return object; \
 }
 
@@ -134,7 +134,7 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
     objc_setAssociatedObject(self, getterName##Key, \
       [NSValue value:&newValue withObjCType:@encode(type)], OBJC_ASSOCIATION_RETAIN); \
   } \
-  getterBlock(); \
+  if(getterBlock) getterBlock(); \
 } \
 - (type) getterName { \
   type ret; \
@@ -142,6 +142,6 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
   @synchronized(self) { \
     [objc_getAssociatedObject(self, getterName##Key) getValue:&ret]; \
   } \
-  setterBlock(); \
+  if(setterBlock) setterBlock(); \
   return ret; \
 }

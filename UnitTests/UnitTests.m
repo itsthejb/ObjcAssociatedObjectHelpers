@@ -56,6 +56,7 @@ typedef struct _testStruct {
 @property (readonly) id overrideObjLazy;
 @property (readonly) id overrideObjLazyWithExpression;
 @property (assign) NSUInteger overridePrimitive;
+@property (strong) id overrideObjNilBlocks;
 @end
 
 @implementation TestClass
@@ -87,6 +88,10 @@ SYNTHESIZE_ASC_PRIMITIVE_BLOCK(overridePrimitive,
                                NSUInteger,
                                ^{ TEST_EXCEPTION; },
                                ^{ TEST_EXCEPTION; })
+SYNTHESIZE_ASC_OBJ_BLOCK(overrideObjNilBlocks,
+                         setOverrideObjNilBlocks,
+                         nil,
+                         nil)
 
 - (id)init {
   if ((self = [super init])) {
@@ -271,6 +276,12 @@ SYNTHESIZE_ASC_PRIMITIVE_BLOCK(overridePrimitive,
                               NSException,
                               @"overridePrimitive",
                               @"Expected to raise an exception with the getter's name");
+}
+
+- (void) testNilBlocks
+{
+  STAssertNoThrow(self.testClass.overrideObjNilBlocks = @"", @"Should not seg fault");
+  STAssertNoThrow(NSLog(@"%@", self.testClass.overrideObjNilBlocks), @"Should not seg fault");
 }
 
 #pragma mark -
