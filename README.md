@@ -4,6 +4,10 @@ ObjcAssociatedObjectHelpers
 What's New
 ----------
 
+**v1.1.1**
+
+* Moved the execution order of setter blocks so the block can potential operate on the existing value. In the context of the block, `self.property` will be the existing value, *before* the new value is set.
+
 **v1.1**
 
 * Pass a block to the macros in order to *override* their default behaviour.
@@ -82,7 +86,7 @@ Macros
 
 		SYNTHESIZE_ASC_OBJ_LAZY_EXP(nonDefaultLazyObject, [NSString stringWithFormat:@"foo"])	 
 	Uses the expression `[NSString stringWithFormat:@"foo"]` to initialise the object. Note that `SYNTHESIZE_ASC_OBJ_LAZY` uses this macro with `[[class alloc] init]`.
-5. All the macros have a `_BLOCK` suffix companion which takes a `void` block in the format `void(^block)()` for the getter, and setter (if available). This allows additional code to be run in the accessors, similar to overriding an accessor.
+5. All the macros have a `_BLOCK` suffix companion which takes a `void` block in the format `void(^block)()` for the getter, and setter (if available). This allows additional code to be run in the accessors, similar to overriding an accessor. Note that since these are preprocessor macros, it's not possible to pass `nil` to any of these macros. Instead, pass an empty block; `^{}`.
 
 Todo
 ----
