@@ -54,11 +54,11 @@
 #define SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(getterName, setterName, getterBlock, setterBlock) \
 static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
 - (void)setterName:(id)object { \
+  if(setterBlock) setterBlock(); \
   objc_AssociationPolicy policy = OBJC_ASSOCIATION_ASSIGN; \
   @synchronized(self) { \
     objc_setAssociatedObject(self, getterName##Key, object, policy); \
   } \
-  if(setterBlock) setterBlock(); \
 } \
 - (id) getterName { \
   id ret = nil; \
@@ -78,12 +78,12 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
 #define SYNTHESIZE_ASC_OBJ_BLOCK(getterName, setterName, getterBlock, setterBlock) \
 static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
 - (void)setterName:(id)object { \
+  if(setterBlock) setterBlock(); \
   objc_AssociationPolicy policy = \
   [object conformsToProtocol:@protocol(NSCopying)] ? OBJC_ASSOCIATION_COPY : OBJC_ASSOCIATION_RETAIN; \
   @synchronized(self) { \
     objc_setAssociatedObject(self, getterName##Key, object, policy); \
   } \
-  if(setterBlock) setterBlock(); \
 } \
 - (id) getterName { \
   id ret = nil; \
@@ -130,11 +130,11 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
 #define SYNTHESIZE_ASC_PRIMITIVE_BLOCK(getterName, setterName, type, getterBlock, setterBlock) \
 static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
 - (void)setterName:(type)newValue { \
+  if(setterBlock) setterBlock(); \
   @synchronized(self) { \
     objc_setAssociatedObject(self, getterName##Key, \
       [NSValue value:&newValue withObjCType:@encode(type)], OBJC_ASSOCIATION_RETAIN); \
   } \
-  if(getterBlock) getterBlock(); \
 } \
 - (type) getterName { \
   type ret; \
@@ -142,6 +142,6 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
   @synchronized(self) { \
     [objc_getAssociatedObject(self, getterName##Key) getValue:&ret]; \
   } \
-  if(setterBlock) setterBlock(); \
+  if(getterBlock) getterBlock(); \
   return ret; \
 }
