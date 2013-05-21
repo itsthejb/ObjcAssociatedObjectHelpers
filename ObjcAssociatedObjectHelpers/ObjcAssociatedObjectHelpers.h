@@ -54,7 +54,7 @@
 #define SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(getterName, setterName, getterBlock, setterBlock) \
 static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
 - (void)setterName:(id)object { \
-  if(setterBlock) setterBlock(); \
+  setterBlock(); \
   objc_AssociationPolicy policy = OBJC_ASSOCIATION_ASSIGN; \
   @synchronized(self) { \
     objc_setAssociatedObject(self, getterName##Key, object, policy); \
@@ -65,7 +65,7 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
   @synchronized(self) { \
     ret = objc_getAssociatedObject(self, getterName##Key); \
   }; \
-  if(getterBlock) getterBlock(); \
+  getterBlock(); \
   return ret; \
 }
 
@@ -78,7 +78,7 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
 #define SYNTHESIZE_ASC_OBJ_BLOCK(getterName, setterName, getterBlock, setterBlock) \
 static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
 - (void)setterName:(id)object { \
-  if(setterBlock) setterBlock(); \
+  setterBlock(); \
   objc_AssociationPolicy policy = \
   [object conformsToProtocol:@protocol(NSCopying)] ? OBJC_ASSOCIATION_COPY : OBJC_ASSOCIATION_RETAIN; \
   @synchronized(self) { \
@@ -90,7 +90,7 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
   @synchronized(self) { \
     ret = objc_getAssociatedObject(self, getterName##Key); \
   }; \
-  if(getterBlock) getterBlock(); \
+  getterBlock(); \
   return ret; \
 }
 
@@ -111,7 +111,7 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
       objc_setAssociatedObject(self, getterName##Key, object, OBJC_ASSOCIATION_RETAIN); \
     } \
   } \
-  if(block) block(); \
+  block(); \
   return object; \
 }
 
@@ -130,7 +130,7 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
 #define SYNTHESIZE_ASC_PRIMITIVE_BLOCK(getterName, setterName, type, getterBlock, setterBlock) \
 static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
 - (void)setterName:(type)newValue { \
-  if(setterBlock) setterBlock(); \
+  setterBlock(); \
   @synchronized(self) { \
     objc_setAssociatedObject(self, getterName##Key, \
       [NSValue value:&newValue withObjCType:@encode(type)], OBJC_ASSOCIATION_RETAIN); \
@@ -142,6 +142,6 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
   @synchronized(self) { \
     [objc_getAssociatedObject(self, getterName##Key) getValue:&ret]; \
   } \
-  if(getterBlock) getterBlock(); \
+  getterBlock(); \
   return ret; \
 }
