@@ -90,8 +90,8 @@ SYNTHESIZE_ASC_PRIMITIVE_BLOCK(overridePrimitive,
                                ^{ TEST_EXCEPTION; })
 SYNTHESIZE_ASC_OBJ_BLOCK(overrideObjNilBlocks,
                          setOverrideObjNilBlocks,
-                         nil,
-                         nil)
+                         ^{},
+                         ^{})
 
 - (id)init {
   if ((self = [super init])) {
