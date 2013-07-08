@@ -56,6 +56,11 @@ typedef struct _testStruct {
 @property (readonly) id overrideObjLazy;
 @property (readonly) id overrideObjLazyWithExpression;
 @property (assign) NSUInteger overridePrimitive;
+// Override value
+@property (strong) NSString *overrideObjBlockGetter;
+@property (strong) NSString *overrideObjBlockSetter;
+@property (assign) NSUInteger overrideBlockPrimitiveGetter;
+@property (assign) NSUInteger overrideBlockPrimitiveSetter;
 @end
 
 @implementation TestClass
@@ -87,6 +92,24 @@ SYNTHESIZE_ASC_PRIMITIVE_BLOCK(overridePrimitive,
                                NSUInteger,
                                ^{ TEST_EXCEPTION; },
                                ^{ TEST_EXCEPTION; })
+SYNTHESIZE_ASC_OBJ_BLOCK(overrideObjBlockGetter,
+                         setOverrideObjBlockGetter,
+                         ^{ value = @"foo"; },
+                         ^{ })
+SYNTHESIZE_ASC_OBJ_BLOCK(overrideObjBlockSetter,
+                         setOverrideObjBlockSetter,
+                         ^{ },
+                         ^{ value = @"foo"; })
+SYNTHESIZE_ASC_PRIMITIVE_BLOCK(overrideBlockPrimitiveGetter,
+                               setOverrideBlockPrimitiveGetter,
+                               NSUInteger,
+                               ^{ value++; },
+                               ^{ })
+SYNTHESIZE_ASC_PRIMITIVE_BLOCK(overrideBlockPrimitiveSetter,
+                               setOverrideBlockPrimitiveSetter,
+                               NSUInteger,
+                               ^{ },
+                               ^{ value--; })
 
 - (id)init {
   if ((self = [super init])) {
@@ -271,6 +294,30 @@ SYNTHESIZE_ASC_PRIMITIVE_BLOCK(overridePrimitive,
                               NSException,
                               @"overridePrimitive",
                               @"Expected to raise an exception with the getter's name");
+}
+
+#pragma mark Mainpulate values
+
+- (void) testPrimitiveBlockOverrideValuePrimitives
+{
+  self.testClass.overrideBlockPrimitiveGetter = 99;
+  STAssertTrue(self.testClass.overrideBlockPrimitiveGetter == 100,
+               @"Should have incremented the value");
+
+  self.testClass.overrideBlockPrimitiveSetter = 50;
+  STAssertTrue(self.testClass.overrideBlockPrimitiveSetter == 49,
+                 @"Should have decremented the value");
+}
+
+- (void) testBlockOverrideObjects
+{
+  self.testClass.overrideObjBlockGetter = @"bar";
+  STAssertEqualObjects(self.testClass.overrideObjBlockGetter, @"foo",
+                       @"Should have used the overridden value");
+
+  self.testClass.overrideObjBlockSetter = @"cat";
+  STAssertEqualObjects(self.testClass.overrideObjBlockSetter, @"foo",
+                       @"Should have used the overridden value");
 }
 
 #pragma mark -

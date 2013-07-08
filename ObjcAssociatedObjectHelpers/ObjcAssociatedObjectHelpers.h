@@ -53,20 +53,21 @@
 
 #define SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(getterName, setterName, getterBlock, setterBlock) \
 static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
-- (void)setterName:(id)object { \
+- (void)setterName:(id)__newValue { \
+  __block id value = __newValue; \
   setterBlock(); \
   objc_AssociationPolicy policy = OBJC_ASSOCIATION_ASSIGN; \
   @synchronized(self) { \
-    objc_setAssociatedObject(self, getterName##Key, object, policy); \
+    objc_setAssociatedObject(self, getterName##Key, value, policy); \
   } \
 } \
 - (id) getterName { \
-  id ret = nil; \
+  __block id value = nil; \
   @synchronized(self) { \
-    ret = objc_getAssociatedObject(self, getterName##Key); \
+    value = objc_getAssociatedObject(self, getterName##Key); \
   }; \
   getterBlock(); \
-  return ret; \
+  return value; \
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -77,21 +78,22 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
 
 #define SYNTHESIZE_ASC_OBJ_BLOCK(getterName, setterName, getterBlock, setterBlock) \
 static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
-- (void)setterName:(id)object { \
+- (void)setterName:(id)__newValue { \
+  __block id value = __newValue; \
   setterBlock(); \
   objc_AssociationPolicy policy = \
-  [object conformsToProtocol:@protocol(NSCopying)] ? OBJC_ASSOCIATION_COPY : OBJC_ASSOCIATION_RETAIN; \
+  [value conformsToProtocol:@protocol(NSCopying)] ? OBJC_ASSOCIATION_COPY : OBJC_ASSOCIATION_RETAIN; \
   @synchronized(self) { \
-    objc_setAssociatedObject(self, getterName##Key, object, policy); \
+    objc_setAssociatedObject(self, getterName##Key, value, policy); \
   } \
 } \
 - (id) getterName { \
-  id ret = nil; \
+  __block id value = nil; \
   @synchronized(self) { \
-    ret = objc_getAssociatedObject(self, getterName##Key); \
+    value = objc_getAssociatedObject(self, getterName##Key); \
   }; \
   getterBlock(); \
-  return ret; \
+  return value; \
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -103,16 +105,16 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
 #define SYNTHESIZE_ASC_OBJ_LAZY_EXP_BLOCK(getterName, initExpression, block) \
 static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
 - (id)getterName { \
-  id object = nil; \
+  __block id value = nil; \
   @synchronized(self) { \
-    object = objc_getAssociatedObject(self, getterName##Key); \
-    if (!object) { \
-      object = initExpression; \
-      objc_setAssociatedObject(self, getterName##Key, object, OBJC_ASSOCIATION_RETAIN); \
+    value = objc_getAssociatedObject(self, getterName##Key); \
+    if (!value) { \
+      value = initExpression; \
+      objc_setAssociatedObject(self, getterName##Key, value, OBJC_ASSOCIATION_RETAIN); \
     } \
   } \
   block(); \
-  return object; \
+  return value; \
 }
 
 // Use default initialiser
@@ -129,19 +131,20 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
 
 #define SYNTHESIZE_ASC_PRIMITIVE_BLOCK(getterName, setterName, type, getterBlock, setterBlock) \
 static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
-- (void)setterName:(type)newValue { \
+- (void)setterName:(type)__newValue { \
+  __block type value = __newValue; \
   setterBlock(); \
   @synchronized(self) { \
     objc_setAssociatedObject(self, getterName##Key, \
-      [NSValue value:&newValue withObjCType:@encode(type)], OBJC_ASSOCIATION_RETAIN); \
+      [NSValue value:&value withObjCType:@encode(type)], OBJC_ASSOCIATION_RETAIN); \
   } \
 } \
 - (type) getterName { \
-  type ret; \
-  memset(&ret, 0, sizeof(type)); \
+  __block type value; \
+  memset(&value, 0, sizeof(type)); \
   @synchronized(self) { \
-    [objc_getAssociatedObject(self, getterName##Key) getValue:&ret]; \
+    [objc_getAssociatedObject(self, getterName##Key) getValue:&value]; \
   } \
   getterBlock(); \
-  return ret; \
+  return value; \
 }
