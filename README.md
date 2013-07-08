@@ -4,6 +4,10 @@ ObjcAssociatedObjectHelpers
 What's New
 ----------
 
+**v1.1.2**
+
+* Improved block macro value handling. See details below.
+
 **v1.1.1**
 
 * Moved the execution order of setter blocks so the block can potential operate on the existing value. In the context of the block, `self.property` will be the existing value, *before* the new value is set.
@@ -86,7 +90,10 @@ Macros
 
 		SYNTHESIZE_ASC_OBJ_LAZY_EXP(nonDefaultLazyObject, [NSString stringWithFormat:@"foo"])	 
 	Uses the expression `[NSString stringWithFormat:@"foo"]` to initialise the object. Note that `SYNTHESIZE_ASC_OBJ_LAZY` uses this macro with `[[class alloc] init]`.
-5. All the macros have a `_BLOCK` suffix companion which takes a `void` block in the format `void(^block)()` for the getter, and setter (if available). This allows additional code to be run in the accessors, similar to overriding an accessor. Note that since these are preprocessor macros, it's not possible to pass `nil` to any of these macros. Instead, pass an empty block; `^{}`.
+5. All the macros have a `_BLOCK` suffix companion which takes a `dispatch_block_t`-type void block in the format `void(^block)()` for the getter, and setter (if available). This allows additional code to be run in the accessors, similar to overriding an accessor. 
+
+	* Note that since these are preprocessor macros, it's not possible to pass `nil` to any of these macros. Instead, pass an empty block; `^{}`. 
+	* In the context of the macro, the passed setter value, or the current associated value with be available as the symbol `value`. Its type will be appropriate to the context in which the macro was declared. `value` is always declared with the `__block` attribute and so can be modified inside the block. Note that this is a little cumbersome since, *as far as I know*, there is no way to specify block parameter types in a macro and have the `value` variable passed explicitly into the block. If there is a way, [I'd love to here about it](mailto:joncrooke@gmail.com).
 
 Todo
 ----
@@ -95,5 +102,5 @@ Todo
 Have fun!
 ---------
 
-[MIT Licensed](http://jc.mit-license.org/) >> joncrooke@gmail.com 
+[MIT Licensed](http://jc.mit-license.org/) >> [joncrooke@gmail.com](mailto:joncrooke@gmail.com)
 		
