@@ -17,7 +17,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "49AEF1581619FB2C009D9F9B"
-               BuildableName = "ObjcAssociatedObjectHelpersTests.octest"
+               BuildableName = "ObjcAssociatedObjectHelpersTests.xctest"
                BlueprintName = "ObjcAssociatedObjectHelpersTests"
                ReferencedContainer = "container:ObjcAssociatedObjectHelpers.xcodeproj">
             </BuildableReference>
