@@ -36,13 +36,13 @@ Introduction
 		SYNTHESIZE_ASC_OBJ(myCategoryObject, setMyCategoryObject);
 		@end
 	
-2. **Abitrary dictionary for NSObject** - The `NSObject` category adds a lazily-initialized `NSMutableDictionary` to `NSObject`, allowing key-value pairs to be associated with any `NSObject` subclass instance:
+2. **Abitrary dictionary for NSObject** - The `NSObject` category adds a lazily-initialized `NSMutableDictionary` to `NSObject`, allowing key-value pairs to be more conveniently associated with any `NSObject` subclass instance:
 
 		[self.associatedDictionary setValue:@"value" forKey:@"myKey"];
 
 Notes
 -----
-1. **getter / setter names** - There is no way to manipulate strings in the preprocessor so that standard getter and setter names can easily be generated. As such, the read/write macros require both names to be provided manually.
+1. **getter / setter names** - There is no way to manipulate strings in the preprocessor so that standard getter and setter names can easily be generated from a single token. As such, the read/write macros require both names to be provided manually.
 2. **ARC** - Clang ARC is currently required, although it wouldn't be hard to also support manual reference counting.
 3. **Property memory management semantics** - Since properties use associated objects for storage, any property setter semantics can be used:
 
@@ -57,6 +57,8 @@ Notes
 Usage
 -----
 Static library provided for the `NSObject` category, or just use the header file for basic usage. Prefered installation by using [CocoaPods](http://cocoapods.org/).
+
+	pod 'ObjcAssociatedObjectHelpers'
 
 Testing
 -------
@@ -95,9 +97,15 @@ Macros
 	* Note that since these are preprocessor macros, it's not possible to pass `nil` to any of these macros. Instead, pass an empty block; `^{}`. 
 	* In the context of the macro, the passed setter value, or the current associated value with be available as the symbol `value`. Its type will be appropriate to the context in which the macro was declared. `value` is always declared with the `__block` attribute and so can be modified inside the block. Note that this is a little cumbersome since, *as far as I know*, there is no way to specify block parameter types in a macro and have the `value` variable passed explicitly into the block. If there is a way, [I'd love to here about it](mailto:joncrooke@gmail.com).
 
+libextobjc
+----------
+
+The excellent [libextobjc](https://github.com/jspahrsummers/libextobjc) library also has a similar single macro implementation of this concept. However primitives are not supported, as well as the wider range of features provided here. However, for its other features, please check it out ;)
+
+
 Todo
 ----
-* No ideas here right now…! Do you have any?
+* Replace local `value` symbol feature with a generic block argument? May be less convenient to use...?
 
 Have fun!
 ---------
