@@ -1,150 +1,122 @@
-//
-//  ObjcAssociatedObjectHelpers.h
-//  ObjcAssociatedObjectHelpers
-//
-//  Created by Jon Crooke on 01/10/2012.
-//  Copyright (c) 2012 Jonathan Crooke. All rights reserved.
-//
-//  Permission is hereby granted, free of charge, to any person obtaining a copy
-//  of this software and associated documentation files (the "Software"), to deal
-//  in the Software without restriction, including without limitation the rights
-//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-//  copies of the Software, and to permit persons to whom the Software is
-//  furnished to do so, subject to the following conditions:
-//
-//  The above copyright notice and this permission notice shall be included in
-//  all copies or substantial portions of the Software.
-//
-//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-//  SOFTWARE.
+
+/*  ObjcAssociatedObjectHelpers.h -  ObjcAssociatedObjectHelpers
+
+	Created by Jon Crooke on 01/10/2012. - Copyright (c) 2012 Jonathan Crooke. All rights reserved.
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+	
+	The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
 
 #import <objc/runtime.h>
 #import <TargetConditionals.h>
 #import <Availability.h>
 
-/** Need Clang ARC */
-#if !__has_feature(objc_arc)
-#error Associated object macros require Clang ARC to be enabled
-#endif
+#if      !__has_feature(objc_arc)   /** Need Clang ARC */
+#warning Associated object macros require Clang ARC to be enabled
+#endif   /**  ┏(-_-)┛┗(-_-)┓┗(-_-)┛┏(-_-)┓  */
 
 /** Platform minimum requirements (associated object availability) */
-#if ( TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR ) && __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_4_0
+#if		 (TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR) && __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_4_0
 #error Associated references available from iOS 4.0
-#elif TARGET_OS_MAC && !( TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR ) && __MAC_OS_X_VERSION_MIN_REQUIRED < __MAC_10_6
+#elif  TARGET_OS_MAC && !(TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR) && __MAC_OS_X_VERSION_MIN_REQUIRED < __MAC_10_6
 #error Associated references available from OS X 10.6
 #endif
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#pragma mark Quotation helper
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#define __OBJC_ASC_QUOTE(x) #x
-#define OBJC_ASC_QUOTE(x) __OBJC_ASC_QUOTE(x)
+# /**.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.*/	pragma mark Quotation helper
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#pragma mark Assign readwrite
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#define __OBJC_ASC_QUOTE(x) #x
+#define   OBJC_ASC_QUOTE(x) __OBJC_ASC_QUOTE(x)
+
+
+@interface NSObject (AssociatedDictionary) @property (readonly) NSMutableDictionary *associatedDictionary; @end
+
+
+# /**--/\/--/\/--/\/--/\/--/\/--/\/--/\/--/\/--/\/--/\/--/\/--/\/--\*/	pragma mark Assign readwrite
+
 #define SYNTHESIZE_ASC_OBJ_ASSIGN(getterName, setterName) \
   SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(getterName, setterName, ^{}, ^{})
 
 #define SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(getterName, setterName, getterBlock, setterBlock) \
-static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
-- (void)setterName:(id)__newValue { \
-  __block id value = __newValue; \
-  setterBlock(); \
-  objc_AssociationPolicy policy = OBJC_ASSOCIATION_ASSIGN; \
-  @synchronized(self) { \
-    objc_setAssociatedObject(self, getterName##Key, value, policy); \
-  } \
-} \
-- (id) getterName { \
-  __block id value = nil; \
-  @synchronized(self) { \
-    value = objc_getAssociatedObject(self, getterName##Key); \
-  }; \
-  getterBlock(); \
-  return value; \
+static void* getterName##Key = OBJC_ASC_QUOTE(getterName);																\
+- (void)setterName:(id)__newValue {	__block id value = __newValue;												\
+  setterBlock();																																					\
+  objc_AssociationPolicy policy = OBJC_ASSOCIATION_ASSIGN;																\
+  @synchronized(self) { objc_setAssociatedObject(self, getterName##Key, value, policy); } \
+}																																													\
+- (id) getterName { 																																		  \
+  __block id value = nil; 																															  \
+  @synchronized(self) { value = objc_getAssociatedObject(self, getterName##Key); };       \
+  getterBlock();                     																											\
+  return value; 																																		      \
 }
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#pragma mark Readwrite Object
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# /** -<<O>>--<<O>>--<<O>>--<<O>>--<<O>>--<<O>>--<<O>>--<<O>>--<<O>>-*/	pragma mark Readwrite Object
+
 #define SYNTHESIZE_ASC_OBJ(getterName, setterName) \
   SYNTHESIZE_ASC_OBJ_BLOCK(getterName, setterName, ^{}, ^{})
 
-#define SYNTHESIZE_ASC_OBJ_BLOCK(getterName, setterName, getterBlock, setterBlock) \
-static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
-- (void)setterName:(id)__newValue { \
-  __block id value = __newValue; \
-  setterBlock(); \
-  objc_AssociationPolicy policy = \
+#define SYNTHESIZE_ASC_OBJ_BLOCK(getterName, setterName, getterBlock, setterBlock)                   \
+static void* getterName##Key = OBJC_ASC_QUOTE(getterName); 																			     \
+- (void)setterName:(id)__newValue { __block id value = __newValue; 																	 \
+  setterBlock(); 																																										 \
+  objc_AssociationPolicy policy = 																																	 \
   [value conformsToProtocol:@protocol(NSCopying)] ? OBJC_ASSOCIATION_COPY : OBJC_ASSOCIATION_RETAIN; \
-  @synchronized(self) { \
-    objc_setAssociatedObject(self, getterName##Key, value, policy); \
-  } \
-} \
-- (id) getterName { \
-  __block id value = nil; \
-  @synchronized(self) { \
-    value = objc_getAssociatedObject(self, getterName##Key); \
-  }; \
-  getterBlock(); \
-  return value; \
+  @synchronized(self) { objc_setAssociatedObject(self, getterName##Key, value, policy); }						 \
+} 																																																	 \
+- (id) getterName { __block id value = nil; 																												 \
+  @synchronized(self) { value = objc_getAssociatedObject(self, getterName##Key); };                  \
+  getterBlock(); 																																		                 \
+  return value; 																																										 \
 }
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#pragma mark Lazy readonly object
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#/** .*O*.*O*.*O*.*O*.*O*.*O*.*O*.*O*.*O*.*O*.*O*.*O*.*O*.*O*.*O*.*O*.*/ pragma mark Lazy readonly object
+
 #define SYNTHESIZE_ASC_OBJ_LAZY_EXP(getterName, initExpression) \
   SYNTHESIZE_ASC_OBJ_LAZY_EXP_BLOCK(getterName, initExpression, ^{})
 
-#define SYNTHESIZE_ASC_OBJ_LAZY_EXP_BLOCK(getterName, initExpression, block) \
-static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
-- (id)getterName { \
-  __block id value = nil; \
-  @synchronized(self) { \
-    value = objc_getAssociatedObject(self, getterName##Key); \
-    if (!value) { \
-      value = initExpression; \
-      objc_setAssociatedObject(self, getterName##Key, value, OBJC_ASSOCIATION_RETAIN); \
-    } \
-  } \
-  block(); \
-  return value; \
+#define SYNTHESIZE_ASC_OBJ_LAZY_EXP_BLOCK(getterName, initExpression, block)            \
+static void* getterName##Key = OBJC_ASC_QUOTE(getterName); 														  \
+- (id)getterName {  __block id value = nil;																							\
+  @synchronized(self) { 																																\
+    value = objc_getAssociatedObject(self, getterName##Key); 														\
+    if (!value) { 																																		  \
+      value = initExpression; 																													\
+      objc_setAssociatedObject(self, getterName##Key, value, OBJC_ASSOCIATION_RETAIN);  \
+    } 																																									\
+  } 																																		                \
+  block(); 																																		          \
+  return value; 																																		    \
 }
 
 // Use default initialiser
 #define SYNTHESIZE_ASC_OBJ_LAZY(getterName, class) \
-  SYNTHESIZE_ASC_OBJ_LAZY_EXP_BLOCK(getterName, [[class alloc] init], ^{})
-#define SYNTHESIZE_ASC_OBJ_LAZY_BLOCK(getterName, class, block) \
-  SYNTHESIZE_ASC_OBJ_LAZY_EXP_BLOCK(getterName, [[class alloc] init], block)
+  SYNTHESIZE_ASC_OBJ_LAZY_EXP_BLOCK(getterName, [class.alloc init], ^{})
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#pragma mark Primitive
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#define SYNTHESIZE_ASC_OBJ_LAZY_BLOCK(getterName, class, block) \
+  SYNTHESIZE_ASC_OBJ_LAZY_EXP_BLOCK(getterName, [class.alloc init], block)
+
+
+# /** -=*****=-.-=*****=-.-=*****=-.-=*****=-.-=*****=-.-=*****=-.*/		pragma mark Primitive
+
 #define SYNTHESIZE_ASC_PRIMITIVE(getterName, setterName, type) \
   SYNTHESIZE_ASC_PRIMITIVE_BLOCK(getterName, setterName, type, ^{}, ^{})
 
-#define SYNTHESIZE_ASC_PRIMITIVE_BLOCK(getterName, setterName, type, getterBlock, setterBlock) \
-static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
-- (void)setterName:(type)__newValue { \
-  __block type value = __newValue; \
-  setterBlock(); \
-  @synchronized(self) { \
-    objc_setAssociatedObject(self, getterName##Key, \
-      [NSValue value:&value withObjCType:@encode(type)], OBJC_ASSOCIATION_RETAIN); \
-  } \
-} \
-- (type) getterName { \
-  __block type value; \
-  memset(&value, 0, sizeof(type)); \
-  @synchronized(self) { \
-    [objc_getAssociatedObject(self, getterName##Key) getValue:&value]; \
-  } \
-  getterBlock(); \
-  return value; \
+#define SYNTHESIZE_ASC_PRIMITIVE_BLOCK(getterName, setterName, type, getterBlock, setterBlock)  \
+static void* getterName##Key = OBJC_ASC_QUOTE(getterName);																			\
+- (void)setterName:(type)__newValue {  __block type value = __newValue; 												\
+  setterBlock();																																								\
+  @synchronized(self) {																																					\
+    objc_setAssociatedObject(self, getterName##Key, 																					  \
+      [NSValue value:&value withObjCType:@encode(type)], OBJC_ASSOCIATION_RETAIN);					    \
+  } 																																		                        \
+} 																																		                          \
+- (type) getterName {  __block type value; 																											\
+  memset(&value, 0, sizeof(type)); 																															\
+  @synchronized(self) { [objc_getAssociatedObject(self, getterName##Key) getValue:&value]; }		\
+  getterBlock();																																								\
+  return value; 																																		            \
 }
+
