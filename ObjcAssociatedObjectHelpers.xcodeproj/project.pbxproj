@@ -8,16 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		4918B9B2168498F000D4EAC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF0F61619F565009D9F9B /* Foundation.framework */; };
-		4918B9C11684991B00D4EAC4 /* NSObject+AssociatedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */; };
-		4918B9C31684991B00D4EAC4 /* UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AEF1691619FB2C009D9F9B /* UnitTests.m */; };
 		499C34C7161AFD7200BA2AC9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF0F61619F565009D9F9B /* Foundation.framework */; };
 		49AD1B5716C282A10061BDC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF0F61619F565009D9F9B /* Foundation.framework */; };
 		49BF24A8161B0805000B1590 /* NSObject+AssociatedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */; };
 		7B9D87A1181D1D5000043489 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B9D87A0181D1D5000043489 /* Cocoa.framework */; };
 		7B9D87C5181D1D7700043489 /* ObjcAssociatedObjectHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 49AEF10C1619F5E8009D9F9B /* ObjcAssociatedObjectHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7B9D87C7181D1D8000043489 /* NSObject+AssociatedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */; };
-		7B9D8804181D3A8B00043489 /* UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AEF1691619FB2C009D9F9B /* UnitTests.m */; };
+		7BC3D5C6181DAB6B009338B5 /* NSObject+AssociatedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */; };
+		7BC3D5C7181DAB93009338B5 /* NSObject+AssociatedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */; };
+		7BC3D5C8181DABBE009338B5 /* ObjcAssociatedObjectHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 49AEF10C1619F5E8009D9F9B /* ObjcAssociatedObjectHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7BC3D5CC181DABF2009338B5 /* UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AEF1691619FB2C009D9F9B /* UnitTests.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7BC3D5C9181DABD7009338B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 49AEF0E91619F565009D9F9B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7B9D879E181D1D5000043489;
+			remoteInfo = ObjcAssociatedObjectHelper;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		49AD1B5416C282A10061BDC1 /* CopyFiles */ = {
@@ -41,7 +52,7 @@
 		49AEF0F61619F565009D9F9B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		49AEF0FC1619F565009D9F9B /* ObjcAssociatedObjectHelpers-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ObjcAssociatedObjectHelpers-Prefix.pch"; path = "ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers-Prefix.pch"; sourceTree = "<group>"; };
 		49AEF10C1619F5E8009D9F9B /* ObjcAssociatedObjectHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjcAssociatedObjectHelpers.h; sourceTree = "<group>"; };
-		49AEF1591619FB2C009D9F9B /* ObjcAssociatedObjectHelpersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObjcAssociatedObjectHelpersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		49AEF1591619FB2C009D9F9B /* ObjcAssociatedObjectHelpersTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObjcAssociatedObjectHelpersTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AEF1641619FB2C009D9F9B /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
 		49AEF1691619FB2C009D9F9B /* UnitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnitTests.m; sourceTree = "<group>"; };
 		49BF24AA161B0903000B1590 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -53,7 +64,6 @@
 		7B9D87A4181D1D5000043489 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		7B9D87A5181D1D5000043489 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		7B9D87B1181D1D5100043489 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		7B9D880A181D5CC100043489 /* AssociatedObjectHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssociatedObjectHelpers.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +126,7 @@
 		49AEF0F31619F565009D9F9B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				49AEF1591619FB2C009D9F9B /* ObjcAssociatedObjectHelpersTests.xctest */,
+				49AEF1591619FB2C009D9F9B /* ObjcAssociatedObjectHelpersTests.octest */,
 				4918B9AE168498F000D4EAC4 /* ObjcAssociatedObjectHelpersLibTests.octest */,
 				49AD1B5616C282A10061BDC1 /* libObjcAssociatedObjectHelpersLib.a */,
 				49AD1B6716C2838C0061BDC1 /* ObjcAssociatedObjectHelpers.framework */,
@@ -140,7 +150,6 @@
 			isa = PBXGroup;
 			children = (
 				49AEF10C1619F5E8009D9F9B /* ObjcAssociatedObjectHelpers.h */,
-				7B9D880A181D5CC100043489 /* AssociatedObjectHelpers.h */,
 				499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */,
 				49AEF0FB1619F565009D9F9B /* Supporting Files */,
 			);
@@ -183,6 +192,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BC3D5C8181DABBE009338B5 /* ObjcAssociatedObjectHelpers.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,15 +267,15 @@
 				49AEF1541619FB2C009D9F9B /* Sources */,
 				49AEF1551619FB2C009D9F9B /* Frameworks */,
 				49AEF1561619FB2C009D9F9B /* Resources */,
-				49AEF1571619FB2C009D9F9B /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7BC3D5CA181DABD7009338B5 /* PBXTargetDependency */,
 			);
 			name = ObjcAssociatedObjectHelpersTests;
 			productName = UnitTests;
-			productReference = 49AEF1591619FB2C009D9F9B /* ObjcAssociatedObjectHelpersTests.xctest */;
+			productReference = 49AEF1591619FB2C009D9F9B /* ObjcAssociatedObjectHelpersTests.octest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		7B9D879E181D1D5000043489 /* ObjcAssociatedObjectHelper */ = {
@@ -296,6 +306,9 @@
 				TargetAttributes = {
 					4918B9AD168498F000D4EAC4 = {
 						TestTargetID = 49AD1B5516C282A10061BDC1;
+					};
+					49AEF1581619FB2C009D9F9B = {
+						TestTargetID = 7B9D879E181D1D5000043489;
 					};
 				};
 			};
@@ -358,19 +371,6 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
-		49AEF1571619FB2C009D9F9B /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -378,8 +378,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4918B9C11684991B00D4EAC4 /* NSObject+AssociatedDictionary.m in Sources */,
-				4918B9C31684991B00D4EAC4 /* UnitTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BC3D5C6181DAB6B009338B5 /* NSObject+AssociatedDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +393,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BC3D5C7181DAB93009338B5 /* NSObject+AssociatedDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,7 +402,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49BF24A8161B0805000B1590 /* NSObject+AssociatedDictionary.m in Sources */,
-				7B9D8804181D3A8B00043489 /* UnitTests.m in Sources */,
+				7BC3D5CC181DABF2009338B5 /* UnitTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +415,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7BC3D5CA181DABD7009338B5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7B9D879E181D1D5000043489 /* ObjcAssociatedObjectHelper */;
+			targetProxy = 7BC3D5C9181DABD7009338B5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		4918B9BD168498F000D4EAC4 /* Debug */ = {
@@ -599,6 +607,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7B9D8793181D1BDA00043489 /* Mac-StaticLibrary.xcconfig */;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -611,19 +620,19 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				GCC_UNROLL_LOOPS = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
 		7B9D87C1181D1D5100043489 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -632,12 +641,11 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_UNROLL_LOOPS = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
 			};
 			name = Release;
 		};

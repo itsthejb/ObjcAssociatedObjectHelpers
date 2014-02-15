@@ -103,56 +103,42 @@ SYNTHESIZE_ASC_PRIMITIVE_BLOCK			(overrideBlockPrimitiveSetter,	setOverrideBlock
 
 #pragma mark Basic set/get
 
-- (void) testObject	{ NSBundle *testObject = NSBundle.new;
+- (void) testObject				{ NSBundle *testObject = NSBundle.new;
   self.testClass.object = testObject;
   XCTAssertEqual(self.testClass.object, testObject, @"Didn't return same object");
 }
-
-- (void) testPrimitive
-{
+- (void) testPrimitive		{
   NSUInteger value = 99;
   self.testClass.primitive = value;
   XCTAssertEqual(self.testClass.primitive, value, @"Not the correct value");
 }
-
-- (void) testStructure
-{
+- (void) testStructure		{
   TestStruct struct1 = { 1, 2.0 };
   self.testClass.structure = struct1;
   TestStruct struct2 = self.testClass.structure;
   XCTAssertTrue(memcmp(&struct1, &struct2, sizeof(TestStruct)) == 0, @"Returned wrong value");
 }
-
-- (void) testAssignObject
-{
+- (void) testAssignObject {
   self.testClass.assignObj = kConstString;
   XCTAssertEqualObjects(self.testClass.assignObj, kConstString, @"Didn't do assing");
 }
 
 #pragma mark Edge cases
 
-- (void) testMutableObject
-{
-  id string = @"mutableString";
+- (void) testMutableObject								{  id string = @"mutableString";  NSMutableString *mutable = [string mutableCopy];
 
-  NSMutableString *mutable = [NSMutableString stringWithString:string];
   self.testClass.object = mutable;
 
-  // should copy the object
-  XCTAssertFalse(self.testClass.object == mutable, @"Should have made a copy");
-  XCTAssertEqualObjects(self.testClass.object, string, @"Should have same value");
+  XCTAssertFalse			 ( self.testClass.object == mutable,	@"Should have made a copy");   // should copy the object
+  XCTAssertEqualObjects( self.testClass.object, string,	  	@"Should have same value");
 
-  // change the original
-  [mutable appendString:@"Foo"];
-  XCTAssertEqualObjects(mutable, @"mutableStringFoo", @"Should have appended");
-  XCTAssertEqualObjects(self.testClass.object, string, @"Should not have changed");
+  [mutable appendString:@"Foo"];																												  // change the original
+  XCTAssertEqualObjects( mutable,		  @"mutableStringFoo", @"Should have appended");
+  XCTAssertEqualObjects( self.testClass.object, string, @"Should not have changed");
 }
-
-- (void) testReadWriteObjectWithCategory
-{
+- (void) testReadWriteObjectWithCategory	{
   XCTAssertNotNil(self.testClass.readWriteObject, @"Readwrite object should be created in -init");
 }
-
 
 					  /*♪ღ♪*•.¸¸¸.•*¨¨*•.¸¸¸.•*•♪ღ♪¸.•*¨¨*•.¸¸¸.•*•♪ღ♪•* */
 #pragma mark ♪ღ♪░░░░░░░░░░░░░░░░░░░Lazy░Object░░░░░░░░░░░░░░░░♪ღ♪
@@ -162,12 +148,10 @@ SYNTHESIZE_ASC_PRIMITIVE_BLOCK			(overrideBlockPrimitiveSetter,	setOverrideBlock
 
   XCTAssertTrue([lazy isKindOfClass:NSString.class], @"Should be lazy init NSString");
 }
-
 - (void) testNonDefaultLazyObject														{		id lazy = self.testClass.nonDefaultLazyObject;
 
   XCTAssertEqualObjects(lazy, @"foo", @"Didn't use non-default initialiser");
 }
-
 - (void) testNonInitialisedPrimitive {  XCTAssertTrue(self.testClass.primitive == 0, @"Non-initialised primitive should be zero");  }
 
 #pragma mark Associated dictionary
@@ -177,7 +161,6 @@ SYNTHESIZE_ASC_PRIMITIVE_BLOCK			(overrideBlockPrimitiveSetter,	setOverrideBlock
   XCTAssertNotNil(dictionary, @"Dictionary is nil");
   XCTAssertTrue( [dictionary isKindOfClass:NSMutableDictionary.class], @"Not mutable dictionary");
 }
-
 - (void) testSetGet																					{		NSString *value = @"foo", *key = @"bar"; self.dictionaryObject.associatedDictionary[key] = value;
 
   XCTAssertEqualObjects([self.dictionaryObject.associatedDictionary valueForKey:key], value, @"Not correct value");
@@ -185,7 +168,7 @@ SYNTHESIZE_ASC_PRIMITIVE_BLOCK			(overrideBlockPrimitiveSetter,	setOverrideBlock
 
 #pragma mark - ║▌║█║▌║▌││║▌║█║▌│║▌║█║▌║▌││║▌║  Blocks  ║▌║█║▌║▌││║▌║█║▌│║▌║█║▌║▌││║▌║
 
-- (void) testAssignWithBlocksSetter {
+- (void) testAssignWithBlocksSetter		{
 
   XCTAssertThrowsSpecificNamed(self.testClass.overrideAssignObj = kConstString, NSException,
                               @"setOverrideAssignObj:", @"Expected to raise an exception with the setter's name");
@@ -195,7 +178,7 @@ SYNTHESIZE_ASC_PRIMITIVE_BLOCK			(overrideBlockPrimitiveSetter,	setOverrideBlock
   XCTAssertThrowsSpecificNamed(foo = self.testClass.overrideAssignObj, NSException,
                               @"overrideAssignObj", @"Expected to raise an exception with the getter's name");
 }
-- (void) testObjectWithBlocksSetter {
+- (void) testObjectWithBlocksSetter		{
 
   XCTAssertThrowsSpecificNamed(self.testClass.overrideObj = kConstString, NSException,
                               @"setOverrideObj:", @"Expected to raise an exception with the setter's name");
@@ -228,12 +211,12 @@ SYNTHESIZE_ASC_PRIMITIVE_BLOCK			(overrideBlockPrimitiveSetter,	setOverrideBlock
 
 #pragma mark  ψ ︿_____︿_ψ_ ☼ Mainpulate values ψ ︿_____︿_ψ_ 
 
-- (void) testPrimitiveBlockOverrideValuePrimitives {
+- (void) testPrimitiveBlockOverrideValuePrimitives	{
 
 	self.testClass.overrideBlockPrimitiveGetter = 99;	XCTAssertTrue(self.testClass.overrideBlockPrimitiveGetter == 100, @"Should have incremented the value");
 	self.testClass.overrideBlockPrimitiveSetter = 50;	XCTAssertTrue(self.testClass.overrideBlockPrimitiveSetter == 49,	@"Should have decremented the value");
 }
-- (void) testBlockOverrideObjects {
+- (void) testBlockOverrideObjects										{
 
   self.testClass.overrideObjBlockGetter = @"bar";		XCTAssertEqualObjects(self.testClass.overrideObjBlockGetter, @"foo", @"Should have used the overridden value");
   self.testClass.overrideObjBlockSetter = @"cat";		XCTAssertEqualObjects(self.testClass.overrideObjBlockSetter, @"foo", @"Should have used the overridden value");

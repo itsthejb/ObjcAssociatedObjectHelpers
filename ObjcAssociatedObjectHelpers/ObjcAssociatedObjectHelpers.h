@@ -34,6 +34,27 @@
 @interface NSObject (AssociatedDictionary) @property (readonly) NSMutableDictionary *associatedDictionary; @end
 
 
+/** All the macros have a `_BLOCK` suffix companion which takes a `dispatch_block_t`-type void block in the format 
+
+		void(^block)()
+		
+	for the getter, AND setter (if available). This allows additional code to be run in the accessors, similar to overriding an accessor.
+
+	@warning  since these are preprocessor macros, it's not possible to pass `nil` to any of these macros. Instead, pass an empty block; `^{}`.
+
+	@discussion In the context of the macro, the passed setter value, or the current associated value will be available as the symbol `value`!Its type will be appropriate to the context in which the macro was declared. `value` is always declared with the `__block` attribute and so can be modified inside the block. Note that this is a little cumbersome since, *as far as I know*, there is no way to specify block parameter types in a macro and have the `value` variable passed explicitly into the block. If there is a way, [I'd love to here about it](mailto:joncrooke@gmail.com).
+	
+	    SYNTHESIZE_ASC_OBJ					(               object, setObject									);    Most basic form.  Only objects!
+			SYNTHESIZE_ASC_OBJ_LAZY			(						lazyObject,	NSString.class						);
+			SYNTHESIZE_ASC_OBJ_ASSIGN		(						 assignObj,	setAssignObj							);
+			SYNTHESIZE_ASC_OBJ_LAZY_EXP	( nonDefaultLazyObject,	@"foo"										);
+			SYNTHESIZE_ASC_OBJ					(      readWriteObject,	setReadWriteObject				);
+			SYNTHESIZE_ASC_PRIMITIVE		(            primitive,	setPrimitive, NSUInteger	);
+			SYNTHESIZE_ASC_PRIMITIVE		(            structure,	setStructure, TestStruct	);
+      SYNTHESIZE_ASC_CAST     		(               object,	setOject, cast            );
+
+*/
+
 # /**--/\/--/\/--/\/--/\/--/\/--/\/--/\/--/\/--/\/--/\/--/\/--/\/--\*/	pragma mark Assign readwrite
 
 #define SYNTHESIZE_ASC_OBJ_ASSIGN(getterName, setterName) \
@@ -55,6 +76,12 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName);																\
 
 # /** -<<O>>--<<O>>--<<O>>--<<O>>--<<O>>--<<O>>--<<O>>--<<O>>--<<O>>-*/	pragma mark Readwrite Object
 
+/** Synthesize a getter and setter for a read/write object property. 
+	@discussion If you would like to generate a read-only property with a private or protected setter then you can define this in another category, with the same name and type, but with a (readwrite) ualifier.  it can then be assigned a value (in init, etc.)
+	@param getterName Unquoted string that is the same as the property name declared in @interface.
+	@param setterName Unquoted string that is that will "set" your property, named in @interface.  ie. for property named "goal", "setGoal"
+*/
+
 #define SYNTHESIZE_ASC_OBJ(getterName, setterName) \
   SYNTHESIZE_ASC_OBJ_BLOCK(getterName, setterName, ^{}, ^{})
 
@@ -74,6 +101,12 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName); 																			  
 
 #/** .*O*.*O*.*O*.*O*.*O*.*O*.*O*.*O*.*O*.*O*.*O*.*O*.*O*.*O*.*O*.*O*.*/ pragma mark Lazy readonly object
 
+/**
+4. `SYNTHESIZE_ASC_OBJ_LAZY_EXP(getterName, initExpression)` - Synthesize a read-only object that in initialized lazily, with the provided initialiser Expression. For example;
+
+		SYNTHESIZE_ASC_OBJ_LAZY_EXP(nonDefaultLazyObject, [NSString stringWithFormat:@"foo"])	 
+	Uses the expression `[NSString stringWithFormat:@"foo"]` to initialise the object. Note that `SYNTHESIZE_ASC_OBJ_LAZY` uses this macro with `[class.alloc init]`.
+*/
 #define SYNTHESIZE_ASC_OBJ_LAZY_EXP(getterName, initExpression) \
   SYNTHESIZE_ASC_OBJ_LAZY_EXP_BLOCK(getterName, initExpression, ^{})
 
@@ -91,6 +124,9 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName); 														  \
   return value; 																																		    \
 }
 
+/**
+3. `SYNTHESIZE_ASC_OBJ_LAZY(getterName, class)` - Synthesize a read-only object that in initialized lazily. The object's class must be provided so that an object can be initialized (with `alloc/init`) on first access.
+*/
 // Use default initialiser
 #define SYNTHESIZE_ASC_OBJ_LAZY(getterName, class) \
   SYNTHESIZE_ASC_OBJ_LAZY_EXP_BLOCK(getterName, [class.alloc init], ^{})
@@ -100,6 +136,10 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName); 														  \
 
 
 # /** -=*****=-.-=*****=-.-=*****=-.-=*****=-.-=*****=-.-=*****=-.*/		pragma mark Primitive
+
+/**
+2. `SYNTHESIZE_ASC_PRIMITIVE(getterName, setterName, type)` - Synthesize for any kind of primitive object. Any type supported by the `@encode()` operator is supported. So that *should* be everything…?
+*/
 
 #define SYNTHESIZE_ASC_PRIMITIVE(getterName, setterName, type) \
   SYNTHESIZE_ASC_PRIMITIVE_BLOCK(getterName, setterName, type, ^{}, ^{})
@@ -120,3 +160,25 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName);																			\
   return value; 																																		            \
 }
 
+
+#pragma todo
+// FIX DOCS
+# /** -<<O>>--<<O>>--<<O>>--<<O>>--<<O>>--<<O>>--<<O>>--<<O>>--<<O>>-*/	pragma mark Readwrite Object
+
+/** Synthesize a getter and setter for a read/write object property. 
+	@discussion If you would like to generate a read-only property with a private or protected setter then you can define this in another category, with the same name and type, but with a (readwrite) ualifier.  it can then be assigned a value (in init, etc.)
+	@param getterName Unquoted string that is the same as the property name declared in @interface.
+	@param setterName Unquoted string that is that will "set" your property, named in @interface.  ie. for property named "goal", "setGoal"
+*/
+
+#define SYNTHESIZE_ASC_CAST(getterName, setterName, casting) \
+static void* getterName##Key = OBJC_ASC_QUOTE(getterName);                                                \
+- (void)setterName:(casting)__newValue {                                                                  \
+  objc_AssociationPolicy policy =                                                                         \
+  [__newValue conformsToProtocol:@protocol(NSCopying)] ? OBJC_ASSOCIATION_COPY : OBJC_ASSOCIATION_RETAIN; \
+  @synchronized(self) { objc_setAssociatedObject(self, getterName##Key, __newValue, policy); }            \
+}                                                                                                         \
+- (casting) getterName { __block id value = nil;                                                          \
+  @synchronized(self) { value = objc_getAssociatedObject(self, getterName##Key); };                       \
+  return value;                                                                                           \
+}
