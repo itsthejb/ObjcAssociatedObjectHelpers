@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B75995371FA4BF5AF00B6D6 /* libPods-ObjcAssociatedObjectHelpersTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 510A0A5EEF4A43AEB1DFC61C /* libPods-ObjcAssociatedObjectHelpersTests.a */; };
 		4918B9AF168498F000D4EAC4 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF15A1619FB2C009D9F9B /* SenTestingKit.framework */; };
 		4918B9B2168498F000D4EAC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF0F61619F565009D9F9B /* Foundation.framework */; };
 		4918B9C11684991B00D4EAC4 /* NSObject+AssociatedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */; };
@@ -17,6 +18,7 @@
 		49AEF1671619FB2C009D9F9B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49AEF1651619FB2C009D9F9B /* InfoPlist.strings */; };
 		49AEF16A1619FB2C009D9F9B /* UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AEF1691619FB2C009D9F9B /* UnitTests.m */; };
 		49BF24A8161B0805000B1590 /* NSObject+AssociatedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */; };
+		F722B1E555F9485C84EEAD16 /* libPods-ObjcAssociatedObjectHelpersLibTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 933FFC6B1F1A4F19AA34B2F6 /* libPods-ObjcAssociatedObjectHelpersLibTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -50,6 +52,11 @@
 		49AEF1691619FB2C009D9F9B /* UnitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnitTests.m; sourceTree = "<group>"; };
 		49AEF16B1619FB2C009D9F9B /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
 		49BF24AA161B0903000B1590 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		49F709DD18B4EE3500C1AA6B /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		4E9FE32B24CF45AFADC4F05A /* Pods-ObjcAssociatedObjectHelpersLibTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjcAssociatedObjectHelpersLibTests.xcconfig"; path = "Pods/Pods-ObjcAssociatedObjectHelpersLibTests.xcconfig"; sourceTree = "<group>"; };
+		510A0A5EEF4A43AEB1DFC61C /* libPods-ObjcAssociatedObjectHelpersTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ObjcAssociatedObjectHelpersTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		868FCA279D5B4EA8909B02A1 /* Pods-ObjcAssociatedObjectHelpersTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjcAssociatedObjectHelpersTests.xcconfig"; path = "Pods/Pods-ObjcAssociatedObjectHelpersTests.xcconfig"; sourceTree = "<group>"; };
+		933FFC6B1F1A4F19AA34B2F6 /* libPods-ObjcAssociatedObjectHelpersLibTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ObjcAssociatedObjectHelpersLibTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +66,7 @@
 			files = (
 				4918B9AF168498F000D4EAC4 /* SenTestingKit.framework in Frameworks */,
 				4918B9B2168498F000D4EAC4 /* Foundation.framework in Frameworks */,
+				F722B1E555F9485C84EEAD16 /* libPods-ObjcAssociatedObjectHelpersLibTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +91,7 @@
 			files = (
 				499C34C7161AFD7200BA2AC9 /* Foundation.framework in Frameworks */,
 				49AEF15B1619FB2C009D9F9B /* SenTestingKit.framework in Frameworks */,
+				1B75995371FA4BF5AF00B6D6 /* libPods-ObjcAssociatedObjectHelpersTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,9 +105,11 @@
 				49AEF1621619FB2C009D9F9B /* UnitTests */,
 				49AEF0F51619F565009D9F9B /* Frameworks */,
 				49AEF0F31619F565009D9F9B /* Products */,
+				49F709DE18B4EE4900C1AA6B /* Cocoapods */,
 				49BF24AA161B0903000B1590 /* README.md */,
 				49AD1B7816C294A60061BDC1 /* LICENSE.txt */,
-				49AD1B7716C293960061BDC1 /* ObjcAssociatedObjectHelpers.podspec */,
+				4E9FE32B24CF45AFADC4F05A /* Pods-ObjcAssociatedObjectHelpersLibTests.xcconfig */,
+				868FCA279D5B4EA8909B02A1 /* Pods-ObjcAssociatedObjectHelpersTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,6 +129,8 @@
 			children = (
 				49AEF0F61619F565009D9F9B /* Foundation.framework */,
 				49AEF15A1619FB2C009D9F9B /* SenTestingKit.framework */,
+				933FFC6B1F1A4F19AA34B2F6 /* libPods-ObjcAssociatedObjectHelpersLibTests.a */,
+				510A0A5EEF4A43AEB1DFC61C /* libPods-ObjcAssociatedObjectHelpersTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -162,6 +175,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		49F709DE18B4EE4900C1AA6B /* Cocoapods */ = {
+			isa = PBXGroup;
+			children = (
+				49F709DD18B4EE3500C1AA6B /* Podfile */,
+				49AD1B7716C293960061BDC1 /* ObjcAssociatedObjectHelpers.podspec */,
+			);
+			name = Cocoapods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -179,10 +201,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4918B9BF168498F000D4EAC4 /* Build configuration list for PBXNativeTarget "ObjcAssociatedObjectHelpersLibTests" */;
 			buildPhases = (
+				FD8A5C19211C488095781D47 /* Check Pods Manifest.lock */,
 				4918B9A9168498F000D4EAC4 /* Sources */,
 				4918B9AA168498F000D4EAC4 /* Frameworks */,
 				4918B9AB168498F000D4EAC4 /* Resources */,
 				4918B9AC168498F000D4EAC4 /* ShellScript */,
+				611607D142E84A119575E1B3 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -232,10 +256,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 49AEF16E1619FB2C009D9F9B /* Build configuration list for PBXNativeTarget "ObjcAssociatedObjectHelpersTests" */;
 			buildPhases = (
+				E167EB9E514845CB9776CDC3 /* Check Pods Manifest.lock */,
 				49AEF1541619FB2C009D9F9B /* Sources */,
 				49AEF1551619FB2C009D9F9B /* Frameworks */,
 				49AEF1561619FB2C009D9F9B /* Resources */,
 				49AEF1571619FB2C009D9F9B /* ShellScript */,
+				4CF42B5509C247958EE47C87 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -327,6 +353,66 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+		4CF42B5509C247958EE47C87 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-ObjcAssociatedObjectHelpersTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		611607D142E84A119575E1B3 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-ObjcAssociatedObjectHelpersLibTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E167EB9E514845CB9776CDC3 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FD8A5C19211C488095781D47 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -378,6 +464,7 @@
 /* Begin XCBuildConfiguration section */
 		4918B9BD168498F000D4EAC4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E9FE32B24CF45AFADC4F05A /* Pods-ObjcAssociatedObjectHelpersLibTests.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
@@ -385,6 +472,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = "ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -394,6 +482,7 @@
 		};
 		4918B9BE168498F000D4EAC4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E9FE32B24CF45AFADC4F05A /* Pods-ObjcAssociatedObjectHelpersLibTests.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
@@ -401,6 +490,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = "ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -418,7 +508,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers-Prefix.pch";
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -434,7 +523,6 @@
 				DSTROOT = /tmp/ObjcAssociatedObjectHelpers.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers-Prefix.pch";
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -545,13 +633,14 @@
 		};
 		49AEF16C1619FB2C009D9F9B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 868FCA279D5B4EA8909B02A1 /* Pods-ObjcAssociatedObjectHelpersTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
-				OTHER_LDFLAGS = "-ObjC";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = octest;
@@ -560,13 +649,14 @@
 		};
 		49AEF16D1619FB2C009D9F9B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 868FCA279D5B4EA8909B02A1 /* Pods-ObjcAssociatedObjectHelpersTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
-				OTHER_LDFLAGS = "-ObjC";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = octest;
