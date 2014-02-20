@@ -11,12 +11,12 @@
 		4918B9AF168498F000D4EAC4 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF15A1619FB2C009D9F9B /* SenTestingKit.framework */; };
 		4918B9B2168498F000D4EAC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF0F61619F565009D9F9B /* Foundation.framework */; };
 		4918B9C11684991B00D4EAC4 /* NSObject+AssociatedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */; };
-		4918B9C31684991B00D4EAC4 /* UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AEF1691619FB2C009D9F9B /* UnitTests.m */; };
 		499C34C7161AFD7200BA2AC9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF0F61619F565009D9F9B /* Foundation.framework */; };
 		49AD1B5716C282A10061BDC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF0F61619F565009D9F9B /* Foundation.framework */; };
 		49AEF15B1619FB2C009D9F9B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF15A1619FB2C009D9F9B /* SenTestingKit.framework */; };
 		49AEF1671619FB2C009D9F9B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49AEF1651619FB2C009D9F9B /* InfoPlist.strings */; };
-		49AEF16A1619FB2C009D9F9B /* UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AEF1691619FB2C009D9F9B /* UnitTests.m */; };
+		49BC3AB818B61B7C00679CF8 /* TestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DEFFE918B6172E00E10224 /* TestClass.m */; };
+		49BC3AB918B61B7D00679CF8 /* TestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DEFFE918B6172E00E10224 /* TestClass.m */; };
 		49BF24A8161B0805000B1590 /* NSObject+AssociatedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */; };
 		49DEFFE618B615BC00E10224 /* Specs.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DEFFE518B615BC00E10224 /* Specs.m */; };
 		49DEFFE718B615BC00E10224 /* Specs.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DEFFE518B615BC00E10224 /* Specs.m */; };
@@ -36,7 +36,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4918B9AE168498F000D4EAC4 /* ObjcAssociatedObjectHelpersLibTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObjcAssociatedObjectHelpersLibTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4918B9AE168498F000D4EAC4 /* ObjcAssociatedObjectHelpersLibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObjcAssociatedObjectHelpersLibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		499C34B0161AF68000BA2AC9 /* NSObject+AssociatedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AssociatedDictionary.h"; sourceTree = "<group>"; };
 		499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AssociatedDictionary.m"; sourceTree = "<group>"; };
 		49AD1B5616C282A10061BDC1 /* libObjcAssociatedObjectHelpersLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libObjcAssociatedObjectHelpersLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,16 +46,17 @@
 		49AEF0FC1619F565009D9F9B /* ObjcAssociatedObjectHelpers-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ObjcAssociatedObjectHelpers-Prefix.pch"; path = "ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers-Prefix.pch"; sourceTree = "<group>"; };
 		49AEF0FD1619F565009D9F9B /* ObjcAssociatedObjectHelpers.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; name = ObjcAssociatedObjectHelpers.1; path = ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers.1; sourceTree = "<group>"; };
 		49AEF10C1619F5E8009D9F9B /* ObjcAssociatedObjectHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjcAssociatedObjectHelpers.h; sourceTree = "<group>"; };
-		49AEF1591619FB2C009D9F9B /* ObjcAssociatedObjectHelpersTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObjcAssociatedObjectHelpersTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		49AEF1591619FB2C009D9F9B /* ObjcAssociatedObjectHelpersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObjcAssociatedObjectHelpersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AEF15A1619FB2C009D9F9B /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		49AEF1641619FB2C009D9F9B /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
 		49AEF1661619FB2C009D9F9B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		49AEF1691619FB2C009D9F9B /* UnitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnitTests.m; sourceTree = "<group>"; };
 		49AEF16B1619FB2C009D9F9B /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
 		49BF24AA161B0903000B1590 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		49DEFFE318B603B200E10224 /* ObjcAssociatedObjectHelpers.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = ObjcAssociatedObjectHelpers.podspec; sourceTree = "<group>"; };
 		49DEFFE418B603B200E10224 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		49DEFFE518B615BC00E10224 /* Specs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Specs.m; sourceTree = "<group>"; };
+		49DEFFE818B6172E00E10224 /* TestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestClass.h; sourceTree = "<group>"; };
+		49DEFFE918B6172E00E10224 /* TestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestClass.m; sourceTree = "<group>"; };
 		4E9FE32B24CF45AFADC4F05A /* Pods-ObjcAssociatedObjectHelpersLibTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjcAssociatedObjectHelpersLibTests.xcconfig"; path = "Pods/Pods-ObjcAssociatedObjectHelpersLibTests.xcconfig"; sourceTree = "<group>"; };
 		510A0A5EEF4A43AEB1DFC61C /* libPods-ObjcAssociatedObjectHelpersTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ObjcAssociatedObjectHelpersTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		868FCA279D5B4EA8909B02A1 /* Pods-ObjcAssociatedObjectHelpersTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjcAssociatedObjectHelpersTests.xcconfig"; path = "Pods/Pods-ObjcAssociatedObjectHelpersTests.xcconfig"; sourceTree = "<group>"; };
@@ -119,8 +120,8 @@
 		49AEF0F31619F565009D9F9B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				49AEF1591619FB2C009D9F9B /* ObjcAssociatedObjectHelpersTests.octest */,
-				4918B9AE168498F000D4EAC4 /* ObjcAssociatedObjectHelpersLibTests.octest */,
+				49AEF1591619FB2C009D9F9B /* ObjcAssociatedObjectHelpersTests.xctest */,
+				4918B9AE168498F000D4EAC4 /* ObjcAssociatedObjectHelpersLibTests.xctest */,
 				49AD1B5616C282A10061BDC1 /* libObjcAssociatedObjectHelpersLib.a */,
 				49AD1B6716C2838C0061BDC1 /* ObjcAssociatedObjectHelpers.framework */,
 			);
@@ -162,8 +163,9 @@
 		49AEF1621619FB2C009D9F9B /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				49AEF1691619FB2C009D9F9B /* UnitTests.m */,
 				49DEFFE518B615BC00E10224 /* Specs.m */,
+				49DEFFE818B6172E00E10224 /* TestClass.h */,
+				49DEFFE918B6172E00E10224 /* TestClass.m */,
 				49AEF1631619FB2C009D9F9B /* Supporting Files */,
 			);
 			path = UnitTests;
@@ -209,8 +211,8 @@
 				4918B9A9168498F000D4EAC4 /* Sources */,
 				4918B9AA168498F000D4EAC4 /* Frameworks */,
 				4918B9AB168498F000D4EAC4 /* Resources */,
-				4918B9AC168498F000D4EAC4 /* ShellScript */,
 				611607D142E84A119575E1B3 /* Copy Pods Resources */,
+				4918B9AC168498F000D4EAC4 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -218,7 +220,7 @@
 			);
 			name = ObjcAssociatedObjectHelpersLibTests;
 			productName = ObjcAssociatedObjectHelpersTestsiOS;
-			productReference = 4918B9AE168498F000D4EAC4 /* ObjcAssociatedObjectHelpersLibTests.octest */;
+			productReference = 4918B9AE168498F000D4EAC4 /* ObjcAssociatedObjectHelpersLibTests.xctest */;
 			productType = "com.apple.product-type.bundle";
 		};
 		49AD1B5516C282A10061BDC1 /* ObjcAssociatedObjectHelpersLib */ = {
@@ -264,8 +266,8 @@
 				49AEF1541619FB2C009D9F9B /* Sources */,
 				49AEF1551619FB2C009D9F9B /* Frameworks */,
 				49AEF1561619FB2C009D9F9B /* Resources */,
-				49AEF1571619FB2C009D9F9B /* ShellScript */,
 				4CF42B5509C247958EE47C87 /* Copy Pods Resources */,
+				49AEF1571619FB2C009D9F9B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -273,7 +275,7 @@
 			);
 			name = ObjcAssociatedObjectHelpersTests;
 			productName = UnitTests;
-			productReference = 49AEF1591619FB2C009D9F9B /* ObjcAssociatedObjectHelpersTests.octest */;
+			productReference = 49AEF1591619FB2C009D9F9B /* ObjcAssociatedObjectHelpersTests.xctest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -424,9 +426,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49BC3AB818B61B7C00679CF8 /* TestClass.m in Sources */,
 				49DEFFE618B615BC00E10224 /* Specs.m in Sources */,
 				4918B9C11684991B00D4EAC4 /* NSObject+AssociatedDictionary.m in Sources */,
-				4918B9C31684991B00D4EAC4 /* UnitTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,9 +450,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49BC3AB918B61B7D00679CF8 /* TestClass.m in Sources */,
 				49DEFFE718B615BC00E10224 /* Specs.m in Sources */,
 				49BF24A8161B0805000B1590 /* NSObject+AssociatedDictionary.m in Sources */,
-				49AEF16A1619FB2C009D9F9B /* UnitTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,7 +484,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				WRAPPER_EXTENSION = octest;
+				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
 		};
@@ -500,7 +502,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
-				WRAPPER_EXTENSION = octest;
+				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
@@ -649,7 +651,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				WRAPPER_EXTENSION = octest;
+				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
 		};
@@ -665,7 +667,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				WRAPPER_EXTENSION = octest;
+				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
