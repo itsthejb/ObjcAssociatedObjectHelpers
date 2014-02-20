@@ -1,11 +1,12 @@
 ObjcAssociatedObjectHelpers
-==========================
+===========================
 
 What's New
 ----------
 
 **v1.2.0**
-* Now sends KVO notifications for all macros, including `NSManagedObject` accessor notifications. Of course, should have done this from the very beginning, but that's foresight for you ;)
+
+* Now sends KVO notifications for all macros. Oversight on previous releases.
 
 **v1.1.2**
 
@@ -17,7 +18,7 @@ What's New
 
 **v1.1**
 
-* Pass a block to the macros in order to *override* their default behaviour.
+* Pass a block to the macros in order to modify setter values or getter return values in some way, as well as other custom code.
 
 **v1.0**
 
@@ -46,7 +47,7 @@ Introduction
 Notes
 -----
 1. **getter / setter names** - There is no way to manipulate strings in the preprocessor so that standard getter and setter names can easily be generated from a single token. As such, the read/write macros require both names to be provided manually.
-2. **ARC** - Clang ARC is currently required, although it wouldn't be hard to also support manual reference counting.
+2. **Memory Management** - Works identically under ARC and manually reference counted code.
 3. **Property memory management semantics** - Since properties use associated objects for storage, any property setter semantics can be used:
 
 		@property () id myProperty;		
