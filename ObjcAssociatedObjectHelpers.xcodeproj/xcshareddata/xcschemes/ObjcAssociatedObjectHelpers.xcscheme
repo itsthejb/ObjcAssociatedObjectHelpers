@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0460"
+   LastUpgradeVersion = "0500"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "49AEF1581619FB2C009D9F9B"
-               BuildableName = "ObjcAssociatedObjectHelpersTests.octest"
+               BuildableName = "ObjcAssociatedObjectHelpersTests.xctest"
                BlueprintName = "ObjcAssociatedObjectHelpersTests"
                ReferencedContainer = "container:ObjcAssociatedObjectHelpers.xcodeproj">
             </BuildableReference>
