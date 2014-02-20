@@ -112,8 +112,6 @@
 				49F709DE18B4EE4900C1AA6B /* Cocoapods */,
 				49BF24AA161B0903000B1590 /* README.md */,
 				49AD1B7816C294A60061BDC1 /* LICENSE.txt */,
-				4E9FE32B24CF45AFADC4F05A /* Pods-ObjcAssociatedObjectHelpersLibTests.xcconfig */,
-				868FCA279D5B4EA8909B02A1 /* Pods-ObjcAssociatedObjectHelpersTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -184,8 +182,10 @@
 		49F709DE18B4EE4900C1AA6B /* Cocoapods */ = {
 			isa = PBXGroup;
 			children = (
-				49DEFFE318B603B200E10224 /* ObjcAssociatedObjectHelpers.podspec */,
 				49DEFFE418B603B200E10224 /* Podfile */,
+				49DEFFE318B603B200E10224 /* ObjcAssociatedObjectHelpers.podspec */,
+				4E9FE32B24CF45AFADC4F05A /* Pods-ObjcAssociatedObjectHelpersLibTests.xcconfig */,
+				868FCA279D5B4EA8909B02A1 /* Pods-ObjcAssociatedObjectHelpersTests.xcconfig */,
 			);
 			name = Cocoapods;
 			sourceTree = "<group>";

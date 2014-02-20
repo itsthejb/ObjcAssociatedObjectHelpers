@@ -23,16 +23,14 @@
 //  SOFTWARE.
 
 #import "TestClass.h"
-
-static NSString *const kConstString = @"ConstString";
-
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#pragma mark Test Class
+#import "ReactiveCocoa.h"
 
 SpecBegin(Specs)
 
 __block TestClass *testClass;
 __block NSObject *dictionaryObject;
+
+NSString *const CONSTANT_STRING = @"ConstString";
 
 before(^{
   testClass = [[TestClass alloc] init];
@@ -66,8 +64,8 @@ describe(@"basic set / get", ^{
   });
 
   it(@"should assign a simple object", ^{
-    testClass.assignObj = kConstString;
-    expect(testClass.assignObj).to.equal(kConstString);
+    testClass.assignObj = CONSTANT_STRING;
+    expect(testClass.assignObj).to.equal(CONSTANT_STRING);
   });
 });
 
@@ -138,19 +136,19 @@ describe(@"associated dictionary", ^{
 
 describe(@"block feature", ^{
 
-  __block id variable = nil;
+  __block id object = nil;
   __block NSUInteger primitive = 0;
 
   describe(@"assign", ^{
     it(@"should execute the block with setter", ^{
       expect(^{
-        testClass.overrideAssignObj = kConstString;
+        testClass.overrideAssignObj = CONSTANT_STRING;
       }).to.raise(@"setOverrideAssignObj:");
     });
 
     it(@"should execute the block with getter", ^{
       expect(^{
-        variable = testClass.overrideAssignObj;
+        object = testClass.overrideAssignObj;
       }).to.raise(@"overrideAssignObj");
     });
   });
@@ -158,13 +156,13 @@ describe(@"block feature", ^{
   describe(@"retain", ^{
     it(@"should execute the block with setter", ^{
       expect(^{
-        testClass.overrideObj = kConstString;
+        testClass.overrideObj = CONSTANT_STRING;
       }).to.raise(@"setOverrideObj:");
     });
 
     it(@"should execute the block with getter", ^{
       expect(^{
-        variable = testClass.overrideObj;
+        object = testClass.overrideObj;
       }).to.raise(@"overrideObj");
     });
   });
@@ -172,7 +170,7 @@ describe(@"block feature", ^{
   describe(@"lazy getter", ^{
     it(@"should execute the block with getter", ^{
       expect(^{
-        variable = testClass.overrideObjLazy;
+        object = testClass.overrideObjLazy;
       }).to.raise(@"overrideObjLazy");
     });
   });
@@ -180,7 +178,7 @@ describe(@"block feature", ^{
   describe(@"lazy getter with custom init", ^{
     it(@"should execute the block with getter", ^{
       expect(^{
-        variable = testClass.overrideObjLazyWithExpression;
+        object = testClass.overrideObjLazyWithExpression;
       }).to.raise(@"overrideObjLazyWithExpression");
     });
   });
@@ -224,7 +222,17 @@ describe(@"block feature", ^{
         expect(testClass.overrideObjBlockSetter).to.equal(@"foo");
       });
     });
+  });
+});
 
+describe(@"KVO", ^{
+
+  it(@"should set kvo notifications with setter", ^AsyncBlock {
+    [[[RACObserve(testClass, readWriteObject) skip:1] take:1] subscribeNext:^(id x) {
+      expect(x).to.equal(@"1234");
+      done();
+    }];
+    testClass.readWriteObject = @"1234";
   });
 
 });
