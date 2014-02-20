@@ -50,7 +50,7 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #define _OBJC_ASC_CHECK_AND_PERFORM(selectorName, value) {\
   SEL __checkSel = NSSelectorFromString(selectorName); \
-  if ([self respondsToSelector:@selector(__checkSel)]) { \
+  if ([self respondsToSelector:__checkSel]) { \
     _Pragma ("clang diagnostic push") \
     _Pragma ("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
     [self performSelector:__checkSel withObject: value]; \
