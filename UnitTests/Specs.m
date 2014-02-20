@@ -225,14 +225,30 @@ describe(@"block feature", ^{
   });
 });
 
-describe(@"KVO", ^{
+describe(@"KVO notifications", ^{
 
-  it(@"should set kvo notifications with setter", ^AsyncBlock {
+  it(@"should send kvo notifications with object retain", ^AsyncBlock {
     [[[RACObserve(testClass, readWriteObject) skip:1] take:1] subscribeNext:^(id x) {
       expect(x).to.equal(@"1234");
       done();
     }];
     testClass.readWriteObject = @"1234";
+  });
+
+  it(@"should send notifications with object assign", ^AsyncBlock {
+    [[[RACObserve(testClass, assignObj) skip:1] take:1] subscribeNext:^(id x) {
+      expect(x).to.equal(@"asdf");
+      done();
+    }];
+    testClass.assignObj = @"asdf";
+  });
+
+  it(@"should send notifications with primitive", ^AsyncBlock {
+    [[[RACObserve(testClass, primitive) skip:1] take:1] subscribeNext:^(id x) {
+      expect(x).to.equal(9675);
+      done();
+    }];
+    testClass.primitive = 9675;
   });
 
 });

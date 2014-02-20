@@ -139,7 +139,7 @@ static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
     value = objc_getAssociatedObject(self, getterName##Key); \
     if (!value) { \
       value = initExpression; \
-      _OBJC_ASC_WRAP_KVO_SETTER(getterName, objc_setAssociatedObject(self, getterName##Key, value, OBJC_ASSOCIATION_RETAIN)); \
+      _OBJC_ASC_WRAP_CORE_DATA_KVO_GETTER(getterName, objc_setAssociatedObject(self, getterName##Key, value, OBJC_ASSOCIATION_RETAIN)); \
     } \
   } \
   block(); \
