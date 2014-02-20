@@ -3,5 +3,12 @@
 //
 
 #ifdef __OBJC__
-    #import <Foundation/Foundation.h>
+  #import <Foundation/Foundation.h>
+
+  #define EXP_SHORTHAND
+  #import "Expecta.h"
+  #import "Specta.h"
+
+  #import "NSObject+AssociatedDictionary.h"
+  #import "ObjcAssociatedObjectHelpers.h"
 #endif
