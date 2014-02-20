@@ -67,14 +67,6 @@
   _OBJC_ASC_CHECK_AND_PERFORM(@"didChangeValueForKey:", @_OBJC_ASC_QUOTE(getterName))
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#pragma mark CoreData KVO access
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#define _OBJC_ASC_WRAP_CORE_DATA_KVO_GETTER(getterName, expression) \
-  _OBJC_ASC_CHECK_AND_PERFORM(@"willAccessValueForKey:", @_OBJC_ASC_QUOTE(getterName)) \
-  expression; \
-  _OBJC_ASC_CHECK_AND_PERFORM(@"didAccessValueForKey:", @_OBJC_ASC_QUOTE(getterName))
-
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #pragma mark Assign readwrite
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #define SYNTHESIZE_ASC_OBJ_ASSIGN(getterName, setterName) \
@@ -93,7 +85,7 @@ static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
 - (id) getterName { \
   __block id value = nil; \
   @synchronized(self) { \
-    _OBJC_ASC_WRAP_CORE_DATA_KVO_GETTER(getterName, value = objc_getAssociatedObject(self, getterName##Key)); \
+    value = objc_getAssociatedObject(self, getterName##Key); \
   }; \
   getterBlock(); \
   return value; \
@@ -119,7 +111,7 @@ static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
 - (id) getterName { \
   __block id value = nil; \
   @synchronized(self) { \
-    _OBJC_ASC_WRAP_CORE_DATA_KVO_GETTER(getterName, value = objc_getAssociatedObject(self, getterName##Key)); \
+    value = objc_getAssociatedObject(self, getterName##Key); \
   }; \
   getterBlock(); \
   return value; \
@@ -139,7 +131,7 @@ static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
     value = objc_getAssociatedObject(self, getterName##Key); \
     if (!value) { \
       value = initExpression; \
-      _OBJC_ASC_WRAP_CORE_DATA_KVO_GETTER(getterName, objc_setAssociatedObject(self, getterName##Key, value, OBJC_ASSOCIATION_RETAIN)); \
+      objc_setAssociatedObject(self, getterName##Key, value, OBJC_ASSOCIATION_RETAIN); \
     } \
   } \
   block(); \
@@ -172,7 +164,7 @@ static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
   __block type value; \
   memset(&value, 0, sizeof(type)); \
   @synchronized(self) { \
-    _OBJC_ASC_WRAP_CORE_DATA_KVO_GETTER(getterName, [objc_getAssociatedObject(self, getterName##Key) getValue:&value]); \
+    [objc_getAssociatedObject(self, getterName##Key) getValue:&value]; \
   } \
   getterBlock(); \
   return value; \
