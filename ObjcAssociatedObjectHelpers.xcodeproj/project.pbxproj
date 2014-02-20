@@ -39,7 +39,6 @@
 		499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AssociatedDictionary.m"; sourceTree = "<group>"; };
 		49AD1B5616C282A10061BDC1 /* libObjcAssociatedObjectHelpersLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libObjcAssociatedObjectHelpersLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AD1B6716C2838C0061BDC1 /* ObjcAssociatedObjectHelpers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ObjcAssociatedObjectHelpers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		49AD1B7716C293960061BDC1 /* ObjcAssociatedObjectHelpers.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = ObjcAssociatedObjectHelpers.podspec; sourceTree = "<group>"; };
 		49AD1B7816C294A60061BDC1 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		49AEF0F61619F565009D9F9B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		49AEF0FC1619F565009D9F9B /* ObjcAssociatedObjectHelpers-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ObjcAssociatedObjectHelpers-Prefix.pch"; path = "ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers-Prefix.pch"; sourceTree = "<group>"; };
@@ -52,7 +51,8 @@
 		49AEF1691619FB2C009D9F9B /* UnitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnitTests.m; sourceTree = "<group>"; };
 		49AEF16B1619FB2C009D9F9B /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
 		49BF24AA161B0903000B1590 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		49F709DD18B4EE3500C1AA6B /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		49DEFFE318B603B200E10224 /* ObjcAssociatedObjectHelpers.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = ObjcAssociatedObjectHelpers.podspec; sourceTree = "<group>"; };
+		49DEFFE418B603B200E10224 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		4E9FE32B24CF45AFADC4F05A /* Pods-ObjcAssociatedObjectHelpersLibTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjcAssociatedObjectHelpersLibTests.xcconfig"; path = "Pods/Pods-ObjcAssociatedObjectHelpersLibTests.xcconfig"; sourceTree = "<group>"; };
 		510A0A5EEF4A43AEB1DFC61C /* libPods-ObjcAssociatedObjectHelpersTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ObjcAssociatedObjectHelpersTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		868FCA279D5B4EA8909B02A1 /* Pods-ObjcAssociatedObjectHelpersTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjcAssociatedObjectHelpersTests.xcconfig"; path = "Pods/Pods-ObjcAssociatedObjectHelpersTests.xcconfig"; sourceTree = "<group>"; };
@@ -178,8 +178,8 @@
 		49F709DE18B4EE4900C1AA6B /* Cocoapods */ = {
 			isa = PBXGroup;
 			children = (
-				49F709DD18B4EE3500C1AA6B /* Podfile */,
-				49AD1B7716C293960061BDC1 /* ObjcAssociatedObjectHelpers.podspec */,
+				49DEFFE318B603B200E10224 /* ObjcAssociatedObjectHelpers.podspec */,
+				49DEFFE418B603B200E10224 /* Podfile */,
 			);
 			name = Cocoapods;
 			sourceTree = "<group>";

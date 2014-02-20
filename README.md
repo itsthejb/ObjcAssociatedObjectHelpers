@@ -4,6 +4,9 @@ ObjcAssociatedObjectHelpers
 What's New
 ----------
 
+**v1.2.0**
+* Now sends KVO notifications for all macros, including `NSManagedObject` accessor notifications. Of course, should have done this from the very beginning, but that's foresight for you ;)
+
 **v1.1.2**
 
 * Improved block macro value handling. See details below.

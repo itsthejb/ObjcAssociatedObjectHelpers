@@ -43,7 +43,36 @@
 #pragma mark Quotation helper
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #define __OBJC_ASC_QUOTE(x) #x
-#define OBJC_ASC_QUOTE(x) __OBJC_ASC_QUOTE(x)
+#define _OBJC_ASC_QUOTE(x) __OBJC_ASC_QUOTE(x)
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#pragma mark Dynamic perform selector helper
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#define _OBJC_ASC_CHECK_AND_PERFORM(selectorName, value) {\
+  SEL __checkSel = NSSelectorFromString(selectorName); \
+  if ([self respondsToSelector:@selector(__checkSel)]) { \
+    _Pragma ("clang diagnostic push") \
+    _Pragma ("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
+    [self performSelector:__checkSel withObject: value]; \
+    _Pragma ("clang diagnostic pop") \
+  } \
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#pragma mark KVO helper
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#define _OBJC_ASC_WRAP_KVO_SETTER(getterName, expression) \
+  _OBJC_ASC_CHECK_AND_PERFORM(@"willChangeValueForKey:", @_OBJC_ASC_QUOTE(getterName)) \
+  expression; \
+  _OBJC_ASC_CHECK_AND_PERFORM(@"didChangeValueForKey:", @_OBJC_ASC_QUOTE(getterName))
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#pragma mark CoreData KVO access
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#define _OBJC_ASC_WRAP_CORE_DATA_KVO_GETTER(getterName, expression) \
+  _OBJC_ASC_CHECK_AND_PERFORM(@"willAccessValueForKey:", @_OBJC_ASC_QUOTE(getterName)) \
+  expression; \
+  _OBJC_ASC_CHECK_AND_PERFORM(@"didAccessValueForKey:", @_OBJC_ASC_QUOTE(getterName))
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #pragma mark Assign readwrite
@@ -52,19 +81,19 @@
   SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(getterName, setterName, ^{}, ^{})
 
 #define SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(getterName, setterName, getterBlock, setterBlock) \
-static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
+static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
 - (void)setterName:(id)__newValue { \
   __block id value = __newValue; \
   setterBlock(); \
   objc_AssociationPolicy policy = OBJC_ASSOCIATION_ASSIGN; \
   @synchronized(self) { \
-    objc_setAssociatedObject(self, getterName##Key, value, policy); \
+    _OBJC_ASC_WRAP_KVO_SETTER(getterName, objc_setAssociatedObject(self, getterName##Key, value, policy)); \
   } \
 } \
 - (id) getterName { \
   __block id value = nil; \
   @synchronized(self) { \
-    value = objc_getAssociatedObject(self, getterName##Key); \
+    _OBJC_ASC_WRAP_CORE_DATA_KVO_GETTER(getterName, value = objc_getAssociatedObject(self, getterName##Key)); \
   }; \
   getterBlock(); \
   return value; \
@@ -77,20 +106,20 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
   SYNTHESIZE_ASC_OBJ_BLOCK(getterName, setterName, ^{}, ^{})
 
 #define SYNTHESIZE_ASC_OBJ_BLOCK(getterName, setterName, getterBlock, setterBlock) \
-static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
+static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
 - (void)setterName:(id)__newValue { \
   __block id value = __newValue; \
   setterBlock(); \
   objc_AssociationPolicy policy = \
   [value conformsToProtocol:@protocol(NSCopying)] ? OBJC_ASSOCIATION_COPY : OBJC_ASSOCIATION_RETAIN; \
   @synchronized(self) { \
-    objc_setAssociatedObject(self, getterName##Key, value, policy); \
+    _OBJC_ASC_WRAP_KVO_SETTER(getterName, objc_setAssociatedObject(self, getterName##Key, value, policy)); \
   } \
 } \
 - (id) getterName { \
   __block id value = nil; \
   @synchronized(self) { \
-    value = objc_getAssociatedObject(self, getterName##Key); \
+    _OBJC_ASC_WRAP_CORE_DATA_KVO_GETTER(getterName, value = objc_getAssociatedObject(self, getterName##Key)); \
   }; \
   getterBlock(); \
   return value; \
@@ -103,14 +132,14 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
   SYNTHESIZE_ASC_OBJ_LAZY_EXP_BLOCK(getterName, initExpression, ^{})
 
 #define SYNTHESIZE_ASC_OBJ_LAZY_EXP_BLOCK(getterName, initExpression, block) \
-static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
+static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
 - (id)getterName { \
   __block id value = nil; \
   @synchronized(self) { \
     value = objc_getAssociatedObject(self, getterName##Key); \
     if (!value) { \
       value = initExpression; \
-      objc_setAssociatedObject(self, getterName##Key, value, OBJC_ASSOCIATION_RETAIN); \
+      _OBJC_ASC_WRAP_KVO_SETTER(getterName, objc_setAssociatedObject(self, getterName##Key, value, OBJC_ASSOCIATION_RETAIN)); \
     } \
   } \
   block(); \
@@ -130,20 +159,20 @@ static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
   SYNTHESIZE_ASC_PRIMITIVE_BLOCK(getterName, setterName, type, ^{}, ^{})
 
 #define SYNTHESIZE_ASC_PRIMITIVE_BLOCK(getterName, setterName, type, getterBlock, setterBlock) \
-static void* getterName##Key = OBJC_ASC_QUOTE(getterName); \
+static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
 - (void)setterName:(type)__newValue { \
   __block type value = __newValue; \
   setterBlock(); \
   @synchronized(self) { \
-    objc_setAssociatedObject(self, getterName##Key, \
-      [NSValue value:&value withObjCType:@encode(type)], OBJC_ASSOCIATION_RETAIN); \
+      NSValue *nsValue = [NSValue value:&value withObjCType:@encode(type)]; \
+      _OBJC_ASC_WRAP_KVO_SETTER(getterName, objc_setAssociatedObject(self, getterName##Key, nsValue, OBJC_ASSOCIATION_RETAIN)); \
   } \
 } \
 - (type) getterName { \
   __block type value; \
   memset(&value, 0, sizeof(type)); \
   @synchronized(self) { \
-    [objc_getAssociatedObject(self, getterName##Key) getValue:&value]; \
+    _OBJC_ASC_WRAP_CORE_DATA_KVO_GETTER(getterName, [objc_getAssociatedObject(self, getterName##Key) getValue:&value]); \
   } \
   getterBlock(); \
   return value; \

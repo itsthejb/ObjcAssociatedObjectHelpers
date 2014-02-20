@@ -1,4 +1,3 @@
-
 target :ObjcAssociatedObjectHelpers, :exclusive => true do
 end
 
