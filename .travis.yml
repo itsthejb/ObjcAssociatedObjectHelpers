@@ -1,0 +1,11 @@
+language: objective-c
+
+xcode_workspace: ObjcAssociatedObjectHelpers.xcworkspace
+xcode_scheme: ObjcAssociatedObjectHelpersLib
+
+before_install:
+    - brew update
+    - brew install xctool
+    - pod install
+    
+script: xctool -workspace ObjcAssociatedObjectHelpers.xcworkspace -scheme ObjcAssociatedObjectHelpersLib test
