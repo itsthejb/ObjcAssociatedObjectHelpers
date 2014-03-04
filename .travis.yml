@@ -4,6 +4,7 @@ xcode_workspace: ObjcAssociatedObjectHelpers.xcworkspace
 xcode_scheme: ObjcAssociatedObjectHelpersLib
 
 before_install: 
+    - brew unlink xctool
     - brew install xctool --HEAD
     - export LC_ALL="en_US.UTF-8"
     - gem install cocoapods
