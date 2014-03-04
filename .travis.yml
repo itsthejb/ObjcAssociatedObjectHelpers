@@ -3,4 +3,6 @@ language: objective-c
 xcode_workspace: ObjcAssociatedObjectHelpers.xcworkspace
 xcode_scheme: ObjcAssociatedObjectHelpersLib
 
+before_install: gem install cocoapods
+
 script: xctool -workspace ObjcAssociatedObjectHelpers.xcworkspace -scheme ObjcAssociatedObjectHelpersLib test
