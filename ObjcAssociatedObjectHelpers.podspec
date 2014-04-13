@@ -14,5 +14,5 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.6'
   s.source_files = 'ObjcAssociatedObjectHelpers/**/*.{h,m}'
   s.frameworks = 'Foundation'
-  s.requires_arc = true
+  s.requires_arc = false
 end
