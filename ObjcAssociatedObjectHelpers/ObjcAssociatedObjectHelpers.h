@@ -27,11 +27,6 @@
 #import <TargetConditionals.h>
 #import <Availability.h>
 
-/** Need Clang ARC */
-#if !__has_feature(objc_arc)
-#error Associated object macros require Clang ARC to be enabled
-#endif
-
 /** Platform minimum requirements (associated object availability) */
 #if ( TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR ) && __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_4_0
 #error Associated references available from iOS 4.0
