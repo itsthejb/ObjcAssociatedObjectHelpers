@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1B75995371FA4BF5AF00B6D6 /* libPods-ObjcAssociatedObjectHelpersTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 510A0A5EEF4A43AEB1DFC61C /* libPods-ObjcAssociatedObjectHelpersTests.a */; };
-		4918B9AF168498F000D4EAC4 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF15A1619FB2C009D9F9B /* SenTestingKit.framework */; };
 		4918B9B2168498F000D4EAC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF0F61619F565009D9F9B /* Foundation.framework */; };
 		4918B9C11684991B00D4EAC4 /* NSObject+AssociatedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */; };
 		499C34C7161AFD7200BA2AC9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF0F61619F565009D9F9B /* Foundation.framework */; };
 		49AD1B5716C282A10061BDC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF0F61619F565009D9F9B /* Foundation.framework */; };
-		49AEF15B1619FB2C009D9F9B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF15A1619FB2C009D9F9B /* SenTestingKit.framework */; };
 		49AEF1671619FB2C009D9F9B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49AEF1651619FB2C009D9F9B /* InfoPlist.strings */; };
 		49BC3AB818B61B7C00679CF8 /* TestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DEFFE918B6172E00E10224 /* TestClass.m */; };
 		49BC3AB918B61B7D00679CF8 /* TestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DEFFE918B6172E00E10224 /* TestClass.m */; };
@@ -47,7 +45,6 @@
 		49AEF0FD1619F565009D9F9B /* ObjcAssociatedObjectHelpers.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; name = ObjcAssociatedObjectHelpers.1; path = ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers.1; sourceTree = "<group>"; };
 		49AEF10C1619F5E8009D9F9B /* ObjcAssociatedObjectHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjcAssociatedObjectHelpers.h; sourceTree = "<group>"; };
 		49AEF1591619FB2C009D9F9B /* ObjcAssociatedObjectHelpersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObjcAssociatedObjectHelpersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		49AEF15A1619FB2C009D9F9B /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		49AEF1641619FB2C009D9F9B /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
 		49AEF1661619FB2C009D9F9B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		49AEF16B1619FB2C009D9F9B /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
@@ -68,7 +65,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4918B9AF168498F000D4EAC4 /* SenTestingKit.framework in Frameworks */,
 				4918B9B2168498F000D4EAC4 /* Foundation.framework in Frameworks */,
 				F722B1E555F9485C84EEAD16 /* libPods-ObjcAssociatedObjectHelpersLibTests.a in Frameworks */,
 			);
@@ -94,7 +90,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				499C34C7161AFD7200BA2AC9 /* Foundation.framework in Frameworks */,
-				49AEF15B1619FB2C009D9F9B /* SenTestingKit.framework in Frameworks */,
 				1B75995371FA4BF5AF00B6D6 /* libPods-ObjcAssociatedObjectHelpersTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -130,7 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				49AEF0F61619F565009D9F9B /* Foundation.framework */,
-				49AEF15A1619FB2C009D9F9B /* SenTestingKit.framework */,
 				933FFC6B1F1A4F19AA34B2F6 /* libPods-ObjcAssociatedObjectHelpersLibTests.a */,
 				510A0A5EEF4A43AEB1DFC61C /* libPods-ObjcAssociatedObjectHelpersTests.a */,
 			);
@@ -276,7 +270,7 @@
 			name = ObjcAssociatedObjectHelpersTests;
 			productName = UnitTests;
 			productReference = 49AEF1591619FB2C009D9F9B /* ObjcAssociatedObjectHelpersTests.xctest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -284,7 +278,8 @@
 		49AEF0E91619F565009D9F9B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastTestingUpgradeCheck = 0510;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = jbsoft;
 			};
 			buildConfigurationList = 49AEF0EC1619F565009D9F9B /* Build configuration list for PBXProject "ObjcAssociatedObjectHelpers" */;
@@ -541,7 +536,6 @@
 		49AD1B7416C2838C0061BDC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
@@ -562,7 +556,6 @@
 		49AD1B7516C2838C0061BDC1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
@@ -583,7 +576,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = NO;
@@ -610,6 +602,7 @@
 				GENERATE_PROFILING_CODE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
 		};
@@ -617,7 +610,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = NO;
@@ -643,9 +635,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 868FCA279D5B4EA8909B02A1 /* Pods-ObjcAssociatedObjectHelpersTests.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
@@ -659,9 +653,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 868FCA279D5B4EA8909B02A1 /* Pods-ObjcAssociatedObjectHelpersTests.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
