@@ -14,22 +14,22 @@ typedef struct _testStruct {
 } TestStruct;
 
 @interface TestClass : NSObject
-@property () id object;
+@property (retain) id object;
 @property (assign) id assignObj;
 @property (readonly) id lazyObject;
 @property (readonly) id nonDefaultLazyObject;
-@property (readwrite) id readWriteObject;
+@property (readwrite, retain) id readWriteObject;
 @property (assign) NSUInteger primitive;
 @property (assign) TestStruct structure;
 // overrides
 @property (assign) id overrideAssignObj;
-@property (strong) id overrideObj;
+@property (retain) id overrideObj;
 @property (readonly) id overrideObjLazy;
 @property (readonly) id overrideObjLazyWithExpression;
 @property (assign) NSUInteger overridePrimitive;
 // Override value
-@property (strong) NSString *overrideObjBlockGetter;
-@property (strong) NSString *overrideObjBlockSetter;
+@property (retain) NSString *overrideObjBlockGetter;
+@property (retain) NSString *overrideObjBlockSetter;
 @property (assign) NSUInteger overrideBlockPrimitiveGetter;
 @property (assign) NSUInteger overrideBlockPrimitiveSetter;
 @end
