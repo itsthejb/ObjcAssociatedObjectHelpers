@@ -7,6 +7,11 @@ ObjcAssociatedObjectHelpers
 What's New
 ----------
 
+**v1.2.1**
+
+* ARC no longer a requirement (it never really was).
+* A bit of spring cleaning.
+
 **v1.2.0**
 
 * Now sends KVO notifications for all macros. Oversight on previous releases.
