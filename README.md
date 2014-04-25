@@ -4,6 +4,25 @@
 ObjcAssociatedObjectHelpers
 ===========================
 
+Introduction
+------------
+
+[Associated Objects, or Associated References](http://developer.apple.com/library/ios/#documentation/cocoa/conceptual/objectivec/Chapters/ocAssociativeReferences.html) were introduced in OS X 10.6 and iOS 4.0. This feature gives class instances a dictionary of sorts within which to store arbitrary objects using the runtime functions `objc_setAssociatedObject()` and `objc_getAssociatedObject()`. This project aims to make their use more convenient in a light-weight and thoroughly tested fashion.
+
+1. **Adding ivars to categories** - An unforunate drawback of Obj-C categories in the inability to add or synthesize ivars, even though properties can be added. Associated objects can be used to provide storage and overcome this limitation:
+		
+		@interface NSObject (MyCategory)
+		@property (strong) id myCategoryObject;
+		@end
+		
+		@implementation NSObject (MyCategory)
+		SYNTHESIZE_ASC_OBJ(myCategoryObject, setMyCategoryObject);
+		@end
+	
+2. **Abitrary dictionary for NSObject** - The `NSObject` category adds a lazily-initialized `NSMutableDictionary` to `NSObject`, allowing key-value pairs to be more conveniently associated with any `NSObject` subclass instance:
+
+		[self.associatedDictionary setValue:@"value" forKey:@"myKey"];
+
 What's New
 ----------
 
@@ -32,25 +51,6 @@ What's New
 
 * Static library target for iOS, and framework target for OS X.
 * [MIT Licensed](http://jc.mit-license.org/)
-
-Introduction
-------------
-
-[Associated Objects, or Associated References](http://developer.apple.com/library/ios/#documentation/cocoa/conceptual/objectivec/Chapters/ocAssociativeReferences.html) were introduced in OS X 10.6 and iOS 4.0. This feature gives class instances a dictionary of sorts within which to store arbitrary objects using the runtime functions `objc_setAssociatedObject()` and `objc_getAssociatedObject()`. This project aims to make their use more convenient in a light-weight and thoroughly tested fashion.
-
-1. **Adding ivars to categories** - An unforunate drawback of Obj-C categories in the inability to add or synthesize ivars, even though properties can be added. Associated objects can be used to provide storage and overcome this limitation:
-		
-		@interface NSObject (MyCategory)
-		@property (strong) id myCategoryObject;
-		@end
-		
-		@implementation NSObject (MyCategory)
-		SYNTHESIZE_ASC_OBJ(myCategoryObject, setMyCategoryObject);
-		@end
-	
-2. **Abitrary dictionary for NSObject** - The `NSObject` category adds a lazily-initialized `NSMutableDictionary` to `NSObject`, allowing key-value pairs to be more conveniently associated with any `NSObject` subclass instance:
-
-		[self.associatedDictionary setValue:@"value" forKey:@"myKey"];
 
 Notes
 -----
