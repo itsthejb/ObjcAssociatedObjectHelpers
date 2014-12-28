@@ -34,6 +34,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0949349ACA81F7E6E831EC8A /* Pods-ObjcAssociatedObjectHelpersTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjcAssociatedObjectHelpersTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ObjcAssociatedObjectHelpersTests/Pods-ObjcAssociatedObjectHelpersTests.release.xcconfig"; sourceTree = "<group>"; };
+		15F57830FA80C0B05DFFC53F /* Pods-ObjcAssociatedObjectHelpersLibTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjcAssociatedObjectHelpersLibTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ObjcAssociatedObjectHelpersLibTests/Pods-ObjcAssociatedObjectHelpersLibTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1CA662592899DE55A0584B20 /* Pods-ObjcAssociatedObjectHelpersLibTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjcAssociatedObjectHelpersLibTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ObjcAssociatedObjectHelpersLibTests/Pods-ObjcAssociatedObjectHelpersLibTests.release.xcconfig"; sourceTree = "<group>"; };
 		4918B9AE168498F000D4EAC4 /* ObjcAssociatedObjectHelpersLibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObjcAssociatedObjectHelpersLibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		499C34B0161AF68000BA2AC9 /* NSObject+AssociatedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AssociatedDictionary.h"; sourceTree = "<group>"; };
 		499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AssociatedDictionary.m"; sourceTree = "<group>"; };
@@ -54,10 +57,9 @@
 		49DEFFE518B615BC00E10224 /* Specs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Specs.m; sourceTree = "<group>"; };
 		49DEFFE818B6172E00E10224 /* TestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestClass.h; sourceTree = "<group>"; };
 		49DEFFE918B6172E00E10224 /* TestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestClass.m; sourceTree = "<group>"; };
-		4E9FE32B24CF45AFADC4F05A /* Pods-ObjcAssociatedObjectHelpersLibTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjcAssociatedObjectHelpersLibTests.xcconfig"; path = "Pods/Pods-ObjcAssociatedObjectHelpersLibTests.xcconfig"; sourceTree = "<group>"; };
 		510A0A5EEF4A43AEB1DFC61C /* libPods-ObjcAssociatedObjectHelpersTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ObjcAssociatedObjectHelpersTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		868FCA279D5B4EA8909B02A1 /* Pods-ObjcAssociatedObjectHelpersTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjcAssociatedObjectHelpersTests.xcconfig"; path = "Pods/Pods-ObjcAssociatedObjectHelpersTests.xcconfig"; sourceTree = "<group>"; };
 		933FFC6B1F1A4F19AA34B2F6 /* libPods-ObjcAssociatedObjectHelpersLibTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ObjcAssociatedObjectHelpersLibTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4E2F7B0969800D62492B95D /* Pods-ObjcAssociatedObjectHelpersTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjcAssociatedObjectHelpersTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ObjcAssociatedObjectHelpersTests/Pods-ObjcAssociatedObjectHelpersTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +106,7 @@
 				49AEF1621619FB2C009D9F9B /* UnitTests */,
 				49AEF0F51619F565009D9F9B /* Frameworks */,
 				49AEF0F31619F565009D9F9B /* Products */,
-				49F709DE18B4EE4900C1AA6B /* Cocoapods */,
+				762678B28CE1E38EC7D36C67 /* Pods */,
 				49BF24AA161B0903000B1590 /* README.md */,
 				49AD1B7816C294A60061BDC1 /* LICENSE.txt */,
 			);
@@ -173,15 +175,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		49F709DE18B4EE4900C1AA6B /* Cocoapods */ = {
+		762678B28CE1E38EC7D36C67 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				49DEFFE418B603B200E10224 /* Podfile */,
 				49DEFFE318B603B200E10224 /* ObjcAssociatedObjectHelpers.podspec */,
-				4E9FE32B24CF45AFADC4F05A /* Pods-ObjcAssociatedObjectHelpersLibTests.xcconfig */,
-				868FCA279D5B4EA8909B02A1 /* Pods-ObjcAssociatedObjectHelpersTests.xcconfig */,
+				15F57830FA80C0B05DFFC53F /* Pods-ObjcAssociatedObjectHelpersLibTests.debug.xcconfig */,
+				1CA662592899DE55A0584B20 /* Pods-ObjcAssociatedObjectHelpersLibTests.release.xcconfig */,
+				B4E2F7B0969800D62492B95D /* Pods-ObjcAssociatedObjectHelpersTests.debug.xcconfig */,
+				0949349ACA81F7E6E831EC8A /* Pods-ObjcAssociatedObjectHelpersTests.release.xcconfig */,
 			);
-			name = Cocoapods;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,7 +219,7 @@
 			name = ObjcAssociatedObjectHelpersLibTests;
 			productName = ObjcAssociatedObjectHelpersTestsiOS;
 			productReference = 4918B9AE168498F000D4EAC4 /* ObjcAssociatedObjectHelpersLibTests.xctest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		49AD1B5516C282A10061BDC1 /* ObjcAssociatedObjectHelpersLib */ = {
 			isa = PBXNativeTarget;
@@ -366,7 +370,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-ObjcAssociatedObjectHelpersTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ObjcAssociatedObjectHelpersTests/Pods-ObjcAssociatedObjectHelpersTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		611607D142E84A119575E1B3 /* Copy Pods Resources */ = {
@@ -381,7 +385,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-ObjcAssociatedObjectHelpersLibTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ObjcAssociatedObjectHelpersLibTests/Pods-ObjcAssociatedObjectHelpersLibTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E167EB9E514845CB9776CDC3 /* Check Pods Manifest.lock */ = {
@@ -467,7 +471,7 @@
 /* Begin XCBuildConfiguration section */
 		4918B9BD168498F000D4EAC4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4E9FE32B24CF45AFADC4F05A /* Pods-ObjcAssociatedObjectHelpersLibTests.xcconfig */;
+			baseConfigurationReference = 15F57830FA80C0B05DFFC53F /* Pods-ObjcAssociatedObjectHelpersLibTests.debug.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = "ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers-Info.plist";
@@ -481,7 +485,7 @@
 		};
 		4918B9BE168498F000D4EAC4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4E9FE32B24CF45AFADC4F05A /* Pods-ObjcAssociatedObjectHelpersLibTests.xcconfig */;
+			baseConfigurationReference = 1CA662592899DE55A0584B20 /* Pods-ObjcAssociatedObjectHelpersLibTests.release.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = "ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers-Info.plist";
@@ -625,7 +629,7 @@
 		};
 		49AEF16C1619FB2C009D9F9B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 868FCA279D5B4EA8909B02A1 /* Pods-ObjcAssociatedObjectHelpersTests.xcconfig */;
+			baseConfigurationReference = B4E2F7B0969800D62492B95D /* Pods-ObjcAssociatedObjectHelpersTests.debug.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -639,7 +643,7 @@
 		};
 		49AEF16D1619FB2C009D9F9B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 868FCA279D5B4EA8909B02A1 /* Pods-ObjcAssociatedObjectHelpersTests.xcconfig */;
+			baseConfigurationReference = 0949349ACA81F7E6E831EC8A /* Pods-ObjcAssociatedObjectHelpersTests.release.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

@@ -10,29 +10,29 @@
 	<string>ObjcAssociatedObjectHelpers</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>FA8118A3-32C6-4E9E-869A-5DFF9A578470</key>
+		<key>E442C8E0BC25456537E7E8CB9EB3893106F5AE72</key>
 		<string>https://github.com/itsthejb/ObjcAssociatedObjectHelpers.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>ObjcAssociatedObjectHelpers.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>FA8118A3-32C6-4E9E-869A-5DFF9A578470</key>
+		<key>E442C8E0BC25456537E7E8CB9EB3893106F5AE72</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/itsthejb/ObjcAssociatedObjectHelpers.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>FA8118A3-32C6-4E9E-869A-5DFF9A578470</string>
+	<string>E442C8E0BC25456537E7E8CB9EB3893106F5AE72</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>FA8118A3-32C6-4E9E-869A-5DFF9A578470</string>
+			<string>E442C8E0BC25456537E7E8CB9EB3893106F5AE72</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ObjcAssociatedObjectHelpers</string>
 		</dict>
