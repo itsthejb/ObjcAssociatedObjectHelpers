@@ -70,3 +70,11 @@ SYNTHESIZE_ASC_PRIMITIVE_BLOCK(overrideBlockPrimitiveSetter,
 }
 
 @end
+
+@implementation TestSubclass
+
+- (void)setObject:(id)object {
+	[super setObject:object];
+}
+
+@end

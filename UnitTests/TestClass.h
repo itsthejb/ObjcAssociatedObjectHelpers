@@ -33,3 +33,7 @@ typedef struct _testStruct {
 @property (assign) NSUInteger overrideBlockPrimitiveGetter;
 @property (assign) NSUInteger overrideBlockPrimitiveSetter;
 @end
+
+@interface TestSubclass : TestClass
+@end
+
