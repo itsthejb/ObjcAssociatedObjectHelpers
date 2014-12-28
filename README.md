@@ -109,10 +109,12 @@ Macros
 	* Note that since these are preprocessor macros, it's not possible to pass `nil` to any of these macros. Instead, pass an empty block; `^{}`. 
 	* In the context of the macro, the passed setter value, or the current associated value with be available as the symbol `value`. Its type will be appropriate to the context in which the macro was declared. `value` is always declared with the `__block` attribute and so can be modified inside the block. Note that this is a little cumbersome since, *as far as I know*, there is no way to specify block parameter types in a macro and have the `value` variable passed explicitly into the block. If there is a way, [I'd love to here about it](mailto:joncrooke@gmail.com).
 
-libextobjc
-----------
+If you like this, you might also like...
+----------------------------------------
 
-The excellent [libextobjc](https://github.com/jspahrsummers/libextobjc) library also has a similar single macro implementation of this concept. However primitives are not supported, as well as the wider range of features provided here. However, for its other features, please check it out ;)
+* **libextobjc** - The excellent [libextobjc](https://github.com/jspahrsummers/libextobjc) library also has a similar single macro implementation of this concept. However primitives are not supported, as well as the wider range of features provided here. However, for its other features, please check it out ;)
+* [FTGPropertyMaestro](https://github.com/onmyway133/FTGPropertyMaestro) is a runtime-based implementation with the same goal.
+* [Mattt Thompson has written an article on the subject of associated objects](http://nshipster.com/associated-objects/). He seems to find them a little controversial. Be your own judge.
 
 
 Todo
