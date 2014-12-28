@@ -227,28 +227,34 @@ describe(@"block feature", ^{
 
 describe(@"KVO notifications", ^{
 
-  it(@"should send kvo notifications with object retain", ^AsyncBlock {
-    [[[RACObserve(testClass, readWriteObject) skip:1] take:1] subscribeNext:^(id x) {
-      expect(x).to.equal(@"1234");
-      done();
-    }];
-    testClass.readWriteObject = @"1234";
+	it(@"should send kvo notifications with object retain", ^{
+		waitUntil(^(DoneCallback done) {
+			[[[RACObserve(testClass, readWriteObject) skip:1] take:1] subscribeNext:^(id x) {
+				expect(x).to.equal(@"1234");
+				done();
+			}];
+			testClass.readWriteObject = @"1234";
+		});
+	});
+
+  it(@"should send notifications with object assign", ^{
+		waitUntil(^(DoneCallback done) {
+			[[[RACObserve(testClass, assignObj) skip:1] take:1] subscribeNext:^(id x) {
+				expect(x).to.equal(@"asdf");
+				done();
+			}];
+			testClass.assignObj = @"asdf";
+		});
   });
 
-  it(@"should send notifications with object assign", ^AsyncBlock {
-    [[[RACObserve(testClass, assignObj) skip:1] take:1] subscribeNext:^(id x) {
-      expect(x).to.equal(@"asdf");
-      done();
-    }];
-    testClass.assignObj = @"asdf";
-  });
-
-  it(@"should send notifications with primitive", ^AsyncBlock {
-    [[[RACObserve(testClass, primitive) skip:1] take:1] subscribeNext:^(id x) {
-      expect(x).to.equal(9675);
-      done();
-    }];
-    testClass.primitive = 9675;
+  it(@"should send notifications with primitive", ^{
+		waitUntil(^(DoneCallback done) {
+			[[[RACObserve(testClass, primitive) skip:1] take:1] subscribeNext:^(id x) {
+				expect(x).to.equal(9675);
+				done();
+			}];
+			testClass.primitive = 9675;
+		});
   });
 
 });
