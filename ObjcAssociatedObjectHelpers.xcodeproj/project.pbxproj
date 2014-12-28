@@ -469,10 +469,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4E9FE32B24CF45AFADC4F05A /* Pods-ObjcAssociatedObjectHelpersLibTests.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = "ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
@@ -487,10 +483,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4E9FE32B24CF45AFADC4F05A /* Pods-ObjcAssociatedObjectHelpersLibTests.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = "ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
@@ -636,10 +628,6 @@
 			baseConfigurationReference = 868FCA279D5B4EA8909B02A1 /* Pods-ObjcAssociatedObjectHelpersTests.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-					"$(inherited)",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
@@ -654,10 +642,6 @@
 			baseConfigurationReference = 868FCA279D5B4EA8909B02A1 /* Pods-ObjcAssociatedObjectHelpersTests.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-					"$(inherited)",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UnitTests/UnitTests-Prefix.pch";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
