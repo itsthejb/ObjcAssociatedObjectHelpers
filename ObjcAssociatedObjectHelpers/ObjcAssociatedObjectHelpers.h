@@ -38,10 +38,13 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #pragma mark Weak reference containers
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-@interface __ObjCAscWeakContainerAtomic : NSObject
+@interface __ObjCAscWeakContainerBase : NSObject
++ (instancetype) wrapObject:(id) object;
+@end
+@interface __ObjCAscWeakContainerAtomic : __ObjCAscWeakContainerBase
 @property (atomic, weak) id _object;
 @end
-@interface __ObjCAscWeakContainerNonatomic : NSObject
+@interface __ObjCAscWeakContainerNonatomic : __ObjCAscWeakContainerBase
 @property (nonatomic, weak) id _object;
 @end
 
@@ -103,6 +106,32 @@ static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
 
 #define SYNTHESIZE_ASC_OBJ_BLOCK(getterName, setterName, getterBlock, setterBlock) \
 static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
+- (void)setterName:(id)__newValue { \
+__block id value = __newValue; \
+setterBlock(); \
+objc_AssociationPolicy policy = \
+[value conformsToProtocol:@protocol(NSCopying)] ? OBJC_ASSOCIATION_COPY : OBJC_ASSOCIATION_RETAIN; \
+@synchronized(self) { \
+_OBJC_ASC_WRAP_KVO_SETTER(getterName, objc_setAssociatedObject(self, getterName##Key, value, policy)); \
+} \
+} \
+- (id) getterName { \
+__block id value = nil; \
+@synchronized(self) { \
+value = objc_getAssociatedObject(self, getterName##Key); \
+}; \
+getterBlock(); \
+return value; \
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#pragma mark Readwrite Weak Object
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#define SYNTHESIZE_ASC_OBJ_WEAK(getterName, setterName) \
+	SYNTHESIZE_ASC_OBJ_WEAK_BLOCK(getterName, setterName, ^{}, ^{})
+
+#define SYNTHESIZE_ASC_OBJ_WEAK_BLOCK(getterName, setterName, getterBlock, setterBlock) \
+static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
 - (void)setterName:(id)value { \
   value = setterBlock(value); \
   objc_AssociationPolicy policy = \
@@ -115,6 +144,7 @@ static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
   id value = nil; \
   @synchronized(self) { \
     value = objc_getAssociatedObject(self, getterName##Key); \
+}; \
   }; \
 	return getterBlock(value); \
 }
