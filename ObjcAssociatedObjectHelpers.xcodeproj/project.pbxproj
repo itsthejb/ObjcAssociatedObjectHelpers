@@ -11,6 +11,7 @@
 		4918B9B2168498F000D4EAC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF0F61619F565009D9F9B /* Foundation.framework */; };
 		4918B9C11684991B00D4EAC4 /* NSObject+AssociatedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */; };
 		499C34C7161AFD7200BA2AC9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF0F61619F565009D9F9B /* Foundation.framework */; };
+		499E28481A586A68004174F2 /* ObjcAssociatedObjectHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 499E28471A586A68004174F2 /* ObjcAssociatedObjectHelpers.m */; };
 		49AD1B5716C282A10061BDC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF0F61619F565009D9F9B /* Foundation.framework */; };
 		49BC3AB818B61B7C00679CF8 /* TestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DEFFE918B6172E00E10224 /* TestClass.m */; };
 		49BC3AB918B61B7D00679CF8 /* TestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DEFFE918B6172E00E10224 /* TestClass.m */; };
@@ -39,6 +40,7 @@
 		4918B9AE168498F000D4EAC4 /* ObjcAssociatedObjectHelpersLibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObjcAssociatedObjectHelpersLibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		499C34B0161AF68000BA2AC9 /* NSObject+AssociatedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AssociatedDictionary.h"; sourceTree = "<group>"; };
 		499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AssociatedDictionary.m"; sourceTree = "<group>"; };
+		499E28471A586A68004174F2 /* ObjcAssociatedObjectHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjcAssociatedObjectHelpers.m; sourceTree = "<group>"; };
 		49AD1B5616C282A10061BDC1 /* libObjcAssociatedObjectHelpersLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libObjcAssociatedObjectHelpersLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AD1B6716C2838C0061BDC1 /* ObjcAssociatedObjectHelpers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ObjcAssociatedObjectHelpers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AD1B7816C294A60061BDC1 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				49AEF10C1619F5E8009D9F9B /* ObjcAssociatedObjectHelpers.h */,
+				499E28471A586A68004174F2 /* ObjcAssociatedObjectHelpers.m */,
 				499C34B0161AF68000BA2AC9 /* NSObject+AssociatedDictionary.h */,
 				499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */,
 			);
@@ -413,6 +416,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				499E28481A586A68004174F2 /* ObjcAssociatedObjectHelpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
