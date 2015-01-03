@@ -24,6 +24,7 @@
 //  SOFTWARE.
 
 #import <objc/runtime.h>
+#import <Foundation/Foundation.h>
 #import <TargetConditionals.h>
 #import <Availability.h>
 
@@ -33,6 +34,16 @@
 #elif TARGET_OS_MAC && !( TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR ) && __MAC_OS_X_VERSION_MIN_REQUIRED < __MAC_10_6
 #error Associated references available from OS X 10.6
 #endif
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#pragma mark Weak reference containers
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+@interface __ObjCAscWeakContainerAtomic : NSObject
+@property (atomic, weak) id _object;
+@end
+@interface __ObjCAscWeakContainerNonatomic : NSObject
+@property (nonatomic, weak) id _object;
+@end
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #pragma mark Quotation helper
