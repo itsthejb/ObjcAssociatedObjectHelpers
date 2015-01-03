@@ -7,6 +7,7 @@
 //
 
 #import "TestClass.h"
+#import "ObjcAssociatedObjectHelpers.h"
 
 #define TEST_EXCEPTION \
 [[NSException exceptionWithName:NSStringFromSelector(_cmd) \

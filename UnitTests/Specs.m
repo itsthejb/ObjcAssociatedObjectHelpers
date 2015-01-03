@@ -25,6 +25,13 @@
 #import "TestClass.h"
 #import "ReactiveCocoa.h"
 
+#import "ObjcAssociatedObjectHelpers.h"
+#import "NSObject+AssociatedDictionary.h"
+
+#define EXP_SHORTHAND
+#import <Expecta/Expecta.h>
+#import <Specta/Specta.h>
+
 SpecBegin(Specs)
 
 __block TestClass *testClass;
