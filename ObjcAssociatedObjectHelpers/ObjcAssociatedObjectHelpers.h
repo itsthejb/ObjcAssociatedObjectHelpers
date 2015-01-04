@@ -101,32 +101,6 @@ static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
 
 #define SYNTHESIZE_ASC_OBJ_BLOCK(getterName, setterName, getterBlock, setterBlock) \
 static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
-- (void)setterName:(id)__newValue { \
-  __block id value = __newValue; \
-  setterBlock(); \
-  id wrapped = [__ObjCAscWeakContainer wrapObject:value]; \
-  @synchronized(self) { \
-    _OBJC_ASC_WRAP_KVO_SETTER(getterName, objc_setAssociatedObject(self, getterName##Key, wrapped, OBJC_ASSOCIATION_RETAIN)); \
-  } \
-} \
-- (id) getterName { \
-  __ObjCAscWeakContainer *wrapped = nil; \
-  @synchronized(self) { \
-    wrapped = objc_getAssociatedObject(self, getterName##Key); \
-  }; \
-  __block id value = wrapped._object; \
-  getterBlock(); \
-  return value; \
-}
-
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#pragma mark Readwrite Weak Object
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#define SYNTHESIZE_ASC_OBJ_WEAK(getterName, setterName) \
-	SYNTHESIZE_ASC_OBJ_WEAK_BLOCK(getterName, setterName, ^{}, ^{})
-
-#define SYNTHESIZE_ASC_OBJ_WEAK_BLOCK(getterName, setterName, getterBlock, setterBlock) \
-static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
 - (void)setterName:(id)value { \
   value = setterBlock(value); \
   objc_AssociationPolicy policy = \
@@ -140,7 +114,30 @@ static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
   @synchronized(self) { \
     value = objc_getAssociatedObject(self, getterName##Key); \
   }; \
-	return getterBlock(value); \
+  return getterBlock(value); \
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#pragma mark Readwrite Weak Object
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#define SYNTHESIZE_ASC_OBJ_WEAK(getterName, setterName) \
+	SYNTHESIZE_ASC_OBJ_WEAK_BLOCK(getterName, setterName, ^(id v){ return v; }, ^(id v){ return v; })
+
+#define SYNTHESIZE_ASC_OBJ_WEAK_BLOCK(getterName, setterName, getterBlock, setterBlock) \
+static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
+- (void)setterName:(id)value { \
+  value = setterBlock(value); \
+  id wrapped = [__ObjCAscWeakContainer wrapObject:value]; \
+  @synchronized(self) { \
+    _OBJC_ASC_WRAP_KVO_SETTER(getterName, objc_setAssociatedObject(self, getterName##Key, wrapped, OBJC_ASSOCIATION_RETAIN)); \
+  } \
+} \
+- (id) getterName { \
+  __ObjCAscWeakContainer *wrapped = nil; \
+  @synchronized(self) { \
+    wrapped = objc_getAssociatedObject(self, getterName##Key); \
+  }; \
+  return getterBlock(wrapped._object); \
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
