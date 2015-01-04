@@ -104,10 +104,15 @@ Macros
 
 		SYNTHESIZE_ASC_OBJ_LAZY_EXP(nonDefaultLazyObject, [NSString stringWithFormat:@"foo"])	 
 	Uses the expression `[NSString stringWithFormat:@"foo"]` to initialise the object. Note that `SYNTHESIZE_ASC_OBJ_LAZY` uses this macro with `[[class alloc] init]`.
-5. All the macros have a `_BLOCK` suffix companion which takes a `dispatch_block_t`-type void block in the format `void(^block)()` for the getter, and setter (if available). This allows additional code to be run in the accessors, similar to overriding an accessor. 
+5. All the macros have a `_BLOCK` suffix companion which (to borrow generic programming syntax) takes a block of type `T (^block)(T value)` for the getter, and setter (if available). This allows additional code to be run in the accessors, similar to overriding an accessor. The value passed to the accessor will be the argument. This value can be returned, or a modified value can also be returned. This replaces the syntax used until `v1.2.1`, and I think is clearer. For example:
 
-	* Note that since these are preprocessor macros, it's not possible to pass `nil` to any of these macros. Instead, pass an empty block; `^{}`. 
-	* In the context of the macro, the passed setter value, or the current associated value with be available as the symbol `value`. Its type will be appropriate to the context in which the macro was declared. `value` is always declared with the `__block` attribute and so can be modified inside the block. Note that this is a little cumbersome since, *as far as I know*, there is no way to specify block parameter types in a macro and have the `value` variable passed explicitly into the block. If there is a way, [I'd love to here about it](mailto:joncrooke@gmail.com).
+		SYNTHESIZE_ASC_PRIMITIVE_BLOCK(myProperty,
+		                               setMyProperty,
+		                               CGSize,
+		                               ^(CGSize s){ return CGSizeZero; },
+		                               ^(CGSize s){ s.width = 10; return s; })
+
+	Defines a read/write property of type `CGSize`, and overrides the getter and setter to always set `CGSizeZero`, and always get a size with a width of 10.
 
 If you like this, you might also like...
 ----------------------------------------
