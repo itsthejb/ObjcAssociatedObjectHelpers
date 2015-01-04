@@ -27,40 +27,40 @@ SYNTHESIZE_ASC_PRIMITIVE(structure, setStructure, TestStruct);
 // overrides
 SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(overrideAssignObj,
                                 setOverrideAssignObj,
-																^(id v){ TEST_EXCEPTION; return v; },
-																^(id v){ TEST_EXCEPTION; return v; });
+                                ^(id v){ TEST_EXCEPTION; return v; },
+                                ^(id v){ TEST_EXCEPTION; return v; });
 SYNTHESIZE_ASC_OBJ_BLOCK(overrideObj,
                          setOverrideObj,
-												 ^(id v){ TEST_EXCEPTION; return v; },
-												 ^(id v){ TEST_EXCEPTION; return v; });
+                         ^(id v){ TEST_EXCEPTION; return v; },
+                         ^(id v){ TEST_EXCEPTION; return v; });
 SYNTHESIZE_ASC_OBJ_LAZY_BLOCK(overrideObjLazy,
                               [NSString class],
-															^(NSString *v){ TEST_EXCEPTION; return v; })
+                              ^(NSString *v){ TEST_EXCEPTION; return v; })
 SYNTHESIZE_ASC_OBJ_LAZY_EXP_BLOCK(overrideObjLazyWithExpression,
                                   [NSDate date],
-																	^(NSDate *v){ TEST_EXCEPTION; return v; })
+                                  ^(NSDate *v){ TEST_EXCEPTION; return v; })
 SYNTHESIZE_ASC_PRIMITIVE_BLOCK(overridePrimitive,
                                setOverridePrimitive,
                                NSUInteger,
-															 ^(NSUInteger v){ TEST_EXCEPTION; return v; },
-															 ^(NSUInteger v){ TEST_EXCEPTION; return v; })
+                               ^(NSUInteger v){ TEST_EXCEPTION; return v; },
+                               ^(NSUInteger v){ TEST_EXCEPTION; return v; })
 SYNTHESIZE_ASC_OBJ_BLOCK(overrideObjBlockGetter,
                          setOverrideObjBlockGetter,
                          ^(id v){ return @"foo"; },
-												 ^(id v){ return v; })
+                         ^(id v){ return v; })
 SYNTHESIZE_ASC_OBJ_BLOCK(overrideObjBlockSetter,
                          setOverrideObjBlockSetter,
-												 ^(id v){ return v; },
+                         ^(id v){ return v; },
                          ^(id v){ return @"foo"; })
 SYNTHESIZE_ASC_PRIMITIVE_BLOCK(overrideBlockPrimitiveGetter,
                                setOverrideBlockPrimitiveGetter,
                                NSUInteger,
                                ^(NSUInteger v){ return v+1; },
-															 ^(NSUInteger v){ return v; })
+                               ^(NSUInteger v){ return v; })
 SYNTHESIZE_ASC_PRIMITIVE_BLOCK(overrideBlockPrimitiveSetter,
                                setOverrideBlockPrimitiveSetter,
                                NSUInteger,
-															 ^(NSUInteger v){ return v; },
+                               ^(NSUInteger v){ return v; },
                                ^(NSUInteger v){ return v-1; })
 
 - (id)init {
