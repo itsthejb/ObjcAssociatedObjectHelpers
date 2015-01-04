@@ -265,6 +265,21 @@ describe(@"KVO notifications", ^{
   });
 });
 
+describe(@"weak container", ^{
+
+  NSMutableArray *array = [NSMutableArray arrayWithObject:@"foo"];
+
+  it(@"should get and set a value as normal", ^{
+    testObject.weakObject = array.firstObject;
+    expect(testObject.weakObject && testObject.weakObject == array.firstObject).to.beTruthy();
+  });
+
+  it(@"should nil the weak property", ^{
+    testObject.weakObject = array.firstObject;
+    expect(testObject.weakObject && testObject.weakObject == array.firstObject).to.beTruthy();
+    [array removeAllObjects];
+    expect(testObject.weakObject).to.beNil();
+  });
 });
 
 SpecEnd

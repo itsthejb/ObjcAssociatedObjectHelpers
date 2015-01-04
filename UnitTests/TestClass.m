@@ -23,6 +23,7 @@ SYNTHESIZE_ASC_OBJ_LAZY_EXP(nonDefaultLazyObject, [NSString stringWithFormat:@"f
 SYNTHESIZE_ASC_OBJ(readWriteObject, setReadWriteObject);
 SYNTHESIZE_ASC_PRIMITIVE(primitive, setPrimitive, NSUInteger);
 SYNTHESIZE_ASC_PRIMITIVE(structure, setStructure, TestStruct);
+SYNTHESIZE_ASC_OBJ_WEAK(weakObject, setWeakObject)
 
 // overrides
 SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(overrideAssignObj,
