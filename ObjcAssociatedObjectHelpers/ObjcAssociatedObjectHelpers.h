@@ -107,21 +107,21 @@ static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
 #define SYNTHESIZE_ASC_OBJ_BLOCK(getterName, setterName, getterBlock, setterBlock) \
 static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
 - (void)setterName:(id)__newValue { \
-__block id value = __newValue; \
-setterBlock(); \
-objc_AssociationPolicy policy = \
-[value conformsToProtocol:@protocol(NSCopying)] ? OBJC_ASSOCIATION_COPY : OBJC_ASSOCIATION_RETAIN; \
-@synchronized(self) { \
-_OBJC_ASC_WRAP_KVO_SETTER(getterName, objc_setAssociatedObject(self, getterName##Key, value, policy)); \
-} \
+  __block id value = __newValue; \
+  setterBlock(); \
+  objc_AssociationPolicy policy = \
+  [value conformsToProtocol:@protocol(NSCopying)] ? OBJC_ASSOCIATION_COPY : OBJC_ASSOCIATION_RETAIN; \
+  @synchronized(self) { \
+    _OBJC_ASC_WRAP_KVO_SETTER(getterName, objc_setAssociatedObject(self, getterName##Key, value, policy)); \
+  } \
 } \
 - (id) getterName { \
-__block id value = nil; \
-@synchronized(self) { \
-value = objc_getAssociatedObject(self, getterName##Key); \
-}; \
-getterBlock(); \
-return value; \
+  __block id value = nil; \
+  @synchronized(self) { \
+    value = objc_getAssociatedObject(self, getterName##Key); \
+  }; \
+  getterBlock(); \
+  return value; \
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -144,7 +144,6 @@ static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
   id value = nil; \
   @synchronized(self) { \
     value = objc_getAssociatedObject(self, getterName##Key); \
-}; \
   }; \
 	return getterBlock(value); \
 }
