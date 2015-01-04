@@ -26,6 +26,10 @@ Introduction
 What's New
 ----------
 
+**v2.0.0**
+
+* New format for the block accessor macros. This is a breaking change.
+
 **v1.2.1**
 
 * ARC no longer a requirement (it never really was).
