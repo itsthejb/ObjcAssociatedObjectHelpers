@@ -81,8 +81,7 @@ static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
   @synchronized(self) { \
     value = objc_getAssociatedObject(self, getterName##Key); \
   }; \
-  value = getterBlock(value); \
-  return value; \
+	return getterBlock(value); \
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -106,8 +105,7 @@ static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
   @synchronized(self) { \
     value = objc_getAssociatedObject(self, getterName##Key); \
   }; \
-  value = getterBlock(value); \
-  return value; \
+	return getterBlock(value); \
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -158,6 +156,5 @@ static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
   @synchronized(self) { \
     [objc_getAssociatedObject(self, getterName##Key) getValue:&value]; \
   } \
-  value = getterBlock(value); \
-  return value; \
+	return getterBlock(value); \
 }
