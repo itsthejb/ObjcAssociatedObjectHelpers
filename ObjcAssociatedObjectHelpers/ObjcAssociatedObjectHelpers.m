@@ -25,14 +25,10 @@
 
 #import "ObjcAssociatedObjectHelpers.h"
 
-@implementation __ObjCAscWeakContainerBase
+@implementation __ObjCAscWeakContainer
 + (instancetype)wrapObject:(id)object {
-	id wrapper = [[self alloc] init];
-	[wrapper setObject:object];
+	__ObjCAscWeakContainer *wrapper = [[self alloc] init];
+  wrapper._object = object;
 	return wrapper;
 }
-@end
-@implementation __ObjCAscWeakContainerAtomic
-@end
-@implementation __ObjCAscWeakContainerNonatomic
 @end

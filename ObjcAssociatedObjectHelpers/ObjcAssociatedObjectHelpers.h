@@ -38,14 +38,9 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #pragma mark Weak reference containers
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-@interface __ObjCAscWeakContainerBase : NSObject
-+ (instancetype) wrapObject:(id) object;
-@end
-@interface __ObjCAscWeakContainerAtomic : __ObjCAscWeakContainerBase
-@property (atomic, weak) id _object;
-@end
-@interface __ObjCAscWeakContainerNonatomic : __ObjCAscWeakContainerBase
-@property (nonatomic, weak) id _object;
+@interface __ObjCAscWeakContainer : NSObject
++ (instancetype)wrapObject:(id)object;
+@property (weak) id _object;
 @end
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -109,17 +104,17 @@ static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
 - (void)setterName:(id)__newValue { \
   __block id value = __newValue; \
   setterBlock(); \
-  objc_AssociationPolicy policy = \
-  [value conformsToProtocol:@protocol(NSCopying)] ? OBJC_ASSOCIATION_COPY : OBJC_ASSOCIATION_RETAIN; \
+  id wrapped = [__ObjCAscWeakContainer wrapObject:value]; \
   @synchronized(self) { \
-    _OBJC_ASC_WRAP_KVO_SETTER(getterName, objc_setAssociatedObject(self, getterName##Key, value, policy)); \
+    _OBJC_ASC_WRAP_KVO_SETTER(getterName, objc_setAssociatedObject(self, getterName##Key, wrapped, OBJC_ASSOCIATION_RETAIN)); \
   } \
 } \
 - (id) getterName { \
-  __block id value = nil; \
+  __ObjCAscWeakContainer *wrapped = nil; \
   @synchronized(self) { \
-    value = objc_getAssociatedObject(self, getterName##Key); \
+    wrapped = objc_getAssociatedObject(self, getterName##Key); \
   }; \
+  __block id value = wrapped._object; \
   getterBlock(); \
   return value; \
 }
