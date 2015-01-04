@@ -267,16 +267,18 @@ describe(@"KVO notifications", ^{
 
 describe(@"weak container", ^{
 
-  NSMutableArray *array = [NSMutableArray arrayWithObject:@"foo"];
-
   it(@"should get and set a value as normal", ^{
+    NSMutableArray *array = [NSMutableArray arrayWithObject:@"foo"];
     testObject.weakObject = array.firstObject;
-    expect(testObject.weakObject && testObject.weakObject == array.firstObject).to.beTruthy();
+    expect(testObject.weakObject).notTo.beNil();
+    expect(testObject.weakObject == array.firstObject).to.beTruthy();
   });
 
   it(@"should nil the weak property", ^{
+    NSMutableArray *array = [NSMutableArray arrayWithObject:@"foo"];
     testObject.weakObject = array.firstObject;
-    expect(testObject.weakObject && testObject.weakObject == array.firstObject).to.beTruthy();
+    expect(testObject.weakObject).notTo.beNil();
+    expect(testObject.weakObject == array.firstObject).to.beTruthy();
     [array removeAllObjects];
     expect(testObject.weakObject).to.beNil();
   });

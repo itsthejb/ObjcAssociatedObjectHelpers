@@ -28,7 +28,7 @@
 @implementation __ObjCAscWeakContainer
 + (instancetype)wrapObject:(id)object {
 	__ObjCAscWeakContainer *wrapper = [[self alloc] init];
-  wrapper._object = object;
+//  wrapper._object = object;
 	return wrapper;
 }
 @end
