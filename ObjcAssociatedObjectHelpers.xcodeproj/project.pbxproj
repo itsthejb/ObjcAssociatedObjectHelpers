@@ -109,6 +109,7 @@
 				49AEF0F51619F565009D9F9B /* Frameworks */,
 				49AEF0F31619F565009D9F9B /* Products */,
 				762678B28CE1E38EC7D36C67 /* Pods */,
+				49DEFFE318B603B200E10224 /* ObjcAssociatedObjectHelpers.podspec */,
 				49BF24AA161B0903000B1590 /* README.md */,
 				49AD1B7816C294A60061BDC1 /* LICENSE.txt */,
 			);
@@ -161,7 +162,6 @@
 			isa = PBXGroup;
 			children = (
 				49DEFFE418B603B200E10224 /* Podfile */,
-				49DEFFE318B603B200E10224 /* ObjcAssociatedObjectHelpers.podspec */,
 				15F57830FA80C0B05DFFC53F /* Pods-ObjcAssociatedObjectHelpersLibTests.debug.xcconfig */,
 				1CA662592899DE55A0584B20 /* Pods-ObjcAssociatedObjectHelpersLibTests.release.xcconfig */,
 				B4E2F7B0969800D62492B95D /* Pods-ObjcAssociatedObjectHelpersTests.debug.xcconfig */,

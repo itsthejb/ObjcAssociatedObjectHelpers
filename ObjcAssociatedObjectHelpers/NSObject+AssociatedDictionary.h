@@ -33,5 +33,5 @@
 /**
  *  Lazily instantiated mutable dictionary
  */
-@property (readonly) NSMutableDictionary *associatedDictionary;
+@property (readonly) NSMutableDictionary *ascObj_dictionary;
 @end

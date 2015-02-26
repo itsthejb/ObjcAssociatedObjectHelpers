@@ -1,30 +1,21 @@
 PODS:
-  - Expecta (0.3.1)
+  - Expecta (HEAD based on 0.3.2)
   - ReactiveCocoa (2.2.3):
     - ReactiveCocoa/Core (= 2.2.3)
     - ReactiveCocoa/no-arc (= 2.2.3)
   - ReactiveCocoa/Core (2.2.3):
     - ReactiveCocoa/no-arc
   - ReactiveCocoa/no-arc (2.2.3)
-  - Specta (0.3.0.beta1)
+  - Specta (HEAD based on 0.3.2)
 
 DEPENDENCIES:
-  - Expecta
+  - Expecta (HEAD)
   - ReactiveCocoa (= 2.2.3)
-  - Specta (from `https://github.com/specta/specta`)
-
-EXTERNAL SOURCES:
-  Specta:
-    :git: https://github.com/specta/specta
-
-CHECKOUT OPTIONS:
-  Specta:
-    :commit: 9371f3a3a2a4316efae04ebc135cdcf89086e975
-    :git: https://github.com/specta/specta
+  - Specta (HEAD)
 
 SPEC CHECKSUMS:
-  Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
+  Expecta: ee641011fe10aa1855d487b40e4976dac50ec342
   ReactiveCocoa: b751b6d1df73688da1040a3cd5b068765ec118d4
-  Specta: 63e8ac8e07db6675c7096d37f77a266a1be4c02d
+  Specta: 698a58ffa5ec948327d3b92eab50ca58d7f4fbe8
 
 COCOAPODS: 0.35.0

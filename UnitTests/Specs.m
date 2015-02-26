@@ -130,13 +130,13 @@ describe(@"non-initialized primitive", ^{
 describe(@"associated dictionary", ^{
 
   it(@"should be initialized lazily", ^{
-    expect(dictionaryObject.associatedDictionary).to.beKindOf([NSMutableDictionary class]);
+    expect(dictionaryObject.ascObj_dictionary).to.beKindOf([NSMutableDictionary class]);
   });
 
   it(@"should correctly get/set", ^{
     NSString *key = @"bar"; NSString *value = @"foo";
-    dictionaryObject.associatedDictionary[key] = value;
-    expect(dictionaryObject.associatedDictionary[key]).to.equal(value);
+    dictionaryObject.ascObj_dictionary[key] = value;
+    expect(dictionaryObject.ascObj_dictionary[key]).to.equal(value);
   });
 
 });

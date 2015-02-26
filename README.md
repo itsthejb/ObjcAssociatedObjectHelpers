@@ -23,39 +23,6 @@ Introduction
 
 		[self.associatedDictionary setValue:@"value" forKey:@"myKey"];
 
-What's New
-----------
-
-**v2.0.0**
-
-* New format for the block accessor macros. This is a breaking change.
-
-**v1.2.1**
-
-* ARC no longer a requirement (it never really was).
-* A bit of spring cleaning.
-
-**v1.2.0**
-
-* Now sends KVO notifications for all macros. Oversight on previous releases.
-
-**v1.1.2**
-
-* Improved block macro value handling. See details below.
-
-**v1.1.1**
-
-* Moved the execution order of setter blocks so the block can potential operate on the existing value. In the context of the block, `self.property` will be the existing value, *before* the new value is set.
-
-**v1.1**
-
-* Pass a block to the macros in order to modify setter values or getter return values in some way, as well as other custom code.
-
-**v1.0**
-
-* Static library target for iOS, and framework target for OS X.
-* [MIT Licensed](http://jc.mit-license.org/)
-
 Notes
 -----
 1. **getter / setter names** - There is no way to manipulate strings in the preprocessor so that standard getter and setter names can easily be generated from a single token. As such, the read/write macros require both names to be provided manually.
@@ -69,6 +36,8 @@ Notes
 		@property (copy) id myProperty;
 
     Currently, the macros check at runtime for `NSCopying` protocol compliance and use `OBJC_ASSOCIATION_COPY` if found and `OBJC_ASSOCIATION_RETAIN` otherwise. The test `-[UnitTests testMutableObject]` confirms that a copy is made. I think this is The Right Way™. It's probably best to use normal semantics with these setters, however.
+    
+4. As of version `2.0.0` weak properties are supported, and behave in the same way as regular `weak` properties.
 
 Usage
 -----
@@ -125,10 +94,41 @@ If you like this, you might also like...
 * [FTGPropertyMaestro](https://github.com/onmyway133/FTGPropertyMaestro) is a runtime-based implementation with the same goal.
 * [Mattt Thompson has written an article on the subject of associated objects](http://nshipster.com/associated-objects/). He seems to find them a little controversial. Be your own judge.
 
+What's New
+----------
 
-Todo
-----
-* Replace local `value` symbol feature with a generic block argument? May be less convenient to use...?
+**v2.0.0**
+
+* New format for the block accessor macros. Values are passed directly and must be returned. This is a breaking change.
+* New feature for `weak` properties, using the wrapper method suggested [here](http://nshipster.com/new-years-2015/).
+* The `NSObject` category is now prefixed and split into a subspec for Cocoapods. 
+
+**v1.2.1**
+
+* ARC no longer a requirement (it never really was).
+* A bit of spring cleaning.
+
+**v1.2.0**
+
+* Now sends KVO notifications for all macros. Oversight on previous releases.
+
+**v1.1.2**
+
+* Improved block macro value handling. See details below.
+
+**v1.1.1**
+
+* Moved the execution order of setter blocks so the block can potential operate on the existing value. In the context of the block, `self.property` will be the existing value, *before* the new value is set.
+
+**v1.1**
+
+* Pass a block to the macros in order to modify setter values or getter return values in some way, as well as other custom code.
+
+**v1.0**
+
+* Static library target for iOS, and framework target for OS X.
+* [MIT Licensed](http://jc.mit-license.org/)
+
 
 Have fun!
 ---------
