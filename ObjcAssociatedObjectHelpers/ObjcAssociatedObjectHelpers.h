@@ -122,6 +122,7 @@ static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #pragma mark Readwrite Weak Object
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#if __has_feature(objc_arc)
 #define SYNTHESIZE_ASC_OBJ_WEAK(getterName, setterName) \
 	SYNTHESIZE_ASC_OBJ_WEAK_BLOCK(getterName, setterName, ^(id v){ return v; }, ^(id v){ return v; })
 
@@ -140,6 +141,7 @@ static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
   }; \
   return getterBlock(wrapped._object); \
 }
+#endif
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #pragma mark Lazy readonly object
