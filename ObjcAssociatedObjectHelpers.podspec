@@ -12,7 +12,15 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/itsthejb/ObjcAssociatedObjectHelpers.git", :tag => "v" + s.version.to_s }
   s.ios.deployment_target = '5.0'
   s.osx.deployment_target = '10.7'
-  s.source_files = 'ObjcAssociatedObjectHelpers/**/*.{h,m}'
   s.frameworks = 'Foundation'
   s.requires_arc = true
+
+	s.subspec 'Core' do |c|
+		c.source_files = 'ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers.{h,m}'
+	end
+
+  s.subspec 'NSObject-Dictionary' do |d|
+    d.source_files = 'ObjcAssociatedObjectHelpers/NSObject+AssociatedDictionary.{h,m}'
+    d.dependency 'ObjcAssociatedObjectHelpers/Core'
+  end
 end
