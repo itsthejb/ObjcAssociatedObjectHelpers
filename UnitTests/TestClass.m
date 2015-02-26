@@ -26,6 +26,7 @@ SYNTHESIZE_ASC_OBJ(readWriteObject, setReadWriteObject);
 SYNTHESIZE_ASC_PRIMITIVE(primitive, setPrimitive, NSUInteger);
 SYNTHESIZE_ASC_PRIMITIVE(structure, setStructure, TestStruct);
 
+// Weak
 #if __has_feature(objc_arc)
 SYNTHESIZE_ASC_OBJ_WEAK(weakObject, setWeakObject)
 SYNTHESIZE_ASC_OBJ_WEAK_BLOCK(weakObject2,
