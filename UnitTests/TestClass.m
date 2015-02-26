@@ -25,11 +25,14 @@ SYNTHESIZE_ASC_OBJ_LAZY_EXP(nonDefaultLazyObject, [NSString stringWithFormat:@"f
 SYNTHESIZE_ASC_OBJ(readWriteObject, setReadWriteObject);
 SYNTHESIZE_ASC_PRIMITIVE(primitive, setPrimitive, NSUInteger);
 SYNTHESIZE_ASC_PRIMITIVE(structure, setStructure, TestStruct);
+
+#if __has_feature(objc_arc)
 SYNTHESIZE_ASC_OBJ_WEAK(weakObject, setWeakObject)
 SYNTHESIZE_ASC_OBJ_WEAK_BLOCK(weakObject2,
                               setWeakObject2,
                               ^(NSString *object) { return [object stringByAppendingString:object]; },
                               ^(NSObject *object) { return _strongString; });
+#endif
 
 // overrides
 SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(overrideAssignObj,
