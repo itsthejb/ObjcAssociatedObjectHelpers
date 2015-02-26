@@ -33,6 +33,8 @@ typedef struct _testStruct {
 @property (assign) NSUInteger overrideBlockPrimitiveGetter;
 @property (assign) NSUInteger overrideBlockPrimitiveSetter;
 // Weak container
+#if __has_feature(objc_arc)
 @property (weak) id weakObject;
 @property (weak) id weakObject2;
+#endif
 @end
