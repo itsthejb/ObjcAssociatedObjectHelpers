@@ -32,6 +32,10 @@
   [self waitForExpectationsWithTimeout:1 handler:nil];
 }
 
+- (void) testWeakBlock {
+  XCTAssertEqualObjects(self.testObject.weakObject2, @"StrongStringStrongString");
+}
+
 #pragma mark -
 
 - (void)setUp {
@@ -39,6 +43,7 @@
   self.testObject = [[TestClass alloc] init];
   self.strongContainer = @[[[NSObject alloc] init]];
   self.testObject.weakObject = self.strongContainer.firstObject;
+  self.testObject.weakObject2 = self.strongContainer.firstObject;
 }
 
 @end

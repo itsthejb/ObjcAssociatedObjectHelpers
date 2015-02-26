@@ -9,6 +9,8 @@
 #import "TestClass.h"
 #import "ObjcAssociatedObjectHelpers.h"
 
+static NSString *_strongString = @"StrongString";
+
 #define TEST_EXCEPTION \
 [[NSException exceptionWithName:NSStringFromSelector(_cmd) \
 reason:NSStringFromSelector(_cmd) \
@@ -24,6 +26,10 @@ SYNTHESIZE_ASC_OBJ(readWriteObject, setReadWriteObject);
 SYNTHESIZE_ASC_PRIMITIVE(primitive, setPrimitive, NSUInteger);
 SYNTHESIZE_ASC_PRIMITIVE(structure, setStructure, TestStruct);
 SYNTHESIZE_ASC_OBJ_WEAK(weakObject, setWeakObject)
+SYNTHESIZE_ASC_OBJ_WEAK_BLOCK(weakObject2,
+                              setWeakObject2,
+                              ^(NSString *object) { return [object stringByAppendingString:object]; },
+                              ^(NSObject *object) { return _strongString; });
 
 // overrides
 SYNTHESIZE_ASC_OBJ_ASSIGN_BLOCK(overrideAssignObj,
