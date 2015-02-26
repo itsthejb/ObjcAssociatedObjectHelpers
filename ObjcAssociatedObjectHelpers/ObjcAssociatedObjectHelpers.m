@@ -25,6 +25,7 @@
 
 #import "ObjcAssociatedObjectHelpers.h"
 
+#if __has_feature(objc_arc)
 @implementation __ObjCAscWeakContainer
 + (instancetype)wrapObject:(id)object {
 	__ObjCAscWeakContainer *wrapper = [[self alloc] init];
@@ -32,3 +33,4 @@
 	return wrapper;
 }
 @end
+#endif
