@@ -32,4 +32,7 @@ typedef struct _testStruct {
 @property (retain) NSString *overrideObjBlockSetter;
 @property (assign) NSUInteger overrideBlockPrimitiveGetter;
 @property (assign) NSUInteger overrideBlockPrimitiveSetter;
+// Weak container
+@property (weak) id weakObject;
+@property (weak) id weakObject2;
 @end

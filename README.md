@@ -4,35 +4,6 @@
 ObjcAssociatedObjectHelpers
 ===========================
 
-What's New
-----------
-
-**v1.2.1**
-
-* ARC no longer a requirement (it never really was).
-* A bit of spring cleaning.
-
-**v1.2.0**
-
-* Now sends KVO notifications for all macros. Oversight on previous releases.
-
-**v1.1.2**
-
-* Improved block macro value handling. See details below.
-
-**v1.1.1**
-
-* Moved the execution order of setter blocks so the block can potential operate on the existing value. In the context of the block, `self.property` will be the existing value, *before* the new value is set.
-
-**v1.1**
-
-* Pass a block to the macros in order to modify setter values or getter return values in some way, as well as other custom code.
-
-**v1.0**
-
-* Static library target for iOS, and framework target for OS X.
-* [MIT Licensed](http://jc.mit-license.org/)
-
 Introduction
 ------------
 
@@ -65,6 +36,8 @@ Notes
 		@property (copy) id myProperty;
 
     Currently, the macros check at runtime for `NSCopying` protocol compliance and use `OBJC_ASSOCIATION_COPY` if found and `OBJC_ASSOCIATION_RETAIN` otherwise. The test `-[UnitTests testMutableObject]` confirms that a copy is made. I think this is The Right Way™. It's probably best to use normal semantics with these setters, however.
+    
+4. As of version `2.0.0` weak properties are supported, and behave in the same way as regular `weak` properties.
 
 Usage
 -----
@@ -104,20 +77,58 @@ Macros
 
 		SYNTHESIZE_ASC_OBJ_LAZY_EXP(nonDefaultLazyObject, [NSString stringWithFormat:@"foo"])	 
 	Uses the expression `[NSString stringWithFormat:@"foo"]` to initialise the object. Note that `SYNTHESIZE_ASC_OBJ_LAZY` uses this macro with `[[class alloc] init]`.
-5. All the macros have a `_BLOCK` suffix companion which takes a `dispatch_block_t`-type void block in the format `void(^block)()` for the getter, and setter (if available). This allows additional code to be run in the accessors, similar to overriding an accessor. 
+5. All the macros have a `_BLOCK` suffix companion which (to borrow generic programming syntax) takes a block of type `T (^block)(T value)` for the getter, and setter (if available). This allows additional code to be run in the accessors, similar to overriding an accessor. The value passed to the accessor will be the argument. This value can be returned, or a modified value can also be returned. This replaces the syntax used until `v1.2.1`, and I think is clearer. For example:
 
-	* Note that since these are preprocessor macros, it's not possible to pass `nil` to any of these macros. Instead, pass an empty block; `^{}`. 
-	* In the context of the macro, the passed setter value, or the current associated value with be available as the symbol `value`. Its type will be appropriate to the context in which the macro was declared. `value` is always declared with the `__block` attribute and so can be modified inside the block. Note that this is a little cumbersome since, *as far as I know*, there is no way to specify block parameter types in a macro and have the `value` variable passed explicitly into the block. If there is a way, [I'd love to here about it](mailto:joncrooke@gmail.com).
+		SYNTHESIZE_ASC_PRIMITIVE_BLOCK(myProperty,
+		                               setMyProperty,
+		                               CGSize,
+		                               ^(CGSize s){ return CGSizeZero; },
+		                               ^(CGSize s){ s.width = 10; return s; })
 
-libextobjc
+	Defines a read/write property of type `CGSize`, and overrides the getter and setter to always set `CGSizeZero`, and always get a size with a width of 10.
+
+If you like this, you might also like...
+----------------------------------------
+
+* **libextobjc** - The excellent [libextobjc](https://github.com/jspahrsummers/libextobjc) library also has a similar single macro implementation of this concept. However primitives are not supported, as well as the wider range of features provided here. However, for its other features, please check it out ;)
+* [FTGPropertyMaestro](https://github.com/onmyway133/FTGPropertyMaestro) is a runtime-based implementation with the same goal.
+* [Mattt Thompson has written an article on the subject of associated objects](http://nshipster.com/associated-objects/). He seems to find them a little controversial. Be your own judge.
+
+What's New
 ----------
 
-The excellent [libextobjc](https://github.com/jspahrsummers/libextobjc) library also has a similar single macro implementation of this concept. However primitives are not supported, as well as the wider range of features provided here. However, for its other features, please check it out ;)
+**v2.0.0**
 
+* New format for the block accessor macros. Values are passed directly and must be returned. This is a breaking change.
+* New feature for `weak` properties, using the wrapper method suggested [here](http://nshipster.com/new-years-2015/).
+* The `NSObject` category is now prefixed and split into a subspec for Cocoapods. 
 
-Todo
-----
-* Replace local `value` symbol feature with a generic block argument? May be less convenient to use...?
+**v1.2.1**
+
+* ARC no longer a requirement (it never really was).
+* A bit of spring cleaning.
+
+**v1.2.0**
+
+* Now sends KVO notifications for all macros. Oversight on previous releases.
+
+**v1.1.2**
+
+* Improved block macro value handling. See details below.
+
+**v1.1.1**
+
+* Moved the execution order of setter blocks so the block can potential operate on the existing value. In the context of the block, `self.property` will be the existing value, *before* the new value is set.
+
+**v1.1**
+
+* Pass a block to the macros in order to modify setter values or getter return values in some way, as well as other custom code.
+
+**v1.0**
+
+* Static library target for iOS, and framework target for OS X.
+* [MIT Licensed](http://jc.mit-license.org/)
+
 
 Have fun!
 ---------

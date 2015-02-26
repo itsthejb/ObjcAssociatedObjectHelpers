@@ -1,8 +1,8 @@
 //
-//  NSObject+AssociatedDictionary.m
+//  ObjcAssociatedObjectHelpers.m
 //  ObjcAssociatedObjectHelpers
 //
-//  Created by Jon Crooke on 02/10/2012.
+//  Created by Jon Crooke on 01/10/2012.
 //  Copyright (c) 2012 Jonathan Crooke. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,11 +23,12 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-#import "NSObject+AssociatedDictionary.h"
 #import "ObjcAssociatedObjectHelpers.h"
 
-@implementation NSObject (AssociatedDictionary)
-
-SYNTHESIZE_ASC_OBJ_LAZY(ascObj_dictionary, NSMutableDictionary);
-
+@implementation __ObjCAscWeakContainer
++ (instancetype)wrapObject:(id)object {
+	__ObjCAscWeakContainer *wrapper = [[self alloc] init];
+  wrapper._object = object;
+	return wrapper;
+}
 @end

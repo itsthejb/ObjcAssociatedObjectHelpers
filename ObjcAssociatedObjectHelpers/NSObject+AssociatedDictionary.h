@@ -25,8 +25,13 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  Category to add a lazily-instantiated `NSMutableDictionary` instance
+ *  to `NSObject`.
+ */
 @interface NSObject (AssociatedDictionary)
-
-@property (readonly) NSMutableDictionary *associatedDictionary;
-
+/**
+ *  Lazily instantiated mutable dictionary
+ */
+@property (readonly) NSMutableDictionary *ascObj_dictionary;
 @end
