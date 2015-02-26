@@ -27,7 +27,5 @@
 #import "ObjcAssociatedObjectHelpers.h"
 
 @implementation NSObject (AssociatedDictionary)
-
 SYNTHESIZE_ASC_OBJ_LAZY(ascObj_dictionary, NSMutableDictionary);
-
 @end
