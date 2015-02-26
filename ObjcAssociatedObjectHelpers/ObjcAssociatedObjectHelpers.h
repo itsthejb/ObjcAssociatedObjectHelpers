@@ -24,6 +24,7 @@
 //  SOFTWARE.
 
 #import <objc/runtime.h>
+#import <Foundation/Foundation.h>
 #import <TargetConditionals.h>
 #import <Availability.h>
 
@@ -33,6 +34,14 @@
 #elif TARGET_OS_MAC && !( TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR ) && __MAC_OS_X_VERSION_MIN_REQUIRED < __MAC_10_6
 #error Associated references available from OS X 10.6
 #endif
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#pragma mark Weak reference containers
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+@interface __ObjCAscWeakContainer : NSObject
++ (instancetype)wrapObject:(id)object;
+@property (weak) id _object;
+@end
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #pragma mark Quotation helper
@@ -105,7 +114,29 @@ static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
   @synchronized(self) { \
     value = objc_getAssociatedObject(self, getterName##Key); \
   }; \
-	return getterBlock(value); \
+  return getterBlock(value); \
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#pragma mark Readwrite Weak Object
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#define SYNTHESIZE_ASC_OBJ_WEAK(getterName, setterName) \
+	SYNTHESIZE_ASC_OBJ_WEAK_BLOCK(getterName, setterName, ^(id v){ return v; }, ^(id v){ return v; })
+
+#define SYNTHESIZE_ASC_OBJ_WEAK_BLOCK(getterName, setterName, getterBlock, setterBlock) \
+static void* getterName##Key = _OBJC_ASC_QUOTE(getterName); \
+- (void)setterName:(id)value { \
+  id wrapped = [__ObjCAscWeakContainer wrapObject:value]; \
+  @synchronized(self) { \
+    _OBJC_ASC_WRAP_KVO_SETTER(getterName, objc_setAssociatedObject(self, getterName##Key, wrapped, OBJC_ASSOCIATION_RETAIN)); \
+  } \
+} \
+- (id) getterName { \
+  __ObjCAscWeakContainer *wrapped = nil; \
+  @synchronized(self) { \
+    wrapped = objc_getAssociatedObject(self, getterName##Key); \
+  }; \
+  return wrapped._object; \
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

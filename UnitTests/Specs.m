@@ -34,45 +34,45 @@
 
 SpecBegin(Specs)
 
-__block TestClass *testClass;
+__block TestClass *testObject;
 __block NSObject *dictionaryObject;
 
 NSString *const CONSTANT_STRING = @"ConstString";
 
 before(^{
-  testClass = [[TestClass alloc] init];
+  testObject = [[TestClass alloc] init];
   dictionaryObject = [[NSObject alloc] init];
 });
 
 after(^{
-  testClass = nil;
+  testObject = nil;
   dictionaryObject = nil;
 });
 
 describe(@"basic set / get", ^{
 
   it(@"should set a simple retained object", ^{
-    NSBundle *testObject = [[NSBundle alloc] init];
-    testClass.object = testObject;
-    expect(testClass.object).to.equal(testObject);
+    NSBundle *bundle = [[NSBundle alloc] init];
+    testObject.object = bundle;
+    expect(testObject.object).to.equal(bundle);
   });
 
   it(@"should set a primitive", ^{
     NSUInteger value = 99;
-    testClass.primitive = value;
-    expect(testClass.primitive).to.equal(value);
+    testObject.primitive = value;
+    expect(testObject.primitive).to.equal(value);
   });
 
   it(@"should set a structure", ^{
     TestStruct struct1 = { 1, 2.0 };
-    testClass.structure = struct1;
-    TestStruct struct2 = testClass.structure;
+    testObject.structure = struct1;
+    TestStruct struct2 = testObject.structure;
     expect(memcmp(&struct1, &struct2, sizeof(TestStruct))).to.equal(NSOrderedSame);
   });
 
   it(@"should assign a simple object", ^{
-    testClass.assignObj = CONSTANT_STRING;
-    expect(testClass.assignObj).to.equal(CONSTANT_STRING);
+    testObject.assignObj = CONSTANT_STRING;
+    expect(testObject.assignObj).to.equal(CONSTANT_STRING);
   });
 });
 
@@ -83,38 +83,38 @@ describe(@"mutable object", ^{
 
   before(^{
     mutableString = string.mutableCopy;
-    testClass.object = mutableString;
+    testObject.object = mutableString;
   });
 
   it(@"should make a copy of the mutable object", ^{
-    expect(testClass.object == mutableString).to.beFalsy();
-    expect(testClass.object).to.equal(mutableString);
-    expect(testClass.object).to.equal(string);
-    expect(testClass.object).notTo.beInstanceOf([NSMutableString class]);
+    expect(testObject.object == mutableString).to.beFalsy();
+    expect(testObject.object).to.equal(mutableString);
+    expect(testObject.object).to.equal(string);
+    expect(testObject.object).notTo.beInstanceOf([NSMutableString class]);
   });
 
   it(@"should not modify the original", ^{
     [mutableString appendString:@"Foo"];
     expect(mutableString).to.equal(@"mutableStringFoo");
-    expect(testClass.object).to.equal(@"mutableString");
+    expect(testObject.object).to.equal(@"mutableString");
   });
 });
 
 describe(@"read/write object with category", ^{
   it(@"should be created", ^{
-    expect(testClass.readWriteObject).notTo.beNil();
-    expect(testClass.readWriteObject).to.beInstanceOf([NSObject class]);
+    expect(testObject.readWriteObject).notTo.beNil();
+    expect(testObject.readWriteObject).to.beInstanceOf([NSObject class]);
   });
 });
 
 describe(@"lazy objects", ^{
 
   specify(@"a simple case should be created", ^{
-    expect(testClass.lazyObject).to.beKindOf([NSString class]);
+    expect(testObject.lazyObject).to.beKindOf([NSString class]);
   });
 
   specify(@"non-default lazy object should use specified initialization expression", ^{
-    expect(testClass.nonDefaultLazyObject).to.equal(@"foo");
+    expect(testObject.nonDefaultLazyObject).to.equal(@"foo");
   });
 
 });
@@ -122,7 +122,7 @@ describe(@"lazy objects", ^{
 describe(@"non-initialized primitive", ^{
 
   it(@"should default to zero", ^{
-    expect(testClass.primitive).to.equal(0);
+    expect(testObject.primitive).to.equal(0);
   });
 
 });
@@ -149,13 +149,13 @@ describe(@"block feature", ^{
   describe(@"assign", ^{
     it(@"should execute the block with setter", ^{
       expect(^{
-        testClass.overrideAssignObj = CONSTANT_STRING;
+        testObject.overrideAssignObj = CONSTANT_STRING;
       }).to.raise(@"setOverrideAssignObj:");
     });
 
     it(@"should execute the block with getter", ^{
       expect(^{
-        object = testClass.overrideAssignObj;
+        object = testObject.overrideAssignObj;
       }).to.raise(@"overrideAssignObj");
     });
   });
@@ -163,13 +163,13 @@ describe(@"block feature", ^{
   describe(@"retain", ^{
     it(@"should execute the block with setter", ^{
       expect(^{
-        testClass.overrideObj = CONSTANT_STRING;
+        testObject.overrideObj = CONSTANT_STRING;
       }).to.raise(@"setOverrideObj:");
     });
 
     it(@"should execute the block with getter", ^{
       expect(^{
-        object = testClass.overrideObj;
+        object = testObject.overrideObj;
       }).to.raise(@"overrideObj");
     });
   });
@@ -177,7 +177,7 @@ describe(@"block feature", ^{
   describe(@"lazy getter", ^{
     it(@"should execute the block with getter", ^{
       expect(^{
-        object = testClass.overrideObjLazy;
+        object = testObject.overrideObjLazy;
       }).to.raise(@"overrideObjLazy");
     });
   });
@@ -185,7 +185,7 @@ describe(@"block feature", ^{
   describe(@"lazy getter with custom init", ^{
     it(@"should execute the block with getter", ^{
       expect(^{
-        object = testClass.overrideObjLazyWithExpression;
+        object = testObject.overrideObjLazyWithExpression;
       }).to.raise(@"overrideObjLazyWithExpression");
     });
   });
@@ -193,13 +193,13 @@ describe(@"block feature", ^{
   describe(@"primitive", ^{
     it(@"should execute the block with setter", ^{
       expect(^{
-        testClass.overridePrimitive = 100;
+        testObject.overridePrimitive = 100;
       }).to.raise(@"setOverridePrimitive:");
     });
 
     it(@"should execute the block with getter", ^{
       expect(^{
-        primitive = testClass.overridePrimitive;
+        primitive = testObject.overridePrimitive;
       }).to.raise(@"overridePrimitive");
     });
   });
@@ -208,25 +208,25 @@ describe(@"block feature", ^{
 
     describe(@"primtives", ^{
       it(@"getter block should modify the value parameter", ^{
-        testClass.overrideBlockPrimitiveGetter = 99;
-        expect(testClass.overrideBlockPrimitiveGetter).to.equal(100);
+        testObject.overrideBlockPrimitiveGetter = 99;
+        expect(testObject.overrideBlockPrimitiveGetter).to.equal(100);
       });
 
       it(@"setter block should modify the value parameter", ^{
-        testClass.overrideBlockPrimitiveSetter = 50;
-        expect(testClass.overrideBlockPrimitiveSetter).to.equal(49);
+        testObject.overrideBlockPrimitiveSetter = 50;
+        expect(testObject.overrideBlockPrimitiveSetter).to.equal(49);
       });
     });
 
     describe(@"objects", ^{
       it(@"getter block should modify the value parameter", ^{
-        testClass.overrideObjBlockGetter = @"bar";
-        expect(testClass.overrideObjBlockGetter).to.equal(@"foo");
+        testObject.overrideObjBlockGetter = @"bar";
+        expect(testObject.overrideObjBlockGetter).to.equal(@"foo");
       });
 
       it(@"setter block should modify the value parameter", ^{
-        testClass.overrideObjBlockSetter = @"cat";
-        expect(testClass.overrideObjBlockSetter).to.equal(@"foo");
+        testObject.overrideObjBlockSetter = @"cat";
+        expect(testObject.overrideObjBlockSetter).to.equal(@"foo");
       });
     });
   });
@@ -236,34 +236,33 @@ describe(@"KVO notifications", ^{
 
 	it(@"should send kvo notifications with object retain", ^{
 		waitUntil(^(DoneCallback done) {
-			[[[RACObserve(testClass, readWriteObject) skip:1] take:1] subscribeNext:^(id x) {
+			[[[RACObserve(testObject, readWriteObject) skip:1] take:1] subscribeNext:^(id x) {
 				expect(x).to.equal(@"1234");
 				done();
 			}];
-			testClass.readWriteObject = @"1234";
+			testObject.readWriteObject = @"1234";
 		});
 	});
 
   it(@"should send notifications with object assign", ^{
 		waitUntil(^(DoneCallback done) {
-			[[[RACObserve(testClass, assignObj) skip:1] take:1] subscribeNext:^(id x) {
+			[[[RACObserve(testObject, assignObj) skip:1] take:1] subscribeNext:^(id x) {
 				expect(x).to.equal(@"asdf");
 				done();
 			}];
-			testClass.assignObj = @"asdf";
+			testObject.assignObj = @"asdf";
 		});
   });
 
   it(@"should send notifications with primitive", ^{
 		waitUntil(^(DoneCallback done) {
-			[[[RACObserve(testClass, primitive) skip:1] take:1] subscribeNext:^(id x) {
+			[[[RACObserve(testObject, primitive) skip:1] take:1] subscribeNext:^(id x) {
 				expect(x).to.equal(9675);
 				done();
 			}];
-			testClass.primitive = 9675;
+			testObject.primitive = 9675;
 		});
   });
-
 });
 
 SpecEnd
