@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
 		c.source_files = 'ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers.{h,m}'
 	end
 
-  s.subspec 'NSObject-Dictionary' do |d|
+  s.subspec 'NSObject+Dictionary' do |d|
     d.source_files = 'ObjcAssociatedObjectHelpers/NSObject+AssociatedDictionary.{h,m}'
     d.dependency 'ObjcAssociatedObjectHelpers/Core'
   end
