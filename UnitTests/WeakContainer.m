@@ -10,6 +10,7 @@
 #import "ObjcAssociatedObjectHelpers.h"
 #import "TestClass.h"
 
+#if __has_feature(objc_arc)
 @interface WeakContainer : XCTestCase
 @property (nonatomic, strong) TestClass *testObject;
 @property (nonatomic, strong) NSArray *strongContainer;
@@ -47,3 +48,4 @@
 }
 
 @end
+#endif
