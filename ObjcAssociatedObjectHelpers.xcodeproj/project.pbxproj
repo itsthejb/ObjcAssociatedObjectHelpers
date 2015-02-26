@@ -10,9 +10,11 @@
 		1B75995371FA4BF5AF00B6D6 /* libPods-ObjcAssociatedObjectHelpersTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 510A0A5EEF4A43AEB1DFC61C /* libPods-ObjcAssociatedObjectHelpersTests.a */; };
 		4918B9B2168498F000D4EAC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF0F61619F565009D9F9B /* Foundation.framework */; };
 		4918B9C11684991B00D4EAC4 /* NSObject+AssociatedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */; };
+		4959D45B1A9F5FF300F414FB /* WeakContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 49629DD21A9F5EE600BA8910 /* WeakContainer.m */; };
 		495C4D151A59CDDC0039DB95 /* ObjcAssociatedObjectHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 499E28471A586A68004174F2 /* ObjcAssociatedObjectHelpers.m */; };
 		495C4D161A59D0CE0039DB95 /* ObjcAssociatedObjectHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 499E28471A586A68004174F2 /* ObjcAssociatedObjectHelpers.m */; };
 		495C4D171A59D0CF0039DB95 /* ObjcAssociatedObjectHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 499E28471A586A68004174F2 /* ObjcAssociatedObjectHelpers.m */; };
+		49629DD31A9F5EE600BA8910 /* WeakContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 49629DD21A9F5EE600BA8910 /* WeakContainer.m */; };
 		499C34C7161AFD7200BA2AC9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF0F61619F565009D9F9B /* Foundation.framework */; };
 		499E28481A586A68004174F2 /* ObjcAssociatedObjectHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 499E28471A586A68004174F2 /* ObjcAssociatedObjectHelpers.m */; };
 		49AD1B5716C282A10061BDC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AEF0F61619F565009D9F9B /* Foundation.framework */; };
@@ -41,6 +43,7 @@
 		15F57830FA80C0B05DFFC53F /* Pods-ObjcAssociatedObjectHelpersLibTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjcAssociatedObjectHelpersLibTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ObjcAssociatedObjectHelpersLibTests/Pods-ObjcAssociatedObjectHelpersLibTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1CA662592899DE55A0584B20 /* Pods-ObjcAssociatedObjectHelpersLibTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjcAssociatedObjectHelpersLibTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ObjcAssociatedObjectHelpersLibTests/Pods-ObjcAssociatedObjectHelpersLibTests.release.xcconfig"; sourceTree = "<group>"; };
 		4918B9AE168498F000D4EAC4 /* ObjcAssociatedObjectHelpersLibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObjcAssociatedObjectHelpersLibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		49629DD21A9F5EE600BA8910 /* WeakContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeakContainer.m; sourceTree = "<group>"; };
 		499C34B0161AF68000BA2AC9 /* NSObject+AssociatedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AssociatedDictionary.h"; sourceTree = "<group>"; };
 		499C34B1161AF68000BA2AC9 /* NSObject+AssociatedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AssociatedDictionary.m"; sourceTree = "<group>"; };
 		499E28471A586A68004174F2 /* ObjcAssociatedObjectHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjcAssociatedObjectHelpers.m; sourceTree = "<group>"; };
@@ -147,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				49DEFFE518B615BC00E10224 /* Specs.m */,
+				49629DD21A9F5EE600BA8910 /* WeakContainer.m */,
 				49DEFFE818B6172E00E10224 /* TestClass.h */,
 				49DEFFE918B6172E00E10224 /* TestClass.m */,
 			);
@@ -404,6 +408,7 @@
 			files = (
 				495C4D161A59D0CE0039DB95 /* ObjcAssociatedObjectHelpers.m in Sources */,
 				49BC3AB818B61B7C00679CF8 /* TestClass.m in Sources */,
+				49629DD31A9F5EE600BA8910 /* WeakContainer.m in Sources */,
 				49DEFFE618B615BC00E10224 /* Specs.m in Sources */,
 				4918B9C11684991B00D4EAC4 /* NSObject+AssociatedDictionary.m in Sources */,
 			);
@@ -431,6 +436,7 @@
 			files = (
 				495C4D171A59D0CF0039DB95 /* ObjcAssociatedObjectHelpers.m in Sources */,
 				49BC3AB918B61B7D00679CF8 /* TestClass.m in Sources */,
+				4959D45B1A9F5FF300F414FB /* WeakContainer.m in Sources */,
 				49DEFFE718B615BC00E10224 /* Specs.m in Sources */,
 				49BF24A8161B0805000B1590 /* NSObject+AssociatedDictionary.m in Sources */,
 			);
