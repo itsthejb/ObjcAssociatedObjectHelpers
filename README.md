@@ -1,5 +1,6 @@
-[![Build Status](https://travis-ci.org/itsthejb/ObjcAssociatedObjectHelpers.png?branch=master)](https://travis-ci.org/itsthejb/ObjcAssociatedObjectHelpers)
-[![Build Status](https://travis-ci.org/itsthejb/ObjcAssociatedObjectHelpers.png?branch=develop)](https://travis-ci.org/itsthejb/ObjcAssociatedObjectHelpers)
+[![Master Status](https://travis-ci.org/itsthejb/ObjcAssociatedObjectHelpers.png?branch=master)](https://travis-ci.org/itsthejb/ObjcAssociatedObjectHelpers)
+[![Develop Status](https://travis-ci.org/itsthejb/ObjcAssociatedObjectHelpers.png?branch=develop)](https://travis-ci.org/itsthejb/ObjcAssociatedObjectHelpers)
+[![Pod Status](https://img.shields.io/cocoapods/v/ObjcAssociatedObjectHelpers.svg)](http://www.cocoapods.org/?q=ObjcAssociatedObjectHelpers)
 
 ObjcAssociatedObjectHelpers
 ===========================
