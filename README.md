@@ -1,5 +1,8 @@
-[![Build Status](https://travis-ci.org/itsthejb/ObjcAssociatedObjectHelpers.png?branch=master)](https://travis-ci.org/itsthejb/ObjcAssociatedObjectHelpers)
-[![Build Status](https://travis-ci.org/itsthejb/ObjcAssociatedObjectHelpers.png?branch=develop)](https://travis-ci.org/itsthejb/ObjcAssociatedObjectHelpers)
+[![Master Status](https://travis-ci.org/itsthejb/ObjcAssociatedObjectHelpers.png?branch=master)](https://travis-ci.org/itsthejb/ObjcAssociatedObjectHelpers)
+[![Develop Status](https://travis-ci.org/itsthejb/ObjcAssociatedObjectHelpers.png?branch=develop)](https://travis-ci.org/itsthejb/ObjcAssociatedObjectHelpers)
+[![Pod Status](https://img.shields.io/cocoapods/v/ObjcAssociatedObjectHelpers.svg)](http://www.cocoapods.org/?q=ObjcAssociatedObjectHelpers)
+[![Pod License](https://img.shields.io/cocoapods/l/ObjcAssociatedObjectHelpers.svg)](http://www.cocoapods.org/?q=ObjcAssociatedObjectHelpers)
+[![Pod Platform](https://img.shields.io/cocoapods/p/ObjcAssociatedObjectHelpers.svg)](http://www.cocoapods.org/?q=ObjcAssociatedObjectHelpers)
 
 ObjcAssociatedObjectHelpers
 ===========================
@@ -9,7 +12,7 @@ Introduction
 
 [Associated Objects, or Associated References](http://developer.apple.com/library/ios/#documentation/cocoa/conceptual/objectivec/Chapters/ocAssociativeReferences.html) were introduced in OS X 10.6 and iOS 4.0. This feature gives class instances a dictionary of sorts within which to store arbitrary objects using the runtime functions `objc_setAssociatedObject()` and `objc_getAssociatedObject()`. This project aims to make their use more convenient in a light-weight and thoroughly tested fashion.
 
-1. **Adding ivars to categories** - An unforunate drawback of Obj-C categories in the inability to add or synthesize ivars, even though properties can be added. Associated objects can be used to provide storage and overcome this limitation:
+1. **Adding ivars to categories** - An unfortunate drawback of Obj-C categories in the inability to add or synthesize ivars, even though properties can be added. Associated objects can be used to provide storage and overcome this limitation:
 		
 		@interface NSObject (MyCategory)
 		@property (strong) id myCategoryObject;
@@ -19,7 +22,7 @@ Introduction
 		SYNTHESIZE_ASC_OBJ(myCategoryObject, setMyCategoryObject);
 		@end
 	
-2. **Abitrary dictionary for NSObject** - The `NSObject` category adds a lazily-initialized `NSMutableDictionary` to `NSObject`, allowing key-value pairs to be more conveniently associated with any `NSObject` subclass instance:
+2. **Arbitrary dictionary for NSObject** - The `NSObject` category adds a lazily-initialized `NSMutableDictionary` to `NSObject`, allowing key-value pairs to be more conveniently associated with any `NSObject` subclass instance:
 
 		[self.associatedDictionary setValue:@"value" forKey:@"myKey"];
 
@@ -96,6 +99,10 @@ If you like this, you might also like...
 
 What's New
 ----------
+ 
+**v2.0.1** 
+ 
+ * Made ARC a requirement in the podspec, since this is necessary to use the `weak` functionality with Cocoapods.
 
 **v2.0.0**
 
