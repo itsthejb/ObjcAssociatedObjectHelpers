@@ -99,6 +99,10 @@ If you like this, you might also like...
 
 What's New
 ----------
+ 
+**v2.0.1** 
+ 
+ * Made ARC a requirement in the podspec, since this is necessary to use the `weak` functionality with Cocoapods.
 
 **v2.0.0**
 

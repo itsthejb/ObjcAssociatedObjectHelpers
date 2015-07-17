@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ObjcAssociatedObjectHelpers"
-  s.version      = "2.0.0"
+  s.version      = "2.0.1"
   s.summary      = "Make working with associated objects much more pleasurable."
   s.description  = "A header file with macros that synthesize accessors for 
     associated objects, taking the boilerplate out of your hands. Also, a category
